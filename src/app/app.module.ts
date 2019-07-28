@@ -10,6 +10,7 @@ import { SiteTemplateFooterComponent } from './_layout/site-template-footer/site
 import { AdminTemplateHeaderComponent } from './_layout/admin-template-header/admin-template-header.component';
 import { AdminTemplateFooterComponent } from './_layout/admin-template-footer/admin-template-footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MatMaterialModuleModule } from './mat-material-module/mat-material-module.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatMaterialModuleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
