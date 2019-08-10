@@ -1,0 +1,60 @@
+@import './../../../../variables.scss';  
+.content-slider {
+background: -moz-linear-gradient(-45deg,  rgba(0,32,55,0.68) 0%, rgba(0,32,55,0.68) 1%, rgba(5,0,57,0.68) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  rgba(0,32,55,0.68) 0%,rgba(0,32,55,0.68) 1%,rgba(5,0,57,0.68) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  rgba(0,32,55,0.68) 0%,rgba(0,32,55,0.68) 1%,rgba(5,0,57,0.68) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ad002037', endColorstr='#ad050039',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    top: 0;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    h1 {
+        color: $white;
+        letter-spacing: $pix4;
+        font-size: $pix30;
+        font-weight: $weight700;
+    }
+    p {
+        color: $white;
+        padding: $pix25 20%;
+        font-weight: $weight300;
+    }
+    .readmore-slider {
+        color: $white;
+        font-weight: $weight700;
+        letter-spacing: $pix2;
+        font-size: $pix13;
+        padding: $pix15 $pix25;
+        text-transform: uppercase;
+        border-radius: $pix4;
+        background-image: linear-gradient(to right bottom, #dd261d, #e33f18, #e85313, #ed640d, #f17507);
+        &:hover {
+            background-image: linear-gradient(to left top, #dd261d, #e33f18, #e85313, #ed640d, #f17507);
+            color: $white;
+        }
+    }
+}
+.carousel-indicators li {
+    box-sizing: content-box;
+    -webkit-box-flex: 0;
+    flex: 0 1 auto;
+    width: 15px;
+    height: 15px;
+    border-radius: 71px !important;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-top: 0;
+    border-bottom: 0;
+    opacity: .8;
+}
+.carousel-indicators .active {
+    background: $orange;
+    opacity: 1;
+}
+.carousel-indicators {
+    bottom: $pix50;
+}

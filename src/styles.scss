@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap');
+@import './variables.scss';
+
+body {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: $pix13;
+    color: $black;
+    background: $white;
+    padding: $pix0;
+    margin: $pix0;
+}
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: none !important;
+    }
+}
+a, img, span, p, div {
+    transition: all 0.3s;
+}
+p {
+    color: $gray2;
+}
+.widget-title {
+    color: $orange;
+    font-size: $pix25;
+    letter-spacing: $pix2;
+    font-weight:$weight900;
+    text-transform: uppercase;
+    margin-bottom: $pix20;
+    span {
+        color: $black;
+    }
+}
+.btn-2 {
+    padding: $pix15 $pix30;
+    color: $white;
+    border-radius: $pix4;
+    background: $blue;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: $pix13;
+    &:hover {
+        background: $black;
+        color: $white;
+    }
+}

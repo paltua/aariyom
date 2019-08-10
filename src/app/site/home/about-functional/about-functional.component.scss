@@ -1,0 +1,14 @@
+@import './../../../../variables.scss';
+.about-us-section{
+    background: #f0f0f0;
+    padding: $pix50 $pix0;
+}
+.abt-img {
+    border-radius: $pix15;
+    max-height: 200px;
+    overflow: hidden;
+    margin-bottom: $pix25;
+    img {
+        min-width: 100%;
+    }
+}
