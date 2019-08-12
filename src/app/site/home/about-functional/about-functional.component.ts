@@ -11,10 +11,11 @@ export class AboutFunctionalComponent implements OnInit {
 
   ngOnInit() {
     $('.owl-carousel').owlCarousel({
-      loop:true,
-      margin:10,
-      nav:true,
       items:2,
+      margin:10,
+      autoplay: true,
+      nav:true,
+      dots:true,
       responsive:{
           0:{
               items:1

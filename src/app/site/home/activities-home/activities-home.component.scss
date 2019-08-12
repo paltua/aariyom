@@ -1,0 +1,32 @@
+@import './../../../../variables.scss';
+.img-i-ev {
+    width: 110px;
+    height: 110px;
+    border-radius: $pix5;
+    float: left;
+    overflow: hidden;
+    img {
+        width: 100%;
+    }
+}
+.cont-upcoming {
+    width: calc(100% - 110px);
+    padding-left: $pix20;
+    h4 {
+        font-weight: $weight700;
+        font-size: $pix16;
+        color: $black;
+        margin-bottom: $pix10;
+    }
+    p {
+        font-size: $pix13;
+        color: $gray2
+    }
+}
+.widget-title {
+    display: inline-block;
+    border-bottom: $pix3 solid #ccc;
+    width: auto !important;
+    padding-bottom: $pix12;
+    color: $blue;
+}
