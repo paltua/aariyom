@@ -1,0 +1,45 @@
+@import './../../../variables.scss';
+.sitefooter {
+    background: #f2f2f2;
+    padding: $pix50 $pix0;
+}
+.links-footer {
+    margin-top: $pix15;
+    ul {
+        margin: $pix0;
+        padding: $pix0;
+        li {
+            float: left;
+            list-style: none;
+            a {
+                font-size: $pix13;
+                font-weight: $weight700;
+                letter-spacing: $pix1;
+                color: $gray;
+                float: left;
+                padding: $pix5 $pix10;
+                &:hover {
+                    color: $orange;
+                }
+            }
+        }
+    }
+}
+.social-footer {
+    a {
+        margin:$pix0 $pix9;
+        img {
+            opacity: 1;
+            transition: all 0.3s;
+            &:hover {
+                opacity: 0.7;
+                transition: all 0.3s;
+            }
+        }
+    }
+}
+span.copy {
+    font-size: $pix12;
+    color: $gray1;
+    margin-top: $pix15;
+}
