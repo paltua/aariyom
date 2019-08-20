@@ -8,7 +8,6 @@ import { AdminTemplateComponent } from './../_layout/admin-template/admin-templa
 import { AdminTemplateHeaderComponent } from './../_layout/admin-template-header/admin-template-header.component';
 import { AdminTemplateFooterComponent } from './../_layout/admin-template-footer/admin-template-footer.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-
 @NgModule({
   declarations: [
     AdminTemplateComponent,
