@@ -1,33 +1,34 @@
 <header class="header-site w-100 float-left">
-    <div class="container">
+  <div class="container">
     <div class="row">
-    <div class="w-100 navmenu float-left">
-      <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand logo" href="#"><img src="./../../../assets/images/logo.png" alt="" /></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse nav-custom" id="navbarNav">
-          <ul class="navbar-nav float-right">
-            <li class="nav-item active">
-              <a class="nav-link text-uppercase" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-uppercase" href="#">About us</a>
-            </li>         
-            <li class="nav-item">
-              <a class="nav-link text-uppercase" href="#">events</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-uppercase" href="#">activities</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-uppercase" href="#">contact us</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <div class="w-100 navmenu float-left">
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand logo" routerLink="/"><img src="./../../../assets/images/logo.png" alt="" /></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse nav-custom" id="navbarNav">
+            <ul class="navbar-nav float-right">
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link text-uppercase" routerLink="/">Home </a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link text-uppercase" routerLink="/about-us">About us</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link text-uppercase" routerLink="/events">events</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link text-uppercase" routerLink="/activities">activities</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link text-uppercase" routerLink="/contact-us">contact us</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
     </div>
-    </div>
-    </div>
-    </header>
+  </div>
+</header>

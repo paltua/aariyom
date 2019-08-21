@@ -3,18 +3,18 @@ import { Router, NavigationEnd } from '@angular/router';
 
 
 @Component({
-  selector: 'app-admin-template-header',
-  templateUrl: './admin-template-header.component.html',
-  styleUrls: ['./admin-template-header.component.scss']
+    selector: 'app-admin-template-header',
+    templateUrl: './admin-template-header.component.html',
+    styleUrls: ['./admin-template-header.component.scss']
 })
 export class AdminTemplateHeaderComponent implements OnInit {
 
-  public pushRightClass: string;
-
+    public pushRightClass: string;
+    public title: string;
     constructor(
-      public router: Router
+        public router: Router
     ) {
-
+        this.title = 'Aariyom';
         this.router.events.subscribe(val => {
             if (
                 val instanceof NavigationEnd &&

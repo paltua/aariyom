@@ -7,7 +7,7 @@ import { AdminTemplateSidebarComponent } from './../_layout/admin-template-sideb
 import { AdminTemplateComponent } from './../_layout/admin-template/admin-template.component';
 import { AdminTemplateHeaderComponent } from './../_layout/admin-template-header/admin-template-header.component';
 import { AdminTemplateFooterComponent } from './../_layout/admin-template-footer/admin-template-footer.component';
-
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AdminTemplateComponent,
@@ -18,7 +18,8 @@ import { AdminTemplateFooterComponent } from './../_layout/admin-template-footer
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    NgbDropdownModule,
   ]
 })
 export class AdminModule { }

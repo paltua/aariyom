@@ -10,7 +10,7 @@ import { routerTransition } from './../../../router.animations';
   animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
-
+  title = 'Control Panel';
   constructor() { }
 
   ngOnInit() {

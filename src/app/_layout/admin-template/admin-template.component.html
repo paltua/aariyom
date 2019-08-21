@@ -1,4 +1,6 @@
 <app-admin-template-header></app-admin-template-header>
-<app-admin-template-sidebar></app-admin-template-sidebar>
-<router-outlet></router-outlet>
-<app-admin-template-footer></app-admin-template-footer>
+<app-admin-template-sidebar (collapsedEvent)="receiveCollapsed($event)"></app-admin-template-sidebar>
+<section class="main-container" [ngClass]="{collapsed: collapedSideBar}">
+    <router-outlet></router-outlet>
+</section>
+<!-- <app-admin-template-footer></app-admin-template-footer> -->
