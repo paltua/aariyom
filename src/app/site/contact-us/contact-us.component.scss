@@ -1,15 +1,5 @@
 @import './../../../variables.scss';
-.title-area-all {
-    background: $blue;
-    padding: $pix20 $pix0;
-    h1 {
-        font-size: $pix30;
-        font-weight: $weight900;
-        letter-spacing: $pix2;
-        margin: $pix3 0 0 0;
-        color: $white;
-    }
-}
+
 input:focus, textarea:focus, keygen:focus, select:focus {
 	outline: none;
 }
@@ -98,6 +88,31 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 }
 .frame-map {
     height: 560px;
+}
+.title-area-all {
+	top: 0;
+	right: 0;
+	height: 100%;
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#dd261d+1,f17507+99&0.8+1,0.85+100 */
+background: -moz-linear-gradient(-45deg,  rgba(221,38,29,0.8) 1%, rgba(241,117,7,0.85) 99%, rgba(241,117,7,0.85) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  rgba(221,38,29,0.8) 1%,rgba(241,117,7,0.85) 99%,rgba(241,117,7,0.85) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  rgba(221,38,29,0.8) 1%,rgba(241,117,7,0.85) 99%,rgba(241,117,7,0.85) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccdd261d', endColorstr='#d9f17507',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+.img-page-banner {
+	max-height: 450px;
+	overflow: hidden;
+}
+.title-area-all {
+    padding: $pix20 $pix0;
+    h1 {
+        font-size: $pix30;
+        font-weight: $weight900;
+        letter-spacing: $pix2;
+        margin: $pix3 0 0 0;
+        color: $white;
+    }
 }
 /* @media querries */
 
