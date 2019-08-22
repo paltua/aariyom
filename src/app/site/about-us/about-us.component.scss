@@ -1,0 +1,33 @@
+@import './../../../variables.scss';
+.abt-banner {
+    margin: $pix20 $pix0;
+    max-height: 400px;
+    overflow: hidden; 
+    img {
+        width: 100%;
+    }
+}
+.inner-wrap-about {
+    h2 {
+        font-weight: $weight700;
+        font-size: $pix25;
+        letter-spacing: $pix4;
+        color: $white;
+    }
+    h3 {
+        font-weight: $weight700;
+        font-size: $pix30;
+        letter-spacing: $pix2;
+        color: $gray;
+    }
+}
+.inner-abt-ab  {
+    background: rgba(0,0,0,0.75);
+    height: 100%;
+    width: 100%;
+    left: $pix0;
+    top: $pix0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
