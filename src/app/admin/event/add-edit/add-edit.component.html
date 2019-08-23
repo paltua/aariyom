@@ -22,37 +22,58 @@
                     Looks good!
                 </div>
             </div>
+            <div class="col-md-12 mb-3">
+                <label for="validationCustom01">Invite People</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark"
+                    required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
             <h4 class="text-muted">Event <small>Dates</small></h4>
             <hr>
             <div class="col-md-12 mb-3">
-                <label for="validationCustom01">Event Start Date</label>
-
-                <!-- <div class="input-group datepicker-input">
-                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
-                        #d="ngbDatepicker">
-                    <button class="input-group-addon" (click)="d.toggle()" type="button">
-                        
-                        <span class="fa fa-calendar"></span>
-                    </button>
-                </div> -->
-                <div class="valid-feedback">
-                    Looks good!
+                <div class="row">
+                    <div class="col">
+                        <label for="validationCustom01">Event Start Date</label>
+                        <div class="input-group datepicker-input">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model"
+                                ngbDatepicker #d="ngbDatepicker">
+                            <button class="input-group-addon" (click)="d.toggle()" type="button">
+                                <span class="fa fa-calendar"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="validationCustom01">Event End Date</label>
+                        <!-- <ngb-timepicker [(ngModel)]="defaultTime"></ngb-timepicker> -->
+                        <div class="input-group datepicker-input">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model"
+                                ngbDatepicker #d="ngbDatepicker">
+                            <button class="input-group-addon" (click)="d.toggle()" type="button">
+                                <span class="fa fa-calendar"></span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-12 mb-3">
-                <label for="validationCustom01">Event End Date</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark"
-                    required>
-                <div class="valid-feedback">
-                    Looks good!
+                <div class="row">
+                    <div class="col">
+                        <label for="validationCustom01">Event Start Time</label>
+                        <div class="input-group datepicker-input">
+                            <ngb-timepicker [(ngModel)]="defaultTime"></ngb-timepicker>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="validationCustom01">Event End Time</label>
+                        <div class="input-group datepicker-input">
+                            <ngb-timepicker [(ngModel)]="defaultTime"></ngb-timepicker>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-12 mb-3">
-                <label for="validationCustom01">Invite People</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark"
-                    required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
