@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EventsListingComponent } from './events-listing/events-listing.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 
 const routes: Routes = [
-  {path:'', component:EventsListingComponent}
+  { path: '', component: EventsListingComponent },
+  { path: 'details', component: EventDetailsComponent }
 ];
 
 @NgModule({

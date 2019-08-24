@@ -9,7 +9,8 @@ import { SiteTemplateFooterComponent } from './_layout/site-template-footer/site
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MatMaterialModuleModule } from './mat-material-module/mat-material-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     MatMaterialModuleModule,
     BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

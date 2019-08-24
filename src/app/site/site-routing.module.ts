@@ -6,11 +6,12 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
-  {path:'about-us', component:AboutUsComponent},
-  {path:'contact-us',component:  ContactUsComponent},
-  {path:'events', loadChildren:'./events/events.module#EventsModule'},
-  {path:'activities', loadChildren:'./activities/activities.module#ActivitiesModule'},
+  { path: '', component: HomeComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'events', loadChildren: './events/events.module#EventsModule' },
+  { path: 'activities', loadChildren: './activities/activities.module#ActivitiesModule' },
+  { path: 'event-details', loadChildren: './events/events.module#EventsModule' },
 ];
 
 @NgModule({
