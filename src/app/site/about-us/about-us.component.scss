@@ -13,12 +13,14 @@
         font-size: $pix25;
         letter-spacing: $pix4;
         color: $white;
+        
     }
     h3 {
         font-weight: $weight700;
         font-size: $pix30;
         letter-spacing: $pix2;
         color: $gray;
+        
     }
 }
 .inner-abt-ab  {
@@ -30,4 +32,78 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.title-area-all {
+	top: 0;
+	right: 0;
+	height: 100%;
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0061a5+2,04007c+100&0.8+0,0.8+100 */
+background: -moz-linear-gradient(-45deg,  rgba(0,97,165,0.8) 0%, rgba(0,97,165,0.8) 2%, rgba(4,0,124,0.8) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  rgba(0,97,165,0.8) 0%,rgba(0,97,165,0.8) 2%,rgba(4,0,124,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  rgba(0,97,165,0.8) 0%,rgba(0,97,165,0.8) 2%,rgba(4,0,124,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0061a5', endColorstr='#cc04007c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+}
+.img-page-banner {
+	max-height: 350px;
+	overflow: hidden;
+}
+.title-area-all {
+    padding: $pix20 $pix0;
+    h1 {
+        font-size: $pix30;
+        font-weight: $weight900;
+        letter-spacing: $pix2;
+        margin: $pix3 0 0 0;
+        color: $white;
+    }
+}
+.our-mission {
+    border-top: $pix4 solid #ededed;
+    // border-bottom: $pix4 solid #ededed;
+    padding-top: $pix30;
+    padding-bottom: $pix35;
+    margin-top: $pix20;
+    h3 {
+        font-family: 'Noto Serif', serif;
+        margin-bottom: $pix30;
+        font-style: italic;
+        color: $orange;
+        
+    }
+}
+.left-wmission {
+    
+    ul {
+        padding: $pix0;
+        margin: $pix0;
+        li {
+            width: 100%;
+            float: left;
+            padding: $pix10 $pix5 $pix5 $pix25;
+            font-size: 18px;
+            position: relative;
+            list-style: none;
+            font-family: 'Noto Serif', serif;
+            font-weight: bold;
+            font-style: italic;
+            color:$gray;
+            &::before {
+                position: absolute;
+                width: $pix8;
+                height: $pix8;
+                border-radius: $pix10;
+                background: $orange;
+                content: '';
+                left: $pix0;
+                top: $pix17;
+            }
+        }
+    }
+}
+.right-wmission {
+    max-height: 400px;
+    overflow: hidden;
+    margin-top: $pix15;
 }
