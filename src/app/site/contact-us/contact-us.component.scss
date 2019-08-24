@@ -101,7 +101,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccdd261d', e
 
 }
 .img-page-banner {
-	max-height: 450px;
+	max-height: 350px;
 	overflow: hidden;
 }
 .title-area-all {
@@ -143,8 +143,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccdd261d', e
 	.section2 .sec2addr {
 		font-size: $pix14;
 	}
+	
 	.section2 .sec2contactform h3 {
 		font-size: $pix16;
+		
 	}
 	.section2 .sec2contactform input[type="text"], .section2 .sec2contactform input[type="email"], .section2 .sec2contactform textarea {
 		padding: $pix10;
