@@ -87,7 +87,7 @@ input:focus, textarea:focus, keygen:focus, select:focus {
     }
 }
 .frame-map {
-    height: 560px;
+    height: 480px;
 }
 .title-area-all {
 	top: 0;
@@ -113,6 +113,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccdd261d', e
         margin: $pix3 0 0 0;
         color: $white;
     }
+}
+.sec2addr p i {
+	width: 25px;
+	font-size: 18px;
+	color: $orange;
 }
 /* @media querries */
 
