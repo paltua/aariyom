@@ -5,11 +5,12 @@ import { AdminTemplateComponent } from './../_layout/admin-template/admin-templa
 
 
 const routes: Routes = [
-  {path:'auth', component:AdminLoginTemplateComponent, loadChildren:'./auth/auth.module#AuthModule'},
-  {path:'dashboard',component:AdminTemplateComponent,  loadChildren:'./dashboard/dashboard.module#DashboardModule'},
-  {path:'event',component:AdminTemplateComponent,  loadChildren:'./event/event.module#EventModule'},
-  {path:'activity',component:AdminTemplateComponent,  loadChildren:'./activity/activity.module#ActivityModule'},
-  {path:'contact',component:AdminTemplateComponent,  loadChildren:'./contact/contact.module#ContactModule'}
+  { path: 'auth', component: AdminLoginTemplateComponent, loadChildren: './auth/auth.module#AuthModule' },
+  { path: 'dashboard', component: AdminTemplateComponent, loadChildren: './dashboard/dashboard.module#DashboardModule' },
+  { path: 'functional-unit', component: AdminTemplateComponent, loadChildren: './functional-unit/functional-unit.module#FunctionalUnitModule' },
+  { path: 'event', component: AdminTemplateComponent, loadChildren: './event/event.module#EventModule' },
+  { path: 'activity', component: AdminTemplateComponent, loadChildren: './activity/activity.module#ActivityModule' },
+  { path: 'contact', component: AdminTemplateComponent, loadChildren: './contact/contact.module#ContactModule' }
 ];
 
 @NgModule({
