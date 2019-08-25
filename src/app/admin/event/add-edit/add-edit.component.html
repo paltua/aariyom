@@ -1,7 +1,7 @@
 <div [@routerTransition]>
     <h2 class="text-muted">Event <small>Add New</small></h2>
     <hr>
-    <form [formGroup]="eventForm">
+    <form [formGroup]="eventForm" (submit)="formSave()">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                 <h4 class="text-muted">Event <small>Details</small></h4>

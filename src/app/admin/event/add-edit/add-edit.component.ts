@@ -67,6 +67,10 @@ export class AddEditComponent implements OnInit {
     // this.config.markDisabled = (date: NgbDate) => this.calendar.getToday(date) ==;
   }
 
+  public onSubmit() {
+    console.warn(this.eventForm);
+  }
+
 
 
 }
