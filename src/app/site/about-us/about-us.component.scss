@@ -37,16 +37,12 @@
 	top: 0;
 	right: 0;
 	height: 100%;
-	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0061a5+2,04007c+100&0.8+0,0.8+100 */
-background: -moz-linear-gradient(-45deg,  rgba(0,97,165,0.8) 0%, rgba(0,97,165,0.8) 2%, rgba(4,0,124,0.8) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg,  rgba(0,97,165,0.8) 0%,rgba(0,97,165,0.8) 2%,rgba(4,0,124,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg,  rgba(0,97,165,0.8) 0%,rgba(0,97,165,0.8) 2%,rgba(4,0,124,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0061a5', endColorstr='#cc04007c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background-image: linear-gradient(to right bottom, #0061a5, #056bb3, #0b76c2, #1081d1, #148ce0);
 
 
 }
 .img-page-banner {
-	max-height: 350px;
+	height: 200px;
 	overflow: hidden;
 }
 .title-area-all {

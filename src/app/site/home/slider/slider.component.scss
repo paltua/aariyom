@@ -58,3 +58,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ad002037', e
 .carousel-indicators {
     bottom: $pix50;
 }
+.carousel-item {
+    max-height: 300px;
+    overflow: hidden;
+}
