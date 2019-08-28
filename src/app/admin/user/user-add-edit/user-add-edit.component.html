@@ -1,4 +1,86 @@
 <div [@routerTransition]>
     <h2 class="text-muted">{{title}} <small>{{action}} New</small></h2>
     <hr>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <h4 class="text-muted">{{title}} <small>Details</small></h4>
+            <hr>
+            <div class="col-md-12 mb-3">
+                <label for="validationCustom01">Name</label>
+                <input type="text" formControlName="event_title" class="form-control" id="validationCustom01"
+                    placeholder="" value="" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <label for="validationCustom01">Email</label>
+                <input type="email" formControlName="event_title" class="form-control" id="validationCustom01"
+                    placeholder="" value="" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <label for="validationCustom01">Password</label>
+                <input type="password" formControlName="event_title" class="form-control" id="validationCustom01"
+                    placeholder="" value="" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <label for="validationCustom01">Mobile</label>
+                <input type="tex" formControlName="event_title" class="form-control" id="validationCustom01"
+                    placeholder="" value="" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <h4 class="text-muted">{{title}} <small>Address</small></h4>
+            <hr>
+            <div class="col-md-12 mb-3">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="validationCustom01">Name</label>
+                        <input type="text" formControlName="event_title" class="form-control" id="validationCustom01"
+                            placeholder="" value="" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationCustom01">Email</label>
+                        <input type="email" formControlName="event_title" class="form-control" id="validationCustom01"
+                            placeholder="" value="" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationCustom01">Password</label>
+                        <input type="password" formControlName="event_title" class="form-control"
+                            id="validationCustom01" placeholder="" value="" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <div class="row">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-save"></i> Save</button> &nbsp;
+            <a routerLink="/admin/user" class="btn btn-secondary btn-lg"><i class="fa fa-undo"></i> Back</a>
+
+        </div>
+    </div>
 </div>
