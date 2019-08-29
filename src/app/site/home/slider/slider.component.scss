@@ -1,22 +1,27 @@
 @import './../../../../variables.scss';  
 .content-slider {
-background: -moz-linear-gradient(-45deg,  rgba(0,32,55,0.68) 0%, rgba(0,32,55,0.68) 1%, rgba(5,0,57,0.68) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg,  rgba(0,32,55,0.68) 0%,rgba(0,32,55,0.68) 1%,rgba(5,0,57,0.68) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg,  rgba(0,32,55,0.68) 0%,rgba(0,32,55,0.68) 1%,rgba(5,0,57,0.68) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ad002037', endColorstr='#ad050039',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background-image: linear-gradient(to right bottom, #338cff, #2887f4, #1d82e9, #107dde, #0078d3);
     top: 0;
-    width: 100%;
     text-align: center;
-    height: 100%;
+    min-height: 350px;
     h1 {
         color: $white;
         letter-spacing: $pix4;
         font-size: $pix30;
         font-weight: $weight700;
     }
+    h4 {
+        font-size: 24px;
+    color: #ffffff;
+    font-family: "Noto Serif", serif;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
     p {
         color: $white;
-        padding: $pix25 20%;
+        padding: $pix0 20% 0 0;
         font-weight: $weight300;
     }
     .readmore-slider {
@@ -59,6 +64,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ad002037', e
     bottom: $pix50;
 }
 .carousel-item {
-    max-height: 300px;
+    max-height: 400px;
     overflow: hidden;
+}
+.slider-left-wrap {
+    height: 100%;
+    overflow: hidden;
+    img {
+        height: 100%;
+        width: auto !important;
+    }
+}
+.carousel-control-next, .carousel-control-prev {
+    width: 35px;
+}
+.carousel-indicators {
+    bottom: 0;
 }
