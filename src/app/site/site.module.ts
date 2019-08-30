@@ -9,10 +9,11 @@ import { SliderComponent } from './home/slider/slider.component';
 import { AboutFunctionalComponent } from './home/about-functional/about-functional.component';
 import { UpcomingEventsComponent } from './home/upcoming-events/upcoming-events.component';
 import { ActivitiesHomeComponent } from './home/activities-home/activities-home.component';
+import { BannerComponent } from './home/banner/banner.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, AboutUsComponent, ContactUsComponent, SliderComponent, AboutFunctionalComponent, UpcomingEventsComponent, ActivitiesHomeComponent],
+  declarations: [HomeComponent, AboutUsComponent, ContactUsComponent, SliderComponent, AboutFunctionalComponent, UpcomingEventsComponent, ActivitiesHomeComponent, BannerComponent],
   imports: [
     CommonModule,
     SiteRoutingModule
