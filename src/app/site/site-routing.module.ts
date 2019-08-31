@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'events', loadChildren: './events/events.module#EventsModule' },
-  { path: 'activities', loadChildren: './activities/activities.module#ActivitiesModule' },
+  { path: 'programme', loadChildren: () => import('./programme/programme.module').then(m => m.ProgrammeModule) },
   { path: 'event-details', loadChildren: './events/events.module#EventsModule' },
 ];
 

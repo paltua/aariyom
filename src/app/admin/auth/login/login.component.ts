@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from './../../../router.animations';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -11,9 +12,15 @@ import { routerTransition } from './../../../router.animations';
 })
 export class LoginComponent implements OnInit {
   title = 'Control Panel';
-  constructor() { }
+  loginForm: any;
+  constructor(
+    private fb: FormBuilder,
+  ) { }
 
   ngOnInit() {
+    this.loginForm = this.fb.group({
+
+    });
   }
 
 }
