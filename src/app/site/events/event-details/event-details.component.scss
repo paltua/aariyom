@@ -3,10 +3,10 @@
 	top: 0;
 	right: 0;
 	height: 100%;
-	background-image: linear-gradient(to right bottom, #0061a5, #056bb3, #0b76c2, #1081d1, #148ce0);
+	background: #ffeeb0;
 }
 .img-page-banner {
-	height: 200px;
+	height: 150px;
 	overflow: hidden;
 }
 .title-area-all {
@@ -16,7 +16,7 @@
         font-weight: $weight900;
         letter-spacing: $pix2;
         margin: $pix3 0 0 0;
-        color: $white;
+        color: $black;
     }
 }
 .right-ev-lists {
