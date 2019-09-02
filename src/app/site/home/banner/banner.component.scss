@@ -3,10 +3,10 @@
 	top: 0;
 	right: 0;
     height: 100%;
-    background:$orange;
+    background:#ffeeb0;
 }
 .img-page-banner {
-	height: 200px;
+	height: 150px;
 	overflow: hidden;
 }
 .title-area-all {
@@ -18,7 +18,7 @@
         letter-spacing: 1px;
         letter-spacing: $pix2;
         margin: $pix3 0 0 0;
-        color: $white;
+        color: $black;
         font-family: 'Noto Serif', serif;
         font-style: italic;
     }
