@@ -71,6 +71,10 @@ export class AddEditComponent implements OnInit {
     console.warn(this.eventForm);
   }
 
+  public formSave() {
+
+  }
+
 
 
 }
