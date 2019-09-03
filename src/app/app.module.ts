@@ -11,6 +11,8 @@ import { MatMaterialModuleModule } from './mat-material-module/mat-material-modu
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './_helper';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +27,14 @@ import { MatSelectModule } from '@angular/material/select';
     MatMaterialModuleModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    fakeBackendProvider,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
