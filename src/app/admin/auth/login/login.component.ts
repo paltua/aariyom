@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { routerTransition } from './../../../router.animations';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService, CommonService } from './../../../_service';
+import { Observable } from 'rxjs';
+import { Responses } from 'src/app/_models/responses';
 
 
 @Component({
@@ -16,10 +18,12 @@ export class LoginComponent implements OnInit {
 	loginForm: any;
 	submitted = false;
 	data: any;
+	responses: Observable<Responses>
 	constructor(
 		private fb: FormBuilder,
 		private authService: AuthService,
 		private commonService: CommonService,
+		private route: Router
 	) { }
 
 	ngOnInit() {
@@ -27,9 +31,9 @@ export class LoginComponent implements OnInit {
 			email: ['', [Validators.required, Validators.email]],
 			password: ['', Validators.required]
 		});
-		this.commonService.getCountry().pipe().subscribe(retData => {
-			console.log(retData);
-		});
+		// this.commonService.getCountry().pipe().subscribe(retData => {
+		// 	console.log(retData);
+		// });
 	}
 
 
@@ -44,8 +48,11 @@ export class LoginComponent implements OnInit {
 	public formSubmit() {
 		this.submitted = true;
 		let formData = this.loginForm;
+		console.log(formData.value);
 		if (!this.loginForm.invalid) {
-			console.warn(formData);
+			this.authService.login(formData.value).subscribe(retData => {
+
+			})
 		}
 	}
 

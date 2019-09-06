@@ -21,7 +21,7 @@ export class CommonService {
 	 * getCountry
 	 */
 	public getCountry() {
-		return this.http.get<Country[]>(this.apiUrl + 'api/common/country_list');
+		return this.http.get(this.apiUrl + 'api/common/country_list');
 	}
 
 }

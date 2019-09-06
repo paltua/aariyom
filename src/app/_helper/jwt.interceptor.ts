@@ -23,7 +23,14 @@ export class JwtInterceptor implements HttpInterceptor {
         //         }
         //     });
         // }
-
+        // let headers = new Headers();
+        // headers.set('x-api-key', '23456');
+        // headers.set('Access-Control-Allow-Origin', '*');
+        request = request.clone({
+            setHeaders: {
+                'x-api-key': '23456',
+            }
+        });
         return next.handle(request);
     }
 }
