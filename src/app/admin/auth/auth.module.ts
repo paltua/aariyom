@@ -7,10 +7,11 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, ChangePasswordComponent, ResetPasswordComponent, ForgotPasswordComponent],
+  declarations: [LoginComponent, ChangePasswordComponent, ResetPasswordComponent, ForgotPasswordComponent, LogoutComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

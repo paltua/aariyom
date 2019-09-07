@@ -4,7 +4,7 @@ import { routerTransition } from './../../../router.animations';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService, CommonService } from './../../../_service';
 import { Observable } from 'rxjs';
-import { Responses } from 'src/app/_models/responses';
+import { ApiResponses } from '../../../_models';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 	loginForm: any;
 	submitted = false;
 	data: any;
-	responses: Observable<Responses>
+	responses: Observable<ApiResponses>
 	constructor(
 		private fb: FormBuilder,
 		private authService: AuthService,
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 			password: ['', Validators.required]
 		});
 		// this.commonService.getCountry().pipe().subscribe(retData => {
-		// 	console.log(retData);
+
 		// });
 	}
 
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 	public formSubmit() {
 		this.submitted = true;
 		let formData = this.loginForm;
-		console.log(formData.value);
+		// console.log(formData.value);
 		if (!this.loginForm.invalid) {
 			this.authService.login(formData.value).subscribe(retData => {
 
