@@ -19,7 +19,7 @@
                         placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.programe_desc.errors }"
                         required></textarea>
                     <div *ngIf="submitted && f.programe_desc.errors " class="invalid-feedback">
-                        <div *ngIf="f.programe_desc.errors.required">{{pageTitle}} is required</div>
+                        <div *ngIf="f.programe_desc.errors.required">{{pageTitle}} Description is required</div>
                     </div>
                 </div>
             </div>
