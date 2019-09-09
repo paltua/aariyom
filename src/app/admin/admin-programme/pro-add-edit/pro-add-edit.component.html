@@ -1,0 +1,37 @@
+<div [@routerTransition]>
+    <h2 class="text-muted">{{pageTitle}} <small>{{pageAction}} New</small></h2>
+    <hr>
+    <form [formGroup]="addEditForm" (submit)="formSave()">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">{{pageTitle}} Title</label>
+                    <input type="text" formControlName="program_title" class="form-control" id="program_title"
+                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.program_title.errors }"
+                        required>
+                    <div *ngIf="submitted && f.program_title.errors " class="invalid-feedback">
+                        <div *ngIf="f.program_title.errors.required">{{pageTitle}} is required</div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">{{pageTitle}} Description</label>
+                    <textarea formControlName="programe_desc" class="form-control" rows="7" id="programe_desc"
+                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.programe_desc.errors }"
+                        required></textarea>
+                    <div *ngIf="submitted && f.programe_desc.errors " class="invalid-feedback">
+                        <div *ngIf="f.programe_desc.errors.required">{{pageTitle}} is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+
+                <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-save"></i> Save</button> &nbsp;
+                <a routerLink="/admin/programs/listing" class="btn btn-secondary btn-lg"><i class="fa fa-undo"></i>
+                    Back</a>
+
+            </div>
+        </div>
+    </form>
+</div>

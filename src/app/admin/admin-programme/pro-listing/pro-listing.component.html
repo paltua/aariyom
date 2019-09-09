@@ -1,0 +1,79 @@
+<div [@routerTransition]>
+    <h2 class="text-muted">{{pageTitle}} <small>Listing</small> <span class="float-right"><a
+                class="btn btn-success btn-lg" routerLink="/admin/programs/add-edit"><i class="fa fa-plus-square"></i>
+                Add New
+                {{pageTitle}}</a></span>
+    </h2>
+    <hr>
+    <div class="row">
+        <table class="card-body table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-active">
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr class="table-success">
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr class="table-info">
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                <tr class="table-warning">
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                <tr class="table-danger">
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <mat-table #table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                <mat-cell *matCellDef="let element"> </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                <mat-cell *matCellDef="let element"> </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table> -->
+
+    </div>
+</div>
