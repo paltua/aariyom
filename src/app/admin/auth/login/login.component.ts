@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 	loginForm: any;
 	submitted = false;
 	data: any;
-	responses: Observable<ApiResponses>
+	responses: Observable<ApiResponses>;
 	constructor(
 		private fb: FormBuilder,
 		private authService: AuthService,

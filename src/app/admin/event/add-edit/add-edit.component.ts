@@ -3,6 +3,7 @@ import { routerTransition } from '../../../router.animations';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgbTimeStruct, NgbDatepickerConfig, NgbCalendar, NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CommonService } from 'src/app/_service';
 
 
 
@@ -32,26 +33,34 @@ export class AddEditComponent implements OnInit {
 	pageAction: string;
 	addEditForm: any;
 	submitted = false;
+	countryList: any;
+	stateList: any;
 
 	constructor(
 		private fb: FormBuilder,
 		private config: NgbDatepickerConfig,
-		private calendar: NgbCalendar
+		private calendar: NgbCalendar,
+		private commonSer: CommonService,
 	) {
 		this.pageTitle = 'Event';
 		this.pageAction = 'Add';
 		this.addEditForm = this.fb.group({
 			event_title: ['', Validators.required],
-			event_short_desc: ['', Validators.required],
+			event_desc: ['', Validators.required],
 			event_start_date: ['', Validators.required],
 			event_end_date: ['', Validators.required],
 			event_start_time: ['', Validators.required],
 			event_end_time: ['', Validators.required],
-			event_long_desc: [''],
+			event_about: [''],
+			event_objectives: [''],
 		});
 	}
 
 	ngOnInit() {
+		this.commonSer.getCountry().subscribe(retData => {
+			this.countryList = retData.data;
+		});
+
 	}
 
 	toggleSeconds() {
@@ -83,6 +92,19 @@ export class AddEditComponent implements OnInit {
 		if (!this.addEditForm.invalid) {
 			console.log(this.addEditForm.value);
 
+		}
+	}
+
+	/**
+	 * updateStateList
+	 */
+	public updateStateList(event) {
+		console.log(event.target.value);
+		if (event.target.value !== '') {
+			let countryId = event.target.value;
+			this.commonSer.getState(countryId).subscribe(retData => {
+				this.stateList = retData.data;
+			});
 		}
 	}
 
