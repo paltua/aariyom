@@ -1,6 +1,17 @@
 <div [@routerTransition]>
     <h2 class="text-muted">{{pageTitle}} <small>{{pageAction}} New</small></h2>
     <hr>
+    <ng-container *ngIf="status != '' && msg != ''">
+        <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
+            <!-- <strong>{{pageTitle}}!</strong>  -->
+            {{msg}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <hr>
+    </ng-container>
+
     <form [formGroup]="addEditForm" (submit)="formSave()">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
@@ -15,11 +26,11 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">{{pageTitle}} Description</label>
-                    <textarea formControlName="programe_desc" class="form-control" rows="7" id="programe_desc"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.programe_desc.errors }"
+                    <textarea formControlName="program_desc" class="form-control" rows="7" id="program_desc"
+                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.program_desc.errors }"
                         required></textarea>
-                    <div *ngIf="submitted && f.programe_desc.errors " class="invalid-feedback">
-                        <div *ngIf="f.programe_desc.errors.required">{{pageTitle}} Description is required</div>
+                    <div *ngIf="submitted && f.program_desc.errors " class="invalid-feedback">
+                        <div *ngIf="f.program_desc.errors.required">{{pageTitle}} Description is required</div>
                     </div>
                 </div>
             </div>

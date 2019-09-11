@@ -18,6 +18,8 @@ export class ProListingComponent implements OnInit, AfterViewInit {
   apiRes: Observable<ApiResponses>;
   displayedColumns = ['position', 'firstName', 'lastName', 'email'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  list: any;
+  listCount: any;
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(
     private programSer: ProgrammeService
@@ -31,8 +33,19 @@ export class ProListingComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.programSer.list().subscribe(retData => {
-      console.log(retData);
+      this.listCount = retData.data.length;
+      this.list = retData.data;
     });
+  }
+
+  /**
+   * tableClass
+   */
+  public tableClass(i) {
+    return {
+      'table-secondary': (i % 2 === 0),
+      'table-warning': (i % 2 === 1),
+    };
   }
 
 }

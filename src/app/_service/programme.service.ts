@@ -24,14 +24,15 @@ export class ProgrammeService {
 	 * add
 	 */
 	public add(postData = {}) {
-		return this.http.post<ApiResponses>(this.apiUrl + 'api/programme/add', postData).pipe(map(retData => {
-			console.log(retData);
+		return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/programme/add', postData).pipe(map(retData => {
+			// console.log(retData);
 			// if (retData.status === 'success' && retData.message === '') {
 			// 	console.log(retData)
 			// 	this.router.navigate(['/admin/dashboard']);
 			// } else {
 
 			// }
+			return retData;
 		}));
 	}
 

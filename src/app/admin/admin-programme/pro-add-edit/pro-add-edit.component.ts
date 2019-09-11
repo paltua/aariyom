@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ProgrammeService } from 'src/app/_service/programme.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-pro-add-edit',
@@ -15,16 +16,22 @@ export class ProAddEditComponent implements OnInit {
 	pageAction: string;
 	addEditForm: any;
 	submitted = false;
+	status: any;
+	msg: any;
 	constructor(
 		private fb: FormBuilder,
 		private programmeSer: ProgrammeService,
+		private router: Router,
 	) {
 		this.pageTitle = 'Programme';
 		this.pageAction = 'Add';
+		this.status = '';
+		this.msg = '';
 
 		this.addEditForm = this.fb.group({
 			program_title: ['', Validators.required],
-			programe_desc: ['', Validators.required]
+			program_desc: ['', Validators.required],
+			created_by: [1]
 		});
 	}
 
@@ -40,10 +47,16 @@ export class ProAddEditComponent implements OnInit {
 	 */
 	public formSave() {
 		this.submitted = true;
-		console.log(this.addEditForm.value);
 		if (!this.addEditForm.invalid) {
-			console.log(this.addEditForm.value);
-
+			this.programmeSer.add(this.addEditForm.value).subscribe(retData => {
+				this.status = retData.status;
+				this.msg = retData.message;
+				if (this.status === 'success') {
+					localStorage.setItem('status', this.status);
+					localStorage.setItem('msg', this.msg);
+					this.router.navigate(['/admin/programs/add-edit']);
+				}
+			});
 		}
 	}
 
