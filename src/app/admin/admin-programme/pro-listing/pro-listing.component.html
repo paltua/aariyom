@@ -1,6 +1,6 @@
 <div [@routerTransition]>
     <h2 class="text-muted">{{pageTitle}} <small>Listing</small> <span class="float-right"><a
-                class="btn btn-success btn-lg" routerLink="/admin/programs/add-edit"><i class="fa fa-plus-square"></i>
+                class="btn btn-success btn-lg" routerLink="/admin/programs/add"><i class="fa fa-plus-square"></i>
                 Add New
                 {{pageTitle}}</a></span>
     </h2>
@@ -21,12 +21,15 @@
                     <ng-container *ngIf="listCount > 0">
                         <tr *ngFor="let lst of list;let i= index;" [ngClass]="tableClass(i)">
                             <th scope="row">{{i + 1}}</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td><a class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
-                                <a class="btn btn-success"><i class="fa fa-toggle-on"></i>Primary</a>
-                                <a class="btn btn-danger"><i class="fa fa-trash"></i>Primary</a></td>
+                            <td>{{lst.program_title}}</td>
+                            <td>{{lst.program_desc}}</td>
+                            <td>{{lst.program_title}}</td>
+                            <td><a routerLink="/admin/programs/edit/{{lst.program_id}}" class="btn btn-primary"><i
+                                        class="fa fa-edit"></i> Edit</a>
+                                <!-- <a (click)="" class="btn btn-success"><i
+                                        class="fa fa-toggle-on"></i>{{lst.program_desc}}</a> -->
+                                <a href="javascript:void(0)" (click)="delete(lst.program_id)" class="btn btn-danger"><i
+                                        class="fa fa-trash"></i>Delete</a></td>
                         </tr>
                     </ng-container>
                     <ng-container *ngIf="listCount == 0">

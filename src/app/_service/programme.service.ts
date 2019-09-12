@@ -41,28 +41,17 @@ export class ProgrammeService {
 	 */
 	public update(postData = {}) {
 		return this.http.post<ApiResponses>(this.apiUrl + 'api/programme/add', postData).pipe(map(retData => {
-			console.log(retData);
-			// if (retData.status === 'success' && retData.message === '') {
-			// 	console.log(retData)
-			// 	this.router.navigate(['/admin/dashboard']);
-			// } else {
-
-			// }
+			return retData;
 		}));
 	}
 
 	/**
 	 * getSingle
 	 */
-	public single(postData = {}) {
-		return this.http.post<ApiResponses>(this.apiUrl + 'api/programme/single', postData).pipe(map(retData => {
-			console.log(retData);
-			// if (retData.status === 'success' && retData.message === '') {
-			// 	console.log(retData)
-			// 	this.router.navigate(['/admin/dashboard']);
-			// } else {
-
-			// }
+	public single(id) {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/programme/single/' + id).pipe(map(retData => {
+			// console.log(retData);
+			return retData;
 		}));
 	}
 
@@ -71,7 +60,7 @@ export class ProgrammeService {
 	 */
 	public list(postData = {}) {
 		// return true;
-		return this.http.post<ApiResponses>(this.apiUrl + 'api/programme/list', postData).pipe(map(retData => {
+		return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/programme/list', postData).pipe(map(retData => {
 			return retData;
 		}));
 	}
