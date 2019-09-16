@@ -1,10 +1,10 @@
 <div [@routerTransition]>
-    <h2 class="text-muted">{{pageTitle}} <small>{{pageAction}} New</small></h2>
+    <h2 class="text-muted"><small>{{pageAction}} <ng-container *ngIf="pageAction=='Add'">New
+            </ng-container></small>{{pageTitle}} </h2>
     <hr>
     <ng-container *ngIf="status != '' && msg != ''">
         <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
-            <!-- <strong>{{pageTitle}}!</strong>  -->
-            {{msg}}
+            <div [innerHTML]="msg"></div>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

@@ -39,8 +39,19 @@ export class ProgrammeService {
 	/**
 	 * update
 	 */
-	public update(postData = {}) {
-		return this.http.post<ApiResponses>(this.apiUrl + 'api/programme/add', postData).pipe(map(retData => {
+	public update(updateData = {}, editId = '0') {
+		let postData: any = updateData;
+		postData.editId = editId;
+		return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/programme/update', postData).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
+	/**
+	 * delete
+	 */
+	public delete(program_id = '0') {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/programme/delete/' + program_id).pipe(map(retData => {
 			return retData;
 		}));
 	}
@@ -59,8 +70,8 @@ export class ProgrammeService {
 	 * getSingle
 	 */
 	public list(postData = {}) {
-		// return true;
-		return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/programme/list', postData).pipe(map(retData => {
+		// console.log('service', postData);
+		return this.http.post<any>(this.apiUrl + 'api/admin/programme/list', postData).pipe(map(retData => {
 			return retData;
 		}));
 	}

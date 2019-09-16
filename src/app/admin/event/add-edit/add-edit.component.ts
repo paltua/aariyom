@@ -36,6 +36,23 @@ export class AddEditComponent implements OnInit {
 	countryList: any;
 	stateList: any;
 
+	public countries: { [key: string]: Object; }[] = [
+		{ Name: 'Australia', Code: 'AU' },
+		{ Name: 'Bermuda', Code: 'BM' },
+		{ Name: 'Canada', Code: 'CA' },
+		{ Name: 'Cameroon', Code: 'CM' },
+		{ Name: 'Denmark', Code: 'DK' },
+		{ Name: 'France', Code: 'FR' },
+		{ Name: 'Finland', Code: 'FI' },
+		{ Name: 'Germany', Code: 'DE' },
+	];
+	// maps the local data column to fields property
+	public localFields: Object = { text: 'Name', value: 'Code' };
+	// set the placeholder to MultiSelect Dropdown input element
+	public localWaterMark: string = 'Select countries';
+
+	public value: string[] = ['AU'];
+
 	constructor(
 		private fb: FormBuilder,
 		private config: NgbDatepickerConfig,
@@ -46,13 +63,14 @@ export class AddEditComponent implements OnInit {
 		this.pageAction = 'Add';
 		this.addEditForm = this.fb.group({
 			event_title: ['', Validators.required],
-			event_desc: ['', Validators.required],
+			event_long_desc: ['', Validators.required],
 			event_start_date: ['', Validators.required],
 			event_end_date: ['', Validators.required],
 			event_start_time: ['', Validators.required],
 			event_end_time: ['', Validators.required],
 			event_about: [''],
 			event_objectives: [''],
+			toppings: ['', []]
 		});
 	}
 

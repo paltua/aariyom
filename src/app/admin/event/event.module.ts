@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
 import { EventRoutingModule } from './event-routing.module';
 import { ListingComponent } from './listing/listing.component';
 import { AddEditComponent } from './add-edit/add-edit.component';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { MatSelectModule } from '@angular/material/select';
 import {
   AlertComponent,
   ButtonsComponent,
@@ -22,7 +24,7 @@ import {
   TabsComponent,
   RatingComponent,
   TooltipComponent,
-  TimepickerComponent
+  TimepickerComponent,
 } from './../components';
 
 
@@ -34,6 +36,8 @@ import {
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    MultiSelectAllModule,
+    MatSelectModule,
   ],
   declarations: [
     ListingComponent,

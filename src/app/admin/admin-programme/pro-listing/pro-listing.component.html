@@ -5,69 +5,52 @@
                 {{pageTitle}}</a></span>
     </h2>
     <hr>
+    <ng-container *ngIf="status != '' && msg != ''">
+        <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
+            <div [innerHTML]="msg"></div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <hr>
+    </ng-container>
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            <table class="card-body table">
+            <table datatable [dtOptions]="dtOptions" class="card-body table hover" style="width:100%">
                 <thead>
                     <tr class="table-primary">
                         <th>#</th>
                         <th>Title</th>
-                        <th>Status</th>
+                        <th>Descriptions</th>
                         <th>Created By</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <ng-container *ngIf="listCount > 0">
-                        <tr *ngFor="let lst of list;let i= index;" [ngClass]="tableClass(i)">
-                            <th scope="row">{{i + 1}}</th>
-                            <td>{{lst.program_title}}</td>
-                            <td>{{lst.program_desc}}</td>
-                            <td>{{lst.program_title}}</td>
-                            <td><a routerLink="/admin/programs/edit/{{lst.program_id}}" class="btn btn-primary"><i
-                                        class="fa fa-edit"></i> Edit</a>
-                                <!-- <a (click)="" class="btn btn-success"><i
-                                        class="fa fa-toggle-on"></i>{{lst.program_desc}}</a> -->
-                                <a href="javascript:void(0)" (click)="delete(lst.program_id)" class="btn btn-danger"><i
-                                        class="fa fa-trash"></i>Delete</a></td>
-                        </tr>
-                    </ng-container>
-                    <ng-container *ngIf="listCount == 0">
-                        <tr class="table-warning">
-                            <th scope="row" colspan="5"><i class="fa fa-database text-danger"></i> <span
-                                    class="text-danger">No Data Please</span></th>
 
-                        </tr>
-                    </ng-container>
+                    <tr *ngFor="let lst of listTables;let i= index;" [ngClass]="tableClass(i)">
+                        <th scope="row">{{i + 1}}</th>
+                        <td>{{lst.program_title}}</td>
+                        <td>{{lst.program_desc}}</td>
+                        <td>{{lst.user_name}}</td>
+                        <td><a routerLink="/admin/programs/edit/{{lst.program_id}}" class="btn btn-primary"><i
+                                    class="fa fa-edit fa-lg"></i> Edit</a>
+                            <!-- <a (click)="" class="btn btn-success"><i
+                                        class="fa fa-toggle-on"></i>{{lst.program_desc}}</a> -->
+                            <a href="javascript:void(0)" (click)="delete(lst.program_id)" class="btn btn-danger"><i
+                                    class="fa fa-trash fa-lg"></i>Delete</a></td>
+                    </tr>
                 </tbody>
+                <tbody *ngIf="listCount == 0">
+                    <tr>
+                        <td colspan="5" class="no-data-available table-secondary text-danger">
+                            <span class="float-left"><i class="fa fa-database fa-lg"></i> No
+                                records found!</span></td>
+                    </tr>
+                <tbody>
             </table>
         </div>
-        <!-- <mat-table #table [dataSource]="dataSource">
 
-            <ng-container matColumnDef="position">
-                <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-                <mat-cell *matCellDef="let element"> </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="firstName">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
-                <mat-cell *matCellDef="let element"> </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="lastName">
-                <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                    <mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="email">
-                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-                <mat-cell *matCellDef="let element"> </mat-cell>
-            </ng-container>
-
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table> -->
 
     </div>
 </div>

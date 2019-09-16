@@ -18,19 +18,29 @@
 
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Invite People</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="" value="" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <!-- <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">Invite People</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder=""
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Select Country"
                         value="" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
-                </div> -->
+                </div>
+                <div class="col-md-12 mb-3">
+                    <mat-form-field>
+                        <mat-label>Country</mat-label>
+                        <!-- <ejs-multiselect #localData id='localData' [dataSource]='countries' [fields]='localFields'
+                        [placeholder]='localWaterMark' [value]=value></ejs-multiselect> -->
+                        <mat-select formControlName="toppings" multiple>
+                            <mat-option *ngFor="let cl of countryList" [value]="cl.id">{{cl.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!-- <select class="form-control" id="programs" multiple>
+                        <option>Select One</option>
+                        <option *ngFor="let cl of countryList" [value]="cl.id">{{cl.name}}</option>
+                    </select> -->
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                 <h4 class="text-muted">{{pageTitle}} <small>Dates</small></h4>
@@ -115,12 +125,6 @@
                         <option>Select One</option>
                         <option *ngFor="let sl of stateList">{{sl.name}}</option>
                     </select>
-                    <!-- <input type="text" formControlName="event_title" class="form-control" id="validationCustom01"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_title.errors }"
-                        required>
-                    <div *ngIf="submitted && f.event_title.errors " class="invalid-feedback">
-                        <div *ngIf="f.event_title.errors.required">{{pageTitle}} is required</div>
-                    </div> -->
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">City</label>
@@ -133,12 +137,12 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Address</label>
-                    <textarea formControlName="event_short_desc" class="form-control" rows="5" id="validationCustom01"
+                    <!-- <textarea formControlName="event_short_desc" class="form-control" rows="5" id="validationCustom01"
                         placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_short_desc.errors }"
                         required></textarea>
                     <div *ngIf="submitted && f.event_short_desc.errors " class="invalid-feedback">
                         <div *ngIf="f.event_short_desc.errors.required">{{pageTitle}} is required</div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Pin</label>
@@ -174,11 +178,11 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">{{pageTitle}} Details</label>
-                    <textarea formControlName="event_desc" class="form-control" rows="5" id="validationCustom01"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_short_desc.errors }"
+                    <textarea formControlName="event_long_desc" class="form-control" rows="5" id="validationCustom01"
+                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_long_desc.errors }"
                         required></textarea>
-                    <div *ngIf="submitted && f.event_short_desc.errors " class="invalid-feedback">
-                        <div *ngIf="f.event_short_desc.errors.required">{{pageTitle}} is required</div>
+                    <div *ngIf="submitted && f.event_long_desc.errors " class="invalid-feedback">
+                        <div *ngIf="f.event_long_desc.errors.required">{{pageTitle}} is required</div>
                     </div>
                 </div>
 

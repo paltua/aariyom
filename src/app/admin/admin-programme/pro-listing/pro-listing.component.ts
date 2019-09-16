@@ -1,67 +1,140 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
 import { ProgrammeService } from './../../../_service/programme.service';
 import { Observable } from 'rxjs';
 import { Programme, ApiResponses } from './../../../_models';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
+class DataTablesResponse {
+	data: any[];
+	draw: number;
+	recordsFiltered: number;
+	recordsTotal: number;
+}
+
+class ListTable {
+	program_id: any[];
+	program_title: number;
+	program_desc: number;
+	is_deleted: string;
+	created_by: number;
+	created_date: Date;
+	user_name: number;
+}
 
 @Component({
-  selector: 'app-pro-listing',
-  templateUrl: './pro-listing.component.html',
-  styleUrls: ['./pro-listing.component.scss'],
-  animations: [routerTransition()]
+	selector: 'app-pro-listing',
+	templateUrl: './pro-listing.component.html',
+	styleUrls: ['./pro-listing.component.scss'],
+	animations: [routerTransition()]
 })
-export class ProListingComponent implements OnInit, AfterViewInit {
-  pageTitle: string;
-  programme: Observable<Programme>;
-  apiRes: Observable<ApiResponses>;
-  displayedColumns = ['position', 'firstName', 'lastName', 'email'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  list: any;
-  listCount: any;
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(
-    private programSer: ProgrammeService
-  ) {
-    this.pageTitle = 'Programme';
-  }
+export class ProListingComponent implements OnInit, AfterViewInit, OnDestroy {
+	pageTitle: string;
+	programme: Observable<Programme>;
+	apiRes: Observable<ApiResponses>;
+	list: any;
+	listCount: any;
+	status: any;
+	msg: any;
+	dtOptions: DataTables.Settings = {};
+	listTables: ListTable[];
+	mySubscription: any;
+	// @ViewChild(MatPaginator) paginator: MatPaginator;
+	constructor(
+		private programSer: ProgrammeService,
+		private router: Router,
+		private route: ActivatedRoute,
+	) {
+		this.pageTitle = 'Programme';
+		this.status = '';
+		this.msg = '';
+		this.router.routeReuseStrategy.shouldReuseRoute = function () {
+			return false;
+		};
+		this.mySubscription = this.router.events.subscribe((event) => {
+			if (event instanceof NavigationEnd) {
+				// Trick the Router into believing it's last link wasn't previously loaded
+				this.router.navigated = false;
+			}
+		});
+	}
 
-  ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
-  }
+	ngAfterViewInit() {
+		// this.dataSource.paginator = this.paginator;
+	}
 
-  ngOnInit() {
-    this.programSer.list().subscribe(retData => {
-      this.listCount = retData.data.length;
-      this.list = retData.data;
-    });
-  }
+	ngOnInit() {
+		this.setTempMessages();
+		this.listing();
+	}
 
-  /**
-   * tableClass
-   */
-  public tableClass(i) {
-    return {
-      'table-secondary': (i % 2 === 0),
-      'table-warning': (i % 2 === 1),
-    };
-  }
+	/**
+	 * setTempMessages
+	 */
+	public setTempMessages() {
+		// console.log(this.status, this.msg);
+		if (localStorage.getItem('status') && localStorage.getItem('msg')) {
+			this.status = localStorage.getItem('status');
+			this.msg = localStorage.getItem('msg');
+			localStorage.setItem('status', '');
+			localStorage.setItem('msg', '');
+		}
+	}
+
+	/**
+	 * tableClass
+	 */
+	public tableClass(i) {
+		return {
+			'table-secondary': (i % 2 === 0),
+			'table-warning': (i % 2 === 1),
+		};
+	}
+
+	/**
+	 * delete
+	 */
+	public delete(program_id = '0') {
+		this.router.navigate(['/admin/programs/delete/' + program_id]);
+	}
+
+	/**
+	 * listing
+	 */
+	public listing() {
+		const that = this;
+		this.dtOptions = {
+			pagingType: 'full_numbers',
+			pageLength: 10,
+			serverSide: true,
+			processing: true,
+			ajax: (dataTablesParameters: any, callback) => {
+				that.programSer.list(dataTablesParameters).subscribe(resp => {
+					that.listTables = resp.data.list;
+					this.listCount = resp.data.recordsFiltered;
+					callback({
+						recordsTotal: resp.data.recordsTotal,
+						recordsFiltered: resp.data.recordsFiltered,
+						data: []
+					});
+				});
+			},
+			columns: [
+				{ data: 'PROG.program_id', searchable: false, orderable: true },
+				{ data: 'PROG.program_title', searchable: true, orderable: true },
+				{ data: 'PROG.program_desc', searchable: true, orderable: true },
+				{ data: 'UMD.user_name', searchable: true, orderable: true },
+			]
+		};
+	}
+
+
+	ngOnDestroy() {
+		if (this.mySubscription) {
+			this.mySubscription.unsubscribe();
+		}
+	}
 
 }
-
-export interface Element {
-  position: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-}
-
-const ELEMENT_DATA: Element[] = [
-  { position: 1, firstName: 'John', lastName: 'Doe', email: 'john@gmail.com' },
-  { position: 1, firstName: 'Mike', lastName: 'Hussey', email: 'mike@gmail.com' },
-  { position: 1, firstName: 'Ricky', lastName: 'Hans', email: 'ricky@gmail.com' },
-  { position: 1, firstName: 'Martin', lastName: 'Kos', email: 'martin@gmail.com' },
-  { position: 1, firstName: 'Tom', lastName: 'Paisa', email: 'tom@gmail.com' }
-];
 

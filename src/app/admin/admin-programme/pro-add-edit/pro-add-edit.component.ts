@@ -3,6 +3,9 @@ import { routerTransition } from '../../../router.animations';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ProgrammeService } from 'src/app/_service/programme.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ApiResponses, Programme } from './../../../_models';
+import { Observable } from 'rxjs';
+
 
 @Component({
 	selector: 'app-pro-add-edit',
@@ -19,6 +22,7 @@ export class ProAddEditComponent implements OnInit {
 	status: any;
 	msg: any;
 	editId: any;
+	public programme: Observable<Programme>;
 	constructor(
 		private fb: FormBuilder,
 		private programmeSer: ProgrammeService,
@@ -39,10 +43,11 @@ export class ProAddEditComponent implements OnInit {
 		if (this.editId > 0) {
 			this.pageAction = 'Edit';
 			this.programmeSer.single(this.editId).subscribe(retData => {
-				const data = retData.data;
+				// this.programme = retData.data[0];
+				let data: any = retData.data;
 				this.addEditForm = this.fb.group({
 					program_title: [data[0].program_title, Validators.required],
-					program_desc: ['', Validators.required],
+					program_desc: [data[0].program_desc, Validators.required],
 					created_by: [1]
 				});
 			});
@@ -63,16 +68,42 @@ export class ProAddEditComponent implements OnInit {
 	public formSave() {
 		this.submitted = true;
 		if (!this.addEditForm.invalid) {
-			this.programmeSer.add(this.addEditForm.value).subscribe(retData => {
-				this.status = retData.status;
-				this.msg = retData.message;
-				if (this.status === 'success') {
-					localStorage.setItem('status', this.status);
-					localStorage.setItem('msg', this.msg);
-					this.router.navigate(['/admin/programs/add-edit']);
-				}
-			});
+			if (this.editId > 0) {
+				this.update();
+			} else {
+				this.add();
+			}
 		}
+	}
+
+	/**
+	 * add
+	 */
+	public add() {
+		this.programmeSer.add(this.addEditForm.value).subscribe(retData => {
+			this.status = retData.status;
+			this.msg = retData.message;
+			if (this.status === 'success') {
+				localStorage.setItem('status', this.status);
+				localStorage.setItem('msg', this.msg);
+				this.router.navigate(['/admin/programs/listing']);
+			}
+		});
+	}
+
+	/**
+	 * update
+	 */
+	public update() {
+		this.programmeSer.update(this.addEditForm.value, this.editId).subscribe(retData => {
+			this.status = retData.status;
+			this.msg = retData.message;
+			if (this.status === 'success') {
+				localStorage.setItem('status', this.status);
+				localStorage.setItem('msg', this.msg);
+				this.router.navigate(['/admin/programs/listing']);
+			}
+		});
 	}
 
 }
