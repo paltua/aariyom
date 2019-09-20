@@ -1,6 +1,15 @@
 <div [@routerTransition]>
     <h2 class="text-muted">{{pageTitle}} <small>Add New</small></h2>
     <hr>
+    <ng-container *ngIf="status != '' && msg != ''">
+        <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
+            <div [innerHTML]="msg"></div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <hr>
+    </ng-container>
     <form [formGroup]="addEditForm" (submit)="formSave()">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
@@ -12,33 +21,26 @@
                         placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_title.errors }"
                         required>
                     <div *ngIf="submitted && f.event_title.errors " class="invalid-feedback">
-                        <div *ngIf="f.event_title.errors.required">{{pageTitle}} is required</div>
+                        <div *ngIf="f.event_title.errors.required">{{pageTitle}} Title is required</div>
                     </div>
                 </div>
 
-                <div class="col-md-12 mb-3">
+                <!-- <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Invite People</label>
                     <input type="text" class="form-control" id="validationCustom01" placeholder="Select Country"
                         value="" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
-                </div>
+                </div> -->
                 <div class="col-md-12 mb-3">
-                    <mat-form-field>
-                        <mat-label>Country</mat-label>
-                        <!-- <ejs-multiselect #localData id='localData' [dataSource]='countries' [fields]='localFields'
-                        [placeholder]='localWaterMark' [value]=value></ejs-multiselect> -->
-                        <mat-select formControlName="toppings" multiple>
-                            <mat-option *ngFor="let cl of countryList" [value]="cl.id">{{cl.name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <!-- <select class="form-control" id="programs" multiple>
-                        <option>Select One</option>
-                        <option *ngFor="let cl of countryList" [value]="cl.id">{{cl.name}}</option>
-                    </select> -->
-                    <div class="valid-feedback">
-                        Looks good!
+                    <label for="validationCustomPrograms">Programs</label>
+                    <select class="form-control" formControlName="programs" id="programs"
+                        [ngClass]="{ 'is-invalid': submitted && f.programs.errors }" multiple required>
+                        <option *ngFor="let pl of programList" [value]="pl.program_id">{{pl.program_title}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.programs.errors " class="invalid-feedback">
+                        <div *ngIf="f.programs.errors.required">Programs are required</div>
                     </div>
                 </div>
             </div>
@@ -57,7 +59,8 @@
                                     <span class="fa fa-calendar"></span>
                                 </button>
                                 <div *ngIf="submitted && f.event_start_date.errors " class="invalid-feedback">
-                                    <div *ngIf="f.event_start_date.errors.required">{{pageTitle}} is required</div>
+                                    <div *ngIf="f.event_start_date.errors.required">{{pageTitle}} Start Date is required
+                                    </div>
                                 </div>
                             </div>
 
@@ -73,7 +76,8 @@
                                     <span class="fa fa-calendar"></span>
                                 </button>
                                 <div *ngIf="submitted && f.event_end_date.errors " class="invalid-feedback">
-                                    <div *ngIf="f.event_end_date.errors.required">{{pageTitle}} is required</div>
+                                    <div *ngIf="f.event_end_date.errors.required">{{pageTitle}} End Date is required
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -96,9 +100,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
                 </div>
             </div>
         </div>
@@ -108,49 +109,51 @@
                 <hr>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Country</label>
-                    <select class="form-control" id="country" (change)="updateStateList($event)">
-                        <option>Select One</option>
+                    <select class="form-control" formControlName="country_id" id="country"
+                        (change)="updateStateList($event)"
+                        [ngClass]="{ 'is-invalid': submitted && f.country_id.errors }" required>
+                        <option value="">Select One</option>
                         <option *ngFor="let cl of countryList" [value]="cl.id">{{cl.name}}</option>
                     </select>
-                    <!-- <input type="text" formControlName="event_title" class="form-control" id="validationCustom01"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_title.errors }"
-                        required>
-                    <div *ngIf="submitted && f.event_title.errors " class="invalid-feedback">
-                        <div *ngIf="f.event_title.errors.required">{{pageTitle}} is required</div>
-                    </div> -->
-                </div>
-                <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">State</label>
-                    <select class="form-control" id="state">
-                        <option>Select One</option>
-                        <option *ngFor="let sl of stateList">{{sl.name}}</option>
-                    </select>
-                </div>
-                <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">City</label>
-                    <input type="text" formControlName="event_title" class="form-control" id="validationCustom01"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_title.errors }"
-                        required>
-                    <div *ngIf="submitted && f.event_title.errors " class="invalid-feedback">
-                        <div *ngIf="f.event_title.errors.required">{{pageTitle}} is required</div>
+
+                    <div *ngIf="submitted && f.country_id.errors " class="invalid-feedback">
+                        <div *ngIf="f.country_id.errors.required">Country is required</div>
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">Address</label>
-                    <!-- <textarea formControlName="event_short_desc" class="form-control" rows="5" id="validationCustom01"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_short_desc.errors }"
+                    <label for="validationCustom01">State</label>
+                    <select class="form-control" formControlName="region_id" id="state"
+                        (change)="updateCityList($event)" [ngClass]="{ 'is-invalid': submitted && f.region_id.errors }"
+                        required>
+                        <option value="">Select One</option>
+                        <option *ngFor="let sl of stateList" [value]="sl.id">{{sl.name}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.region_id.errors " class="invalid-feedback">
+                        <div *ngIf="f.region_id.errors.required">State is required</div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">City</label>
+                    <select class="form-control" id="city">
+                        <option value="">Select One</option>
+                        <option *ngFor="let cl of cityList" [value]="cl.id">{{cl.name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">Address(Street/Road/House No)</label>
+                    <textarea formControlName="address" class="form-control" rows="3" id="validationCustom01"
+                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
                         required></textarea>
-                    <div *ngIf="submitted && f.event_short_desc.errors " class="invalid-feedback">
-                        <div *ngIf="f.event_short_desc.errors.required">{{pageTitle}} is required</div>
-                    </div> -->
+                    <div *ngIf="submitted && f.address.errors " class="invalid-feedback">
+                        <div *ngIf="f.address.errors.required">Address is required</div>
+                    </div>
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Pin</label>
-                    <input type="text" formControlName="event_title" class="form-control" id="validationCustom01"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_title.errors }"
-                        required>
-                    <div *ngIf="submitted && f.event_title.errors " class="invalid-feedback">
-                        <div *ngIf="f.event_title.errors.required">{{pageTitle}} is required</div>
+                    <input type="text" formControlName="pin" class="form-control" id="validationCustom01" placeholder=""
+                        value="" [ngClass]="{ 'is-invalid': submitted && f.pin.errors }" required>
+                    <div *ngIf="submitted && f.pin.errors " class="invalid-feedback">
+                        <div *ngIf="f.pin.errors.required">Pin is required</div>
                     </div>
                 </div>
             </div>
@@ -158,31 +161,31 @@
                 <h4 class="text-muted">{{pageTitle}} <small>Others</small></h4>
                 <hr>
                 <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">About</label>
-                    <textarea formControlName="event_about" class="form-control" rows="5" id="validationCustom01"
+                    <label for="validationCustom01">{{pageTitle}} About</label>
+                    <textarea formControlName="event_about" class="form-control" rows="4" id="validationCustom01"
                         placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_about.errors }"
                         required></textarea>
                     <div *ngIf="submitted && f.event_about.errors " class="invalid-feedback">
-                        <div *ngIf="f.event_about.errors.required">{{pageTitle}} is required</div>
+                        <div *ngIf="f.event_about.errors.required">{{pageTitle}} About is required</div>
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">Objectives</label>
+                    <label for="validationCustom01">{{pageTitle}} Objectives</label>
                     <!-- <ckeditor formControlName="event_long_desc" [editor]="editor" [data]="editorData" data=""></ckeditor> -->
-                    <textarea formControlName="event_objectives" class="form-control" rows="5" id="validationCustom01"
+                    <textarea formControlName="event_objectives" class="form-control" rows="4" id="validationCustom01"
                         placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_objectives.errors }"
                         required></textarea>
                     <div *ngIf="submitted && f.event_objectives.errors " class="invalid-feedback">
-                        <div *ngIf="f.event_objectives.errors.required">{{pageTitle}} is required</div>
+                        <div *ngIf="f.event_objectives.errors.required">{{pageTitle}} Objectives is required</div>
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">{{pageTitle}} Details</label>
-                    <textarea formControlName="event_long_desc" class="form-control" rows="5" id="validationCustom01"
+                    <textarea formControlName="event_long_desc" class="form-control" rows="4" id="validationCustom01"
                         placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_long_desc.errors }"
                         required></textarea>
                     <div *ngIf="submitted && f.event_long_desc.errors " class="invalid-feedback">
-                        <div *ngIf="f.event_long_desc.errors.required">{{pageTitle}} is required</div>
+                        <div *ngIf="f.event_long_desc.errors.required">{{pageTitle}} Details is required</div>
                     </div>
                 </div>
 

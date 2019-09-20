@@ -33,6 +33,20 @@ export class CommonService {
 		return this.http.get<ApiResponses>(this.apiUrl + 'api/common/state_list/' + country_id);
 	}
 
+	/**
+	 * getCity
+	 */
+	public getCity(region_id = 0) {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/common/city_list/' + region_id);
+	}
+
+	/**
+	 * getPrograms
+	 */
+	public getPrograms() {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/common/programme_list/');
+	}
+
 
 
 }

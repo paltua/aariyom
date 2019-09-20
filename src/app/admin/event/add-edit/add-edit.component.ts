@@ -4,6 +4,8 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgbTimeStruct, NgbDatepickerConfig, NgbCalendar, NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CommonService } from 'src/app/_service';
+import { EventService } from './../../../_service/event.service';
+import { Router } from '@angular/router';
 
 
 
@@ -35,29 +37,18 @@ export class AddEditComponent implements OnInit {
 	submitted = false;
 	countryList: any;
 	stateList: any;
-
-	public countries: { [key: string]: Object; }[] = [
-		{ Name: 'Australia', Code: 'AU' },
-		{ Name: 'Bermuda', Code: 'BM' },
-		{ Name: 'Canada', Code: 'CA' },
-		{ Name: 'Cameroon', Code: 'CM' },
-		{ Name: 'Denmark', Code: 'DK' },
-		{ Name: 'France', Code: 'FR' },
-		{ Name: 'Finland', Code: 'FI' },
-		{ Name: 'Germany', Code: 'DE' },
-	];
-	// maps the local data column to fields property
-	public localFields: Object = { text: 'Name', value: 'Code' };
-	// set the placeholder to MultiSelect Dropdown input element
-	public localWaterMark: string = 'Select countries';
-
-	public value: string[] = ['AU'];
+	cityList: any;
+	programList: any;
+	status: any;
+	msg: any;
 
 	constructor(
 		private fb: FormBuilder,
 		private config: NgbDatepickerConfig,
 		private calendar: NgbCalendar,
 		private commonSer: CommonService,
+		private eventSer: EventService,
+		private router: Router,
 	) {
 		this.pageTitle = 'Event';
 		this.pageAction = 'Add';
@@ -70,15 +61,19 @@ export class AddEditComponent implements OnInit {
 			event_end_time: ['', Validators.required],
 			event_about: [''],
 			event_objectives: [''],
-			toppings: ['', []]
+			programs: ['', Validators.required],
+			country_id: ['', Validators.required],
+			region_id: ['', Validators.required],
+			city_id: [''],
+			address: ['', Validators.required],
+			pin: ['', Validators.required],
+			event_created_by: [1],
 		});
 	}
 
 	ngOnInit() {
-		this.commonSer.getCountry().subscribe(retData => {
-			this.countryList = retData.data;
-		});
-
+		this.getCountryList();
+		this.getPrograms();
 	}
 
 	toggleSeconds() {
@@ -107,21 +102,61 @@ export class AddEditComponent implements OnInit {
 	public formSave() {
 		this.submitted = true;
 		console.log(this.addEditForm.value);
-		if (!this.addEditForm.invalid) {
-			console.log(this.addEditForm.value);
-
+		if (this.addEditForm.invalid) {
+			this.eventSer.add(this.addEditForm.value).subscribe(retData => {
+				if (retData.status === 'success') {
+					localStorage.setItem('status', retData.status);
+					localStorage.setItem('msg', retData.message);
+					this.router.navigate(['/admin/events/listing']);
+				} else {
+					this.status = retData.status;
+					this.msg = retData.message;
+					console.log(retData.data);
+				}
+			})
 		}
+	}
+
+	/**
+	 * getPrograms
+	 */
+	public getPrograms() {
+		this.commonSer.getPrograms().subscribe(retData => {
+			this.programList = retData.data;
+		});
+	}
+
+	/**
+	 * getCountryList
+	 */
+	public getCountryList() {
+		this.commonSer.getCountry().subscribe(retData => {
+			this.countryList = retData.data;
+		});
 	}
 
 	/**
 	 * updateStateList
 	 */
 	public updateStateList(event) {
-		console.log(event.target.value);
+		// console.log(event.target.value);
 		if (event.target.value !== '') {
 			let countryId = event.target.value;
 			this.commonSer.getState(countryId).subscribe(retData => {
 				this.stateList = retData.data;
+			});
+		}
+	}
+
+	/**
+	 * updateCityList
+	 */
+	public updateCityList(event) {
+		// console.log(event.target.value);
+		if (event.target.value !== '') {
+			let regionId = event.target.value;
+			this.commonSer.getCity(regionId).subscribe(retData => {
+				this.cityList = retData.data;
 			});
 		}
 	}
