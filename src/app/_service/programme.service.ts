@@ -67,7 +67,7 @@ export class ProgrammeService {
 	}
 
 	/**
-	 * getSingle
+	 * Listing
 	 */
 	public list(postData = {}) {
 		// console.log('service', postData);

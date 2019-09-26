@@ -9,21 +9,10 @@ import { ListingComponent } from './listing/listing.component';
 import { AddEditComponent } from './add-edit/add-edit.component';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import {
-  AlertComponent,
-  ButtonsComponent,
-  ModalComponent,
-  CollapseComponent,
-  DatePickerComponent,
-  DropdownComponent,
-  PaginationComponent,
-  PopOverComponent,
-  ProgressbarComponent,
-  TabsComponent,
-  RatingComponent,
-  TooltipComponent,
-  TimepickerComponent,
-} from './../components';
+import { DataTablesModule } from 'angular-datatables';
+import { DeleteComponent } from './delete/delete.component';
+import { ImageComponent } from './image/image.component';
+
 
 
 @NgModule({
@@ -34,23 +23,13 @@ import {
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    DataTablesModule,
   ],
   declarations: [
     ListingComponent,
     AddEditComponent,
-    ButtonsComponent,
-    AlertComponent,
-    ModalComponent,
-    CollapseComponent,
-    DatePickerComponent,
-    DropdownComponent,
-    PaginationComponent,
-    PopOverComponent,
-    ProgressbarComponent,
-    TabsComponent,
-    RatingComponent,
-    TooltipComponent,
-    TimepickerComponent
+    DeleteComponent,
+    ImageComponent,
   ]
 })
 export class EventModule { }

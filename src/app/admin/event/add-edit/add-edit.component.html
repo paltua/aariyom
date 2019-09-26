@@ -1,5 +1,8 @@
 <div [@routerTransition]>
-    <h2 class="text-muted">{{pageTitle}} <small>Add New</small></h2>
+    <h2 class="text-muted"><small>{{pageAction}}
+            <ng-container *ngIf="pageAction=='Add'">New
+            </ng-container>
+        </small>{{pageTitle}} </h2>
     <hr>
     <ng-container *ngIf="status != '' && msg != ''">
         <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
@@ -37,7 +40,9 @@
                     <label for="validationCustomPrograms">Programs</label>
                     <select class="form-control" formControlName="programs" id="programs"
                         [ngClass]="{ 'is-invalid': submitted && f.programs.errors }" multiple required>
-                        <option *ngFor="let pl of programList" [value]="pl.program_id">{{pl.program_title}}</option>
+                        <option *ngFor="let pl of programList" [value]="pl.program_id" selected="selected">
+                            {{pl.program_title}}
+                        </option>
                     </select>
                     <div *ngIf="submitted && f.programs.errors " class="invalid-feedback">
                         <div *ngIf="f.programs.errors.required">Programs are required</div>
@@ -134,7 +139,7 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">City</label>
-                    <select class="form-control" id="city">
+                    <select formControlName="city_id" class="form-control" id="city">
                         <option value="">Select One</option>
                         <option *ngFor="let cl of cityList" [value]="cl.id">{{cl.name}}</option>
                     </select>

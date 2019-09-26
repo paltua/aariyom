@@ -5,7 +5,8 @@ import { NgbTimeStruct, NgbDatepickerConfig, NgbCalendar, NgbDate, NgbDateStruct
 import { FormBuilder, Validators } from '@angular/forms';
 import { CommonService } from 'src/app/_service';
 import { EventService } from './../../../_service/event.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { promise } from 'protractor';
 
 
 
@@ -17,16 +18,13 @@ import { Router } from '@angular/router';
 	providers: [NgbDatepickerConfig] // add NgbDatepickerConfig to the component providers
 })
 export class AddEditComponent implements OnInit {
-
 	public editor = ClassicEditor;
 	public editorData = '';
 	defaultTime = { hour: 13, minute: 30 };
 	meridianTime = { hour: 13, minute: 30 };
 	meridian = true;
-
 	SecondsTime: NgbTimeStruct = { hour: 13, minute: 30, second: 30 };
 	seconds = true;
-
 	customTime: NgbTimeStruct = { hour: 13, minute: 30, second: 0 };
 	hourStep = 1;
 	minuteStep = 15;
@@ -41,6 +39,7 @@ export class AddEditComponent implements OnInit {
 	programList: any;
 	status: any;
 	msg: any;
+	eventId: any;
 
 	constructor(
 		private fb: FormBuilder,
@@ -49,9 +48,26 @@ export class AddEditComponent implements OnInit {
 		private commonSer: CommonService,
 		private eventSer: EventService,
 		private router: Router,
+		private route: ActivatedRoute,
 	) {
 		this.pageTitle = 'Event';
+		this.eventId = (this.route.snapshot.paramMap.get('event_id') ? this.route.snapshot.paramMap.get('event_id') : 0);
 		this.pageAction = 'Add';
+		this.addForm();
+		this.status = '';
+		this.msg = '';
+	}
+
+	ngOnInit() {
+		this.getCountryList();
+		this.getPrograms();
+		if (this.eventId > 0) {
+			this.pageAction = 'Edit';
+			this.editForm();
+		}
+	}
+
+	public addForm() {
 		this.addEditForm = this.fb.group({
 			event_title: ['', Validators.required],
 			event_long_desc: ['', Validators.required],
@@ -68,12 +84,70 @@ export class AddEditComponent implements OnInit {
 			address: ['', Validators.required],
 			pin: ['', Validators.required],
 			event_created_by: [1],
+			event_id: 0,
 		});
 	}
 
-	ngOnInit() {
-		this.getCountryList();
-		this.getPrograms();
+	public editForm() {
+		this.eventSer.getSingle(this.eventId).subscribe(async retData => {
+			// console.log(retData);
+			if (retData.status === 'success') {
+				const data: any = retData.data;
+				this.getStateList(data[0].country_id);
+				this.getCityList(data[0].region_id);
+				const programsArr = await this.setProgramArr(retData.data);
+				const startDateObject: any = await this.setDateArr(data[0].event_start_date_time);
+				const endDateObject: any = await this.setDateArr(data[0].event_end_date_time);
+				this.addEditForm = this.fb.group({
+					event_title: [data[0].event_title, Validators.required],
+					event_long_desc: [data[0].event_long_desc, Validators.required],
+					event_start_date: [startDateObject.dateArr, Validators.required],
+					event_end_date: [endDateObject.dateArr, Validators.required],
+					event_start_time: [startDateObject.timeArr, Validators.required],
+					event_end_time: [endDateObject.timeArr, Validators.required],
+					event_about: [data[0].event_about],
+					event_objectives: [data[0].event_objectives],
+					programs: [programsArr, Validators.required],
+					country_id: [data[0].country_id, Validators.required],
+					region_id: [data[0].region_id, Validators.required],
+					city_id: [data[0].city_id],
+					address: [data[0].address, Validators.required],
+					pin: [data[0].pin, Validators.required],
+					event_created_by: [1],
+					event_id: this.eventId,
+				});
+			}
+		})
+	}
+
+	/**
+	 * setProgramArr
+	 */
+	public setProgramArr(retData = []) {
+		return new Promise((resolve, reject) => {
+			const proData = retData.map((elem) => { return elem.program_id.toString(); });
+			resolve(proData);
+		})
+	}
+
+	/**
+	 * setdateArr
+	 */
+	public setDateArr(dateParam = '') {
+		return new Promise((resolve, reject) => {
+			const newDate = new Date(dateParam);
+			const dateArr = {
+				year: newDate.getFullYear(),
+				month: newDate.getMonth() + 1,
+				day: newDate.getDate()
+			};
+			const timeArr = { hour: newDate.getHours(), minute: newDate.getMinutes() };
+			const proData = {
+				dateArr,
+				timeArr
+			}
+			resolve(proData);
+		})
 	}
 
 	toggleSeconds() {
@@ -101,19 +175,33 @@ export class AddEditComponent implements OnInit {
 
 	public formSave() {
 		this.submitted = true;
-		console.log(this.addEditForm.value);
-		if (this.addEditForm.invalid) {
-			this.eventSer.add(this.addEditForm.value).subscribe(retData => {
-				if (retData.status === 'success') {
-					localStorage.setItem('status', retData.status);
-					localStorage.setItem('msg', retData.message);
-					this.router.navigate(['/admin/events/listing']);
-				} else {
-					this.status = retData.status;
-					this.msg = retData.message;
-					console.log(retData.data);
-				}
-			})
+		// console.log(this.addEditForm.value);
+		if (!this.addEditForm.invalid) {
+			if (this.eventId > 0) {
+				this.eventSer.update(this.addEditForm.value).subscribe(retData => {
+					if (retData.status === 'success') {
+						localStorage.setItem('status', retData.status);
+						localStorage.setItem('msg', retData.message);
+						this.router.navigate(['/admin/events/listing']);
+					} else {
+						this.status = retData.status;
+						this.msg = retData.message;
+						// console.log(retData.data);
+					}
+				})
+			} else {
+				this.eventSer.add(this.addEditForm.value).subscribe(retData => {
+					if (retData.status === 'success') {
+						localStorage.setItem('status', retData.status);
+						localStorage.setItem('msg', retData.message);
+						this.router.navigate(['/admin/events/listing']);
+					} else {
+						this.status = retData.status;
+						this.msg = retData.message;
+						// console.log(retData.data);
+					}
+				})
+			}
 		}
 	}
 
@@ -136,28 +224,41 @@ export class AddEditComponent implements OnInit {
 	}
 
 	/**
+	 * getStateList
+	 */
+	public getStateList(countryId = 0) {
+		this.commonSer.getState(countryId).subscribe(retData => {
+			this.stateList = retData.data;
+		});
+	}
+
+	/**
 	 * updateStateList
 	 */
 	public updateStateList(event) {
 		// console.log(event.target.value);
 		if (event.target.value !== '') {
 			let countryId = event.target.value;
-			this.commonSer.getState(countryId).subscribe(retData => {
-				this.stateList = retData.data;
-			});
+			this.getStateList(countryId);
 		}
+	}
+
+	/**
+	 * getCityList
+	 */
+	public getCityList(regionId = 0) {
+		this.commonSer.getCity(regionId).subscribe(retData => {
+			this.cityList = retData.data;
+		});
 	}
 
 	/**
 	 * updateCityList
 	 */
 	public updateCityList(event) {
-		// console.log(event.target.value);
 		if (event.target.value !== '') {
 			let regionId = event.target.value;
-			this.commonSer.getCity(regionId).subscribe(retData => {
-				this.cityList = retData.data;
-			});
+			this.getCityList(regionId);
 		}
 	}
 

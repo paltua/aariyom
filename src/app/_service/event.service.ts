@@ -28,4 +28,60 @@ export class EventService {
 		}));
 	}
 
+	/**
+	 * GetSingle
+	 */
+	public list(postData = {}) {
+		// console.log('service', postData);
+		return this.http.post<any>(this.apiUrl + 'api/admin/event/list', postData).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
+	/**
+	 * GetSingle
+	 */
+	public getSingle(event_id = 0) {
+		// console.log('service', postData);
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/event/single/' + event_id).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
+	/**
+	 * update
+	 */
+	public update(eventData = {}) {
+		return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/event/update', eventData).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
+	/**
+	 * delete
+	 */
+	public delete(eventId = '0') {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/event/delete/' + eventId).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
+	/**
+	 * delete
+	 */
+	public upload(postData = {}) {
+		return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/event/image_upload/', postData).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
+	/**
+	 * delete
+	 */
+	public image_list(eventId = '0') {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/event/image_list/' + eventId).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
 }
