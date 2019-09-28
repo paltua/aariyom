@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DataTablesModule } from 'angular-datatables';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ContactRoutingModule } from './contact-routing.module';
 import { ListingComponent } from './listing/listing.component';
@@ -9,7 +12,11 @@ import { ListingComponent } from './listing/listing.component';
   declarations: [ListingComponent],
   imports: [
     CommonModule,
-    ContactRoutingModule
+    ContactRoutingModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DataTablesModule,
   ]
 })
 export class ContactModule { }

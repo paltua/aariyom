@@ -6,7 +6,7 @@ import { ProDeleteComponent } from './pro-delete/pro-delete.component';
 
 
 const routes: Routes = [
-  { path: 'listing', component: ProListingComponent },
+  { path: '', component: ProListingComponent },
   { path: 'add', component: ProAddEditComponent },
   { path: 'edit/:id', component: ProAddEditComponent },
   { path: 'delete/:id', component: ProDeleteComponent },

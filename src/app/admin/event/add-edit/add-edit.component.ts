@@ -182,7 +182,7 @@ export class AddEditComponent implements OnInit {
 					if (retData.status === 'success') {
 						localStorage.setItem('status', retData.status);
 						localStorage.setItem('msg', retData.message);
-						this.router.navigate(['/admin/events/listing']);
+						this.router.navigate(['/admin/events']);
 					} else {
 						this.status = retData.status;
 						this.msg = retData.message;
@@ -194,7 +194,7 @@ export class AddEditComponent implements OnInit {
 					if (retData.status === 'success') {
 						localStorage.setItem('status', retData.status);
 						localStorage.setItem('msg', retData.message);
-						this.router.navigate(['/admin/events/listing']);
+						this.router.navigate(['/admin/events']);
 					} else {
 						this.status = retData.status;
 						this.msg = retData.message;

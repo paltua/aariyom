@@ -1,4 +1,71 @@
 <div [@routerTransition]>
-    <h2 class="text-muted">Functional Unit <small>Add</small></h2>
+    <h2 class="text-muted"><small>{{pageAction}}
+            <ng-container *ngIf="pageAction=='Add'">New
+            </ng-container>
+        </small>{{pageTitle}} </h2>
     <hr>
+    <ng-container *ngIf="status != '' && msg != ''">
+        <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
+            <div [innerHTML]="msg"></div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <hr>
+    </ng-container>
+    <form [formGroup]="addEditForm" (submit)="formSave()">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <h4 class="text-muted">{{pageTitle}} <small>Details</small></h4>
+                <hr>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">{{pageTitle}} Title</label>
+                    <input type="text" formControlName="fu_title" class="form-control" id="validationCustom01"
+                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.fu_title.errors }" required>
+                    <div *ngIf="submitted && f.fu_title.errors " class="invalid-feedback">
+                        <div *ngIf="f.fu_title.errors.required">{{pageTitle}} Title is required</div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">{{pageTitle}} Description</label>
+                    <textarea formControlName="fu_desc" class="form-control" rows="4" id="validationCustom01"
+                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.fu_desc.errors }"
+                        required></textarea>
+                    <div *ngIf="submitted && f.fu_desc.errors " class="invalid-feedback">
+                        <div *ngIf="f.fu_desc.errors.required">{{pageTitle}} Description is required</div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                        <input formControlName="fu_image_name" type="file" (change)="fileProgress($event)"
+                            [ngClass]="{ 'is-invalid': submitted && f.fu_image_name.errors }" />
+                        <div *ngIf="submitted && f.fu_image_name.errors " class="invalid-feedback">
+                            <div *ngIf="f.fu_image_name.errors.required">{{pageTitle}} Image is required</div>
+                        </div>
+                    </div>
+                    <div *ngIf="fileUploadProgress">
+                        Upload progress: {{ fileUploadProgress }}
+                    </div>
+                    <div class=" image-preview mb-3" *ngIf="previewUrl">
+                        <img class="w-25" [src]="previewUrl" />
+                    </div>
+
+                    <div class="mb-3" *ngIf="uploadedFilePath">
+                        {{uploadedFilePath}}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-save"></i> Save</button> &nbsp;
+                <a routerLink="/admin/functional-units" class="btn btn-secondary btn-lg"><i class="fa fa-undo"></i>
+                    Back</a>
+            </div>
+        </div>
+    </form>
 </div>
