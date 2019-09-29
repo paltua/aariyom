@@ -9,163 +9,37 @@
     <div class="container">
         <div class="w-100 float-left wraper-inside-container mt-5 mb-5">
             <div class="col-lg-9 col-md-12 col-12 float-left events-left">
-                <a routerLink="/events/details" class="wrap-list-events float-left w-100 mb-2 mt-2">
-                    <div class="event-img-list float-left"><img src="./../../../../assets/images/img04.jpg" alt="">
-                    </div>
-                    <div class="events-list-content float-left">
-                        <h2>Event Name will come here</h2>
-                        <p>Sed non vulputate nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                            fames ac turpis egestas. In hac habitasse platea dictumst. Nullam neque erat, tempor eget
-                            dictum
-                            sit amet</p>
-                    </div>
-                    <div class="event-held float-left text-center">
-                        <div
-                            class="info-held w-100 text-center float-left d-flex justify-content-center align-items-center flex-column">
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center mb-4">32 B, Sector 5, Kolkata - 700 002</span>
-                            </div>
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center">30th Aug, 2019</span>
-                                <span class="w-100 float-left text-center">5:30PM</span>
+                <ng-container *ngFor="let list of eventList">
+                    <a routerLink="/events/details/{{event_id}}" class="wrap-list-events float-left w-100 mb-2 mt-2">
+                        <div class="event-img-list float-left"><img src="{{list.image_path}}" alt="">
+                        </div>
+                        <div class="events-list-content float-left">
+                            <h2>{{list.event_title}}</h2>
+                            <p>{{list.event_long_desc}}</p>
+                        </div>
+                        <div class="event-held float-left text-center">
+                            <div
+                                class="info-held w-100 text-center float-left d-flex justify-content-center align-items-center flex-column">
+                                <div class="w-100 float-left wrap-con-ev">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span class="w-100 float-left text-center mb-4">
+                                        <ng-container *ngIf="list.address != ''">{{list.address}},</ng-container>
+                                        <ng-container *ngIf="list.pin != ''">{{list.pin}},</ng-container>
+                                        <ng-container *ngIf="list.c_name != ''">{{list.c_name}},</ng-container>
+                                    </span>
+                                </div>
+                                <div class="w-100 float-left wrap-con-ev">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    <span class="w-100 float-left text-center">30th Aug, 2019</span>
+                                    <span class="w-100 float-left text-center">5:30PM</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </ng-container>
 
-                <a routerLink="/events/details" class="wrap-list-events float-left w-100 mb-2 mt-2">
-                    <div class="event-img-list float-left"><img src="./../../../../assets/images/img04.jpg" alt="">
-                    </div>
-                    <div class="events-list-content float-left">
-                        <h2>Event Name will come here</h2>
-                        <p>Sed non vulputate nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                            fames ac turpis egestas. In hac habitasse platea dictumst. Nullam neque erat, tempor eget
-                            dictum
-                            sit amet</p>
-                    </div>
-                    <div class="event-held float-left text-center">
-                        <div
-                            class="info-held w-100 text-center float-left d-flex justify-content-center align-items-center flex-column">
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center mb-4">32 B, Sector 5, Kolkata - 700 002</span>
-                            </div>
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center">30th Aug, 2019</span>
-                                <span class="w-100 float-left text-center">5:30PM</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a routerLink="/events/details" class="wrap-list-events float-left w-100 mb-2 mt-2">
-                    <div class="event-img-list float-left"><img src="./../../../../assets/images/img04.jpg" alt="">
-                    </div>
-                    <div class="events-list-content float-left">
-                        <h2>Event Name will come here</h2>
-                        <p>Sed non vulputate nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                            fames ac turpis egestas. In hac habitasse platea dictumst. Nullam neque erat, tempor eget
-                            dictum
-                            sit amet</p>
-                    </div>
-                    <div class="event-held float-left text-center">
-                        <div
-                            class="info-held w-100 text-center float-left d-flex justify-content-center align-items-center flex-column">
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center mb-4">32 B, Sector 5, Kolkata - 700 002</span>
-                            </div>
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center">30th Aug, 2019</span>
-                                <span class="w-100 float-left text-center">5:30PM</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a routerLink="/events/details" class="wrap-list-events float-left w-100 mb-2 mt-2">
-                    <div class="event-img-list float-left"><img src="./../../../../assets/images/img04.jpg" alt="">
-                    </div>
-                    <div class="events-list-content float-left">
-                        <h2>Event Name will come here</h2>
-                        <p>Sed non vulputate nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                            fames ac turpis egestas. In hac habitasse platea dictumst. Nullam neque erat, tempor eget
-                            dictum
-                            sit amet</p>
-                    </div>
-                    <div class="event-held float-left text-center">
-                        <div
-                            class="info-held w-100 text-center float-left d-flex justify-content-center align-items-center flex-column">
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center mb-4">32 B, Sector 5, Kolkata - 700 002</span>
-                            </div>
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center">30th Aug, 2019</span>
-                                <span class="w-100 float-left text-center">5:30PM</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a routerLink="/events/details" class="wrap-list-events float-left w-100 mb-2 mt-2">
-                    <div class="event-img-list float-left"><img src="./../../../../assets/images/img04.jpg" alt="">
-                    </div>
-                    <div class="events-list-content float-left">
-                        <h2>Event Name will come here</h2>
-                        <p>Sed non vulputate nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                            fames ac turpis egestas. In hac habitasse platea dictumst. Nullam neque erat, tempor eget
-                            dictum
-                            sit amet</p>
-                    </div>
-                    <div class="event-held float-left text-center">
-                        <div
-                            class="info-held w-100 text-center float-left d-flex justify-content-center align-items-center flex-column">
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center mb-4">32 B, Sector 5, Kolkata - 700 002</span>
-                            </div>
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center">30th Aug, 2019</span>
-                                <span class="w-100 float-left text-center">5:30PM</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a routerLink="/events/details" class="wrap-list-events float-left w-100 mb-2 mt-2">
-                    <div class="event-img-list float-left"><img src="./../../../../assets/images/img04.jpg" alt="">
-                    </div>
-                    <div class="events-list-content float-left">
-                        <h2>Event Name will come here</h2>
-                        <p>Sed non vulputate nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                            fames ac turpis egestas. In hac habitasse platea dictumst. Nullam neque erat, tempor eget
-                            dictum
-                            sit amet</p>
-                    </div>
-                    <div class="event-held float-left text-center">
-                        <div
-                            class="info-held w-100 text-center float-left d-flex justify-content-center align-items-center flex-column">
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center mb-4">32 B, Sector 5, Kolkata - 700 002</span>
-                            </div>
-                            <div class="w-100 float-left wrap-con-ev">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <span class="w-100 float-left text-center">30th Aug, 2019</span>
-                                <span class="w-100 float-left text-center">5:30PM</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
                 <div class="w-100 float-left mt-4 mat-pagination position-relative">
-                    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+                    <mat-paginator [length]="eventListCount" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
                     </mat-paginator>
 
                 </div>

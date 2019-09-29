@@ -1,0 +1,107 @@
+@import './../../../../variables.scss';
+.title-area-all {
+	top: 0;
+	right: 0;
+    height: 100%;
+    background: #ffeeb0;
+}
+.img-page-banner {
+	height: 150px;
+	overflow: hidden;
+}
+.title-area-all {
+    padding: $pix20 $pix0;
+    h1 {
+        font-size: $pix30;
+        font-weight: $weight900;
+        letter-spacing: $pix2;
+        margin: $pix3 0 0 0;
+        color: $black;
+    }
+}
+.wrap-list-events {
+    background: $white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+    border-radius: $pix15;
+    position: relative;
+    &:hover {
+        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+        z-index: 9;
+    }
+    .event-img-list {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 15px 0 0 15px;
+        img {
+            height: 100%;
+        }
+    }
+    .events-list-content {
+        width: calc(100% - 400px);
+        padding: $pix25;
+        h2 {
+            font-weight: $weight700;
+            font-size: $pix16;
+            color: $blue;
+            margin: $pix0 $pix0 $pix10 $pix0;
+        }
+        p {
+            font-size: $pix14;
+            color: $gray;
+        }
+    }
+    .event-held {
+        width: 200px;
+        .info-held {
+            padding: $pix15;
+            background: #ededed;
+            height: 200px;
+            border-radius: 0 15px 15px 0;
+            .wrap-con-ev {
+                i {
+                    font-size: $pix16;
+                    color: $orange;
+                }
+                span {
+                    font-size: $pix13;
+                    font-weight: $weight700;
+                    color: $black;
+                }
+        }
+    }
+    }
+}
+::ng-deep .mat-icon-button {
+    outline: none !important;
+    box-shadow: none !important;
+    margin-left: $pix10 !important;
+}
+.mat-pagination {
+    font-size: $pix13;
+}
+.right-ev-lists {
+    h3 {
+        font-family: 'Noto Serif', serif;
+        font-size: $pix18;
+        color: $gray;
+        font-weight: bold;
+        font-style: italic;
+        margin-bottom: $pix20;
+    }
+    a {
+        background: #fbfbfb;
+        padding: $pix10;
+        font-size: $pix14;
+        font-style: italic;
+        font-family: 'Noto Serif', serif;
+        color: $gray;
+        text-decoration: none;
+        border-radius: $pix5;
+        &:hover {
+            background: $orange;
+            color: $white;
+            box-shadow: 0px 7px 10px rgba(232, 118, 19, 0.47); 
+        }
+    }
+}

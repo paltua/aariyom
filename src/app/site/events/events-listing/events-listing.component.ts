@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SiteService } from 'src/app/_service/site.service';
 
 @Component({
   selector: 'app-events-listing',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./events-listing.component.scss']
 })
 export class EventsListingComponent implements OnInit {
-
-  constructor() { }
+  eventList: any;
+  eventListCount: any;
+  constructor(
+    private siteSer: SiteService
+  ) { }
 
   ngOnInit() {
+    this.siteSer.getEventAll().subscribe(retData => {
+      const newData: any = retData.data;
+      this.eventList = newData.list;
+      this.eventListCount = this.eventList.length;
+      // console.log(retData);
+    })
   }
 
 }
