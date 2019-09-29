@@ -31,6 +31,7 @@ export class AddEditComponent implements OnInit {
   previewUrl: any = null;
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
+  formData: any;
   constructor(
     private fb: FormBuilder,
     private commonSer: CommonService,
@@ -47,6 +48,7 @@ export class AddEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.formData = new FormData();
     if (this.dataId > 0) {
       this.pageAction = 'Edit';
       this.editForm();
@@ -57,13 +59,6 @@ export class AddEditComponent implements OnInit {
    * addForm
    */
   public addForm() {
-    // this.addEditForm = new FormGroup({
-    //   fu_title: new FormControl('', Validators.required),
-    //   fu_desc: new FormControl('', Validators.required),
-    //   fu_image_name: new FormControl('', Validators.required),
-    //   fu_created_by: new FormControl(1),
-    //   fu_id: new FormControl(0),
-    // });
     this.addEditForm = this.fb.group({
       fu_title: ['', Validators.required],
       fu_desc: ['', Validators.required],
@@ -77,7 +72,19 @@ export class AddEditComponent implements OnInit {
    * editForm
    */
   public editForm() {
-
+    this.fuSer.getSingle(this.dataId).subscribe(retData => {
+      if (retData.status === 'success') {
+        const data: any = retData.data;
+        this.previewUrl = data[0].image_path;
+        this.addEditForm = this.fb.group({
+          fu_title: [data[0].fu_title, Validators.required],
+          fu_desc: [data[0].fu_desc, Validators.required],
+          fu_image_name: [this.fileData],
+          fu_created_by: [1],
+          fu_id: data[0].fu_id,
+        });
+      }
+    });
   }
 
   fileProgress(fileInput: any) {
@@ -105,41 +112,44 @@ export class AddEditComponent implements OnInit {
 
   public formSave() {
     this.submitted = true;
-    console.log(this.addEditForm.value);
     if (!this.addEditForm.invalid) {
+      this.setFormData();
       if (this.dataId > 0) {
-        // this.fuSer.update(this.addEditForm.value).subscribe(retData => {
-        //   if (retData.status === 'success') {
-        //     localStorage.setItem('status', retData.status);
-        //     localStorage.setItem('msg', retData.message);
-        //     this.router.navigate(['/admin/events/listing']);
-        //   } else {
-        //     this.status = retData.status;
-        //     this.msg = retData.message;
-        //     // console.log(retData.data);
-        //   }
-        // })
+        this.fuSer.update(this.formData).subscribe(retData => {
+          if (retData.status === 'success') {
+            localStorage.setItem('status', retData.status);
+            localStorage.setItem('msg', retData.message);
+            this.router.navigate(['/admin/events/listing']);
+          } else {
+            this.status = retData.status;
+            this.msg = retData.message;
+            // console.log(retData.data);
+          }
+        })
       } else {
-        const formData = new FormData();
-        formData.append('fu_title', this.addEditForm.value.fu_title);
-        formData.append('fu_desc', this.addEditForm.value.fu_title);
-        formData.append('fu_image_name', this.fileData);
-        formData.append('fu_created_by', this.addEditForm.value.fu_created_by);
-        formData.append('fu_id', this.addEditForm.value.fu_id);
-        this.fuSer.add(formData).subscribe(retData => {
-          console.log(retData);
-          // if (retData.status === 'success') {
-          //   localStorage.setItem('status', retData.status);
-          //   localStorage.setItem('msg', retData.message);
-          //   this.router.navigate(['/admin/functional-units']);
-          // } else {
-          //   this.status = retData.status;
-          //   this.msg = retData.message;
-          //   // console.log(retData.data);
-          // }
+        this.fuSer.add(this.formData).subscribe(retData => {
+          if (retData.status === 'success') {
+            localStorage.setItem('status', retData.status);
+            localStorage.setItem('msg', retData.message);
+            this.router.navigate(['/admin/functional-units']);
+          } else {
+            this.status = retData.status;
+            this.msg = retData.message;
+          }
         })
       }
     }
+  }
+
+  /**
+   * setFormData
+   */
+  public setFormData() {
+    this.formData.append('fu_title', this.addEditForm.value.fu_title);
+    this.formData.append('fu_desc', this.addEditForm.value.fu_title);
+    this.formData.append('fu_image_name', this.fileData);
+    this.formData.append('fu_created_by', this.addEditForm.value.fu_created_by);
+    this.formData.append('fu_id', this.addEditForm.value.fu_id);
   }
 
 }

@@ -5,9 +5,10 @@ import { ListingComponent } from './listing/listing.component';
 
 
 const routes: Routes = [
+  { path: '', component: ListingComponent },
   { path: 'add', component: AddEditComponent },
   { path: 'edit/:fu_id', component: AddEditComponent },
-  { path: '', component: ListingComponent }
+  // { path: 'delete/:fu_id', component:  },
 ];
 
 @NgModule({

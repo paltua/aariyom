@@ -23,9 +23,7 @@
                         <th>#</th>
                         <th>Image</th>
                         <th>Title</th>
-                        <th>Dates</th>
-                        <th>Programs</th>
-                        <th>Location</th>
+                        <th>Dsecription</th>
                         <!-- <th>Created By</th> -->
                         <th>Action</th>
                     </tr>
@@ -34,25 +32,16 @@
                     <tr *ngFor="let lst of listTables;let i= index;" [ngClass]="tableClass(i)">
                         <th scope="row">{{i + 1}}</th>
                         <td class="w-15"><img src="{{lst.image_path}}" class="img-fluid img-thumbnail"
-                                alt="{{lst.event_title}}"></td>
-                        <td>{{lst.event_title}}</td>
-                        <td>
-                            <p>Start Date:{{lst.event_start_date_time|date:'medium'}}</p>
-                            <p>End Date:{{lst.event_end_date_time|date:'medium'}}</p>
-                        </td>
-                        <td [innerHTML]="lst.program_title"></td>
-                        <td>
-                            <p>Country:{{lst.c_name}}</p>
-                            <p>State:{{lst.r_name}}</p>
-                            <p *ngIf="lst.city_name">City:{{lst.city_name}}</p>
-                            <p *ngIf="lst.pin">Pin:{{lst.pin}}</p>
-                        </td>
+                                alt="{{lst.fu_title}}"></td>
+                        <td>{{lst.fu_title}}</td>
+                        <td [innerHTML]="lst.fu_desc"></td>
+
                         <!-- <td>{{lst.user_name}}</td> -->
-                        <td><a routerLink="/admin/events/edit/{{lst.event_id}}" class="btn btn-primary"><i
+                        <td><a routerLink="/admin/functional-units/edit/{{lst.fu_id}}" class="btn btn-primary"><i
                                     class="fa fa-edit fa-lg"></i> Edit</a>
-                            <a routerLink="/admin/events/image/{{lst.event_id}}" class="btn btn-warning"><i
-                                    class="fa fa-picture-o fa-lg"></i>Images</a>
-                            <a href="javascript:void(0)" (click)="delete(lst.event_id)" class="btn btn-danger"><i
+                            <!-- <a routerLink="/admin/fus/image/{{lst.fu_id}}" class="btn btn-warning"><i
+                                    class="fa fa-picture-o fa-lg"></i>Images</a> -->
+                            <a href="javascript:void(0)" (click)="delete(lst.fu_id)" class="btn btn-danger"><i
                                     class="fa fa-trash fa-lg"></i>Delete</a></td>
                     </tr>
 
