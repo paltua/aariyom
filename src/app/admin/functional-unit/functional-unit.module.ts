@@ -7,10 +7,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FunctionalUnitRoutingModule } from './functional-unit-routing.module';
 import { AddEditComponent } from './add-edit/add-edit.component';
 import { ListingComponent } from './listing/listing.component';
+import { DeleteComponent } from './delete/delete.component';
 
 
 @NgModule({
-  declarations: [AddEditComponent, ListingComponent],
+  declarations: [AddEditComponent, ListingComponent, DeleteComponent],
   imports: [
     CommonModule,
     FunctionalUnitRoutingModule,

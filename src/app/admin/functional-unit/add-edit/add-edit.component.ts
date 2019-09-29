@@ -63,6 +63,7 @@ export class AddEditComponent implements OnInit {
       fu_title: ['', Validators.required],
       fu_desc: ['', Validators.required],
       fu_image_name: [this.fileData],
+      old_image_name: [''],
       fu_created_by: [1],
       fu_id: 0,
     });
@@ -80,6 +81,7 @@ export class AddEditComponent implements OnInit {
           fu_title: [data[0].fu_title, Validators.required],
           fu_desc: [data[0].fu_desc, Validators.required],
           fu_image_name: [this.fileData],
+          old_image_name: [data[0].fu_image],
           fu_created_by: [1],
           fu_id: data[0].fu_id,
         });
@@ -119,7 +121,7 @@ export class AddEditComponent implements OnInit {
           if (retData.status === 'success') {
             localStorage.setItem('status', retData.status);
             localStorage.setItem('msg', retData.message);
-            this.router.navigate(['/admin/events/listing']);
+            this.router.navigate(['/admin/functional-units']);
           } else {
             this.status = retData.status;
             this.msg = retData.message;
@@ -148,6 +150,7 @@ export class AddEditComponent implements OnInit {
     this.formData.append('fu_title', this.addEditForm.value.fu_title);
     this.formData.append('fu_desc', this.addEditForm.value.fu_title);
     this.formData.append('fu_image_name', this.fileData);
+    this.formData.append('old_image_name', this.addEditForm.value.old_image_name);
     this.formData.append('fu_created_by', this.addEditForm.value.fu_created_by);
     this.formData.append('fu_id', this.addEditForm.value.fu_id);
   }

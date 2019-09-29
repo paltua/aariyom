@@ -32,7 +32,7 @@ export class ImageComponent implements OnInit {
     this.status = '';
     this.msg = '';
     this.list = [];
-    this.listCount = 0;
+    this.listCount = 1;
     this.eventId = (this.route.snapshot.paramMap.get('event_id') ? this.route.snapshot.paramMap.get('event_id') : 0);
     this.isDefaultForm = this.fb.group({
       is_default: [''],

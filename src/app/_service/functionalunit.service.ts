@@ -41,9 +41,9 @@ export class FunctionalunitService {
 	/**
 	 * GetSingle
 	 */
-  public getSingle(event_id = 0) {
+  public getSingle(fu_id = 0) {
     // console.log('service', postData);
-    return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/fu/single/' + event_id).pipe(map(retData => {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/fu/single/' + fu_id).pipe(map(retData => {
       return retData;
     }));
   }
@@ -60,8 +60,8 @@ export class FunctionalunitService {
 	/**
 	 * delete
 	 */
-  public delete(eventId = '0') {
-    return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/fu/delete/' + eventId).pipe(map(retData => {
+  public delete(fu_id = '0') {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/fu/delete/' + fu_id).pipe(map(retData => {
       return retData;
     }));
   }

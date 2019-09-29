@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from './../../../_service/event.service';
+import { FunctionalunitService } from 'src/app/_service/functionalunit.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,22 +10,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DeleteComponent implements OnInit {
   status: any;
   msg: any;
-  eventId: any;
+  dataId: any;
   constructor(
-    private eventSer: EventService,
+    private fuSer: FunctionalunitService,
     private router: Router,
     private route: ActivatedRoute,
   ) {
-    this.eventId = (this.route.snapshot.paramMap.get('event_id') ? this.route.snapshot.paramMap.get('event_id') : 0);
+    this.dataId = (this.route.snapshot.paramMap.get('fu_id') ? this.route.snapshot.paramMap.get('fu_id') : 0);
   }
 
   ngOnInit() {
-    this.eventSer.delete(this.eventId).subscribe(retData => {
+    this.fuSer.delete(this.dataId).subscribe(retData => {
       localStorage.setItem('status', retData.status);
       localStorage.setItem('msg', retData.message);
-      this.router.navigate(['/admin/events']);
+      this.router.navigate(['/admin/functional-units']);
     });
-
   }
 
 }

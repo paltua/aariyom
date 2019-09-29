@@ -3,6 +3,8 @@
         <!-- <a href="javascript:void(0)" class="float-right btn btn-success btn-lg"><i class="fa fa-plus-square"></i> Add
             New
             Images</a> -->
+        <a routerLink="/admin/events" class="float-right btn btn-secondary btn-lg"><i class="fa fa-undo"></i>
+            Back</a>
     </h2>
     <hr>
     <ng-container *ngIf="status != '' && msg != ''">
@@ -42,13 +44,13 @@
                         <th scope="col">#</th>
                         <th scope="col">Image</th>
                         <th scope="col">Default</th>
-                        <th scope="col">Action</th>
+                        <!-- <th scope="col">Action</th> -->
                     </tr>
                 </thead>
                 <tbody>
                     <ng-container *ngIf="listCount > 0">
                         <tr *ngFor="let lst of list;let i= index;">
-                            <th scope="row">1</th>
+                            <th scope="row">{{i+1}}</th>
                             <td class="w-15">
                                 <img src="{{lst.image_path}}" class="img-fluid img-thumbnail" alt="{{lst.image_path}}">
                             </td>
@@ -56,8 +58,8 @@
                                 <ng-container *ngIf="lst.is_default == 1">Yes</ng-container>
                                 <ng-container *ngIf="lst.is_default == 0">No</ng-container>
                             </td>
-                            <td><a href="javascript:void(0)" (click)="delete(lst.event_id)" class="btn btn-danger"><i
-                                        class="fa fa-trash fa-lg"></i>Delete</a></td>
+                            <!-- <td><a href="javascript:void(0)" (click)="delete(lst.event_id)" class="btn btn-danger"><i
+                                        class="fa fa-trash fa-lg"></i>Delete</a></td> -->
                         </tr>
                     </ng-container>
 
