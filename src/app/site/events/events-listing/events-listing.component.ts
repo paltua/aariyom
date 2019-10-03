@@ -11,7 +11,9 @@ export class EventsListingComponent implements OnInit {
   eventListCount: any;
   constructor(
     private siteSer: SiteService
-  ) { }
+  ) {
+    this.eventListCount = 0;
+  }
 
   ngOnInit() {
     this.siteSer.getEventAll().subscribe(retData => {

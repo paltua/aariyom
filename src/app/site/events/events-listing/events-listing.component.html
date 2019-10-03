@@ -37,8 +37,7 @@
                         </div>
                     </a>
                 </ng-container>
-
-                <div class="w-100 float-left mt-4 mat-pagination position-relative">
+                <div *ngIf="eventListCount > 0" class="w-100 float-left mt-4 mat-pagination position-relative">
                     <mat-paginator [length]="eventListCount" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
                     </mat-paginator>
 
