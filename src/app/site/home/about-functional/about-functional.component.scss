@@ -71,3 +71,60 @@
 .fuc-umit {
     padding-left: $pix35;
 }
+
+@media (min-width:1200px) and (max-width:1380px) {
+}
+@media (min-width:1024px) and (max-width:1199px) {
+}
+@media (min-width:992px) and (max-width:1023px) {
+}
+@media (min-width:800px) and (max-width:991px) {
+}
+@media (min-width:768px) and (max-width:799px) {
+}
+@media (min-width:576px) and (max-width:767px) {
+}
+@media (min-width:481px) and (max-width:575px) {
+    .fuc-umit {
+        padding-left: 15px;
+    }
+    ::ng-deep .about-us .owl-prev {
+        left: -10px !important;
+    }
+    ::ng-deep .about-us .owl-next {
+        right: -12px !important;
+    }
+}
+@media (max-width:480px) {
+    .fuc-umit {
+        padding-left: 15px;
+    }
+    ::ng-deep .about-us .owl-prev {
+        left: -10px !important;
+    }
+    ::ng-deep .about-us .owl-next {
+        right: -12px !important;
+    }
+}
+@media (max-width:380px) {
+    .fuc-umit {
+        padding-left: 15px;
+    }
+    ::ng-deep .about-us .owl-prev {
+        left: -10px !important;
+    }
+    ::ng-deep .about-us .owl-next {
+        right: -12px !important;
+    }
+}
+@media (max-width:320px) {
+    .fuc-umit {
+        padding-left: 15px;
+    }
+    ::ng-deep .about-us .owl-prev {
+        left: -10px !important;
+    }
+    ::ng-deep .about-us .owl-next {
+        right: -12px !important;
+    }
+}
