@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 	}
 
 
-	get f(): string {
+	get f(): any {
 		return this.loginForm.controls;
 	}
 

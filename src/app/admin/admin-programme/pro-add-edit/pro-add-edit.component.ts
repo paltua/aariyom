@@ -23,6 +23,11 @@ export class ProAddEditComponent implements OnInit {
 	msg: any;
 	editId: any;
 	public programme: Observable<Programme>;
+	fileData: File = null;
+	previewUrl: any = null;
+	fileUploadProgress: string = null;
+	uploadedFilePath: string = null;
+	formData: any;
 	constructor(
 		private fb: FormBuilder,
 		private programmeSer: ProgrammeService,
@@ -36,6 +41,8 @@ export class ProAddEditComponent implements OnInit {
 		this.addEditForm = this.fb.group({
 			program_title: ['', Validators.required],
 			program_desc: ['', Validators.required],
+			program_image: ['', Validators.required],
+			old_program_image: [''],
 			created_by: [1]
 		});
 		this.editId = (this.route.snapshot.paramMap.get('id') ? this.route.snapshot.paramMap.get('id') : 0);
@@ -48,9 +55,30 @@ export class ProAddEditComponent implements OnInit {
 				this.addEditForm = this.fb.group({
 					program_title: [data[0].program_title, Validators.required],
 					program_desc: [data[0].program_desc, Validators.required],
+					program_image: [data[0].program_image, Validators.required],
+					old_program_image: [data[0].program_image],
 					created_by: [1]
 				});
 			});
+		}
+	}
+
+	fileProgress(fileInput: any) {
+		this.fileData = <File>fileInput.target.files[0];
+		this.preview();
+	}
+
+	preview() {
+		// Show preview 
+		var mimeType = this.fileData.type;
+		if (mimeType.match(/image\/*/) == null) {
+			return;
+		}
+
+		var reader = new FileReader();
+		reader.readAsDataURL(this.fileData);
+		reader.onload = (_event) => {
+			this.previewUrl = reader.result;
 		}
 	}
 
@@ -58,7 +86,7 @@ export class ProAddEditComponent implements OnInit {
 
 	}
 
-	get f(): string {
+	get f(): any {
 		return this.addEditForm.controls;
 	}
 
@@ -86,7 +114,7 @@ export class ProAddEditComponent implements OnInit {
 			if (this.status === 'success') {
 				localStorage.setItem('status', this.status);
 				localStorage.setItem('msg', this.msg);
-				this.router.navigate(['/admin/programs/listing']);
+				this.router.navigate(['/admin/programs']);
 			}
 		});
 	}
@@ -101,7 +129,7 @@ export class ProAddEditComponent implements OnInit {
 			if (this.status === 'success') {
 				localStorage.setItem('status', this.status);
 				localStorage.setItem('msg', this.msg);
-				this.router.navigate(['/admin/programs/listing']);
+				this.router.navigate(['/admin/programs']);
 			}
 		});
 	}

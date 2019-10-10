@@ -67,7 +67,7 @@ export class EventService {
 	}
 
 	/**
-	 * delete
+	 * upload
 	 */
 	public upload(postData = {}) {
 		return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/event/image_upload/', postData).pipe(map(retData => {
@@ -76,10 +76,28 @@ export class EventService {
 	}
 
 	/**
-	 * delete
+	 * image_list
 	 */
 	public image_list(eventId = '0') {
 		return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/event/image_list/' + eventId).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
+	/**
+	 * updateDefaultImage
+	 */
+	public updateDefaultImage(eventId = 0, ei_id = 0) {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/event/image_list_default/' + eventId + '/' + ei_id).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
+	/**
+	 * deleteImage
+	 */
+	public deleteImage(eventId = 0, ei_id = 0) {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/event/delete_image/' + eventId + '/' + ei_id).pipe(map(retData => {
 			return retData;
 		}));
 	}

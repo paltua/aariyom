@@ -25,4 +25,23 @@ export class SiteService {
       return retData;
     }));
   }
+
+  /**
+	 * getSingleEvent
+	 */
+  public getSingleEvent(event_id = 0) {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_event_details/' + event_id).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+	 * getAllPrograms
+	 */
+  public getAllPrograms() {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_all_programs/').pipe(map(retData => {
+      return retData;
+    }));
+  }
+
 }

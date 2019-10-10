@@ -1,8 +1,9 @@
 <div class="login-page" [@routerTransition]>
     <div class="row justify-content-md-center">
         <div class="col-md-4">
-            <img src="assets/images/logo.png" />
-            <!-- <img src="assets/images/logo.png" class="user-avatar" /> -->
+            <a routerLink="">
+                <img src="assets/images/logo.png" />
+            </a>
             <h1>{{title}}</h1>
             <form [formGroup]="loginForm" (submit)="formSubmit()" role="form">
                 <div class="form-content">
@@ -26,8 +27,6 @@
                     </div>
                 </div>
                 <button type="submit" class="btn rounded-btn">Log in</button>
-                <!-- &nbsp;
-                <button class="btn rounded-btn" [routerLink]="['/signup']">Register</button> -->
             </form>
         </div>
     </div>

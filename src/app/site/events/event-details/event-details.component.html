@@ -9,20 +9,30 @@
         <div class="w-100 float-left wraper-inside-container mt-5 mb-5">
             <div class="col-lg-9 col-md-12 col-12 float-left events-left">
                 <div class="w-100 float-left img-event-sing">
-                    <img src="./../../../../assets/images/img02.jpg" class="img-fluid w-100" alt="">
+                    <img src="{{image_path}}" alt="{{event_title}}" class="img-fluid w-100 img-height" alt="">
                 </div>
                 <div class="w-100 float-left even-main-contanet mt-5">
-                    <h1>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                    </h1>
+                    <h1>{{event_title}}</h1>
                     <div class="date-time-eve w-100 float-left mb-5">
-                        <span class="float-left mr-5"><i class="fa fa-map-marker" aria-hidden="true"></i>32 B,
-                            Sector 5,
-                            Kolkata - 700 002</span>
+                        <span class="float-left mr-5">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <ng-container *ngIf="address != ''">{{address}},
+                            </ng-container>
+                            <ng-container *ngIf="city_name != ''">{{city_name}},
+                            </ng-container>
+                            <ng-container *ngIf="r_name != ''">{{r_name}},
+                            </ng-container>
+                            <ng-container *ngIf="c_name != ''">{{c_name}},
+                            </ng-container>
+                            <ng-container *ngIf="pin != ''">{{pin}}
+                            </ng-container>
+                        </span>
                         <span class="float-left"><i class="fa fa-calendar" aria-hidden="true"></i>
-                            30th Aug, 2019, 5:30PM
+                            <!-- 30th Aug, 2019, 5:30PM -->
+                            {{event_start_date_time | date:'MMM dd, yyyy, hh:mmaaa'}}
                         </span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id dolor dignissim
+                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id dolor dignissim
                         vel vulputate eros feugiat. Mauris accumsan aliquam ultrices. Vivamus sit amet pulvinar mi. Nam
                         at placerat urna. Sed rutrum, ante eget fermentum sodales, est eros condimentum velit, nec
                         consectetur lorem augue ac sapien. Morbi et arcu sit amet lacus ornare malesuada. Class aptent
@@ -35,13 +45,13 @@
                         leo quis feugiat. In hac habitasse platea dictumst. Integer id tortor sit amet purus viverra
                         aliquam nec ac elit. Fusce facilisis urna sed ligula pellentesque molestie. Duis ac risus elit.
                         Proin ut felis diam. Ut felis diam, convallis sit amet hendrerit id, euismod id mi. Nullam nisl
-                        purus, semper et tristique a, ullamcorper vitae metus. </p>
+                        purus, semper et tristique a, ullamcorper vitae metus. </p> -->
 
-                    <div class="w-100 float-left our-mission">
-                        <h3 class="w-100 float-left">Our Aim</h3>
+                    <div *ngIf="event_long_desc != ''" class="w-100 float-left our-mission">
+                        <h3 class="w-100 float-left">Description</h3>
                         <div class="w-100 float-left left-wmission">
-
-                            <ul>
+                            <p>{{event_long_desc}}</p>
+                            <!-- <ul>
                                 <li>Integer laoreet semper dui nec viverra. Cras nibh ligula, aliquam quis sollicitudin
                                     eu
                                 </li>
@@ -54,7 +64,19 @@
                                 <li>Integer laoreet semper dui nec viverra. Cras nibh ligula, aliquam quis sollicitudin
                                     eu
                                 </li>
-                            </ul>
+                            </ul> -->
+                        </div>
+                    </div>
+                    <div *ngIf="event_about != ''" class="w-100 float-left our-mission">
+                        <h3 class="w-100 float-left">About</h3>
+                        <div class="w-100 float-left left-wmission">
+                            <p>{{event_about}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="event_objectives != ''" class="w-100 float-left our-mission">
+                        <h3 class="w-100 float-left">Objectives</h3>
+                        <div class="w-100 float-left left-wmission">
+                            <p>{{event_objectives}}</p>
                         </div>
                     </div>
                 </div>

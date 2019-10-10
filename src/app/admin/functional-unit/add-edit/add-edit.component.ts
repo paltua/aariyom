@@ -108,7 +108,7 @@ export class AddEditComponent implements OnInit {
     }
   }
 
-  get f(): string {
+  get f(): any {
     return this.addEditForm.controls;
   }
 

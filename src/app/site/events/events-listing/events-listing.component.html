@@ -10,7 +10,8 @@
         <div class="w-100 float-left wraper-inside-container mt-5 mb-5">
             <div class="col-lg-9 col-md-12 col-12 float-left events-left">
                 <ng-container *ngFor="let list of eventList">
-                    <a routerLink="/events/details/{{event_id}}" class="wrap-list-events float-left w-100 mb-2 mt-2">
+                    <a routerLink="/events/details/{{list.event_id}}"
+                        class="wrap-list-events float-left w-100 mb-2 mt-2">
                         <div class="event-img-list float-left"><img src="{{list.image_path}}" alt="">
                         </div>
                         <div class="events-list-content float-left">
@@ -30,8 +31,14 @@
                                 </div>
                                 <div class="w-100 float-left wrap-con-ev">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
-                                    <span class="w-100 float-left text-center">30th Aug, 2019</span>
-                                    <span class="w-100 float-left text-center">5:30PM</span>
+                                    <span class="w-100 float-left text-center">
+                                        <!-- 30th Aug, 2019 -->
+                                        {{list.event_start_date_time | date:'MMM dd, yyyy'}}
+                                    </span>
+                                    <span class="w-100 float-left text-center">
+                                        <!-- 5:30PM -->
+                                        {{list.event_start_date_time | date:'hh:mmaaa'}}
+                                    </span>
                                 </div>
                             </div>
                         </div>

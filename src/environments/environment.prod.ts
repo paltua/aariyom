@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost/aariyom_api/',
+  apiUrl: 'https://aariyomfoundation.com/aariyom_api/',
 };

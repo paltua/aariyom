@@ -27,9 +27,9 @@ export class AuthService {
 	 */
 	public login(postData = {}) {
 		return this.http.post<ApiResponses>(this.apiUrl + 'api/auth/login', postData).pipe(map(retData => {
-			console.log(retData);
+			// console.log(retData);
 			if (retData.status === 'success') {
-				console.log(retData)
+				// console.log(retData)
 				this.router.navigate(['/admin/dashboard']);
 			} else {
 

@@ -6,7 +6,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CommonService } from 'src/app/_service';
 import { EventService } from './../../../_service/event.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { promise } from 'protractor';
 
 
 
@@ -169,7 +168,7 @@ export class AddEditComponent implements OnInit {
 		// this.config.markDisabled = (date: NgbDate) => this.calendar.getToday(date) ==;
 	}
 
-	get f(): string {
+	get f(): any {
 		return this.addEditForm.controls;
 	}
 

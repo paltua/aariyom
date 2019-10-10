@@ -11,7 +11,13 @@ import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, ChangePasswordComponent, ResetPasswordComponent, ForgotPasswordComponent, LogoutComponent],
+  declarations: [
+    LoginComponent,
+    ChangePasswordComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    LogoutComponent
+  ],
   imports: [
     CommonModule,
     AuthRoutingModule,
