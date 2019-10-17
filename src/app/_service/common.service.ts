@@ -47,6 +47,13 @@ export class CommonService {
 		return this.http.get<ApiResponses>(this.apiUrl + 'api/common/programme_list/');
 	}
 
+	/**
+	 * getDashboardDetails
+	 */
+	public getDashboardDetails() {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/common/dashboard_details/');
+	}
+
 
 
 }

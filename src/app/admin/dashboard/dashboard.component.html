@@ -3,17 +3,47 @@
     <hr>
     <div class="row">
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'primary'" [icon]="'fa-comments'" [count]="26" [label]="'New Comments!'" ></app-stat>
+            <app-stat [bgClass]="'primary'" [icon]="'fa-comments'" [count]="details[0].count" [label]="'Programs!'"
+                [url]="details[0].url">
+            </app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'warning'" [icon]="'fa-tasks'" [count]="12" [label]="'New task!'" ></app-stat>
+            <app-stat [bgClass]="'warning'" [icon]="'fa-tasks'" [count]="details[1].count" [label]="'Events!'"
+                [url]="details[1].url"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'success'" [icon]="'fa-shopping-cart'" [count]="124" [label]="'New Orders!'" ></app-stat>
+            <app-stat [bgClass]="'success'" [icon]="'fa-shopping-cart'" [count]="details[2].count"
+                [label]="'Functional Units!'" [url]="details[2].url">
+            </app-stat>
         </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'danger'" [icon]="'fa-support'" [count]="13" [label]="'New Tickets!'"></app-stat>
-        </div>
+        <!-- <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'danger'" [icon]="'fa-support'" [count]="13" [label]="'Contact Us!'" [url]="">
+            </app-stat>
+        </div> -->
+
     </div>
     <hr />
+    <div class="row">
+        <div class="col-xl-3 col-lg-6">
+            <a [routerLink]="['/admin/auth/logout']">
+                <div class="card text-white bg-secondary">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col col-xs-3">
+                                <i class="fa fa-fw fa-power-off fa-5x"></i>
+                            </div>
+                            <div class="col col-xs-9 text-right">
+                                <!-- <div class="d-block huge">{{count}}</div> -->
+                                <div class="d-block">Log Out</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-dark">
+                        <span class="float-left"></span>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
