@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule, MatTableModule, MatToolbarModule } from '@angular/material';
 import { DataTablesModule } from 'angular-datatables';
 import { ProDeleteComponent } from './pro-delete/pro-delete.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -18,8 +19,9 @@ import { ProDeleteComponent } from './pro-delete/pro-delete.component';
   imports: [
     CommonModule,
     AdminProgrammeRoutingModule,
+    NgbModule,
     FormsModule,
-    ReactiveFormsModule, MatToolbarModule, MatInputModule, MatTableModule,
+    ReactiveFormsModule,
     DataTablesModule,
   ],
 })

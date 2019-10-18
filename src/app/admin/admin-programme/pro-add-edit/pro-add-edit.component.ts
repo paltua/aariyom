@@ -4,7 +4,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ProgrammeService } from 'src/app/_service/programme.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiResponses, Programme } from './../../../_models';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -22,7 +21,7 @@ export class ProAddEditComponent implements OnInit {
 	status: any;
 	msg: any;
 	editId: any;
-	public programme: Observable<Programme>;
+	// public programme: Observable<Programme>;
 	fileData: File = null;
 	previewUrl: any = null;
 	fileUploadProgress: string = null;
@@ -37,11 +36,10 @@ export class ProAddEditComponent implements OnInit {
 		this.pageTitle = 'Programme';
 		this.status = '';
 		this.msg = '';
-
 		this.addEditForm = this.fb.group({
 			program_title: ['', Validators.required],
 			program_desc: ['', Validators.required],
-			program_image: ['', Validators.required],
+			program_image: [this.fileData],
 			old_program_image: [''],
 			created_by: [1]
 		});
@@ -51,11 +49,15 @@ export class ProAddEditComponent implements OnInit {
 			this.pageAction = 'Edit';
 			this.programmeSer.single(this.editId).subscribe(retData => {
 				// this.programme = retData.data[0];
-				let data: any = retData.data;
+				const data: any = retData.data;
+				if (data[0].program_image !== '') {
+					this.previewUrl = data[0].image_path;
+				}
+				console.log(this.previewUrl);
 				this.addEditForm = this.fb.group({
 					program_title: [data[0].program_title, Validators.required],
 					program_desc: [data[0].program_desc, Validators.required],
-					program_image: [data[0].program_image, Validators.required],
+					program_image: [this.fileData, Validators.required],
 					old_program_image: [data[0].program_image],
 					created_by: [1]
 				});
@@ -83,7 +85,7 @@ export class ProAddEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		this.formData = new FormData();
 	}
 
 	get f(): any {
@@ -94,8 +96,10 @@ export class ProAddEditComponent implements OnInit {
 	 * formSave
 	 */
 	public formSave() {
+		// console.log(this.addEditForm.value);
 		this.submitted = true;
 		if (!this.addEditForm.invalid) {
+			this.setFormData();
 			if (this.editId > 0) {
 				this.update();
 			} else {
@@ -105,10 +109,24 @@ export class ProAddEditComponent implements OnInit {
 	}
 
 	/**
+   * setFormData
+   */
+	public setFormData() {
+		this.formData.append('program_title', this.addEditForm.value.program_title);
+		this.formData.append('program_desc', this.addEditForm.value.program_desc);
+		this.formData.append('program_image', this.fileData);
+		this.formData.append('old_program_image', this.addEditForm.value.old_program_image);
+		this.formData.append('created_by', this.addEditForm.value.created_by);
+		// this.formData.append('program_id', this.editId);
+	}
+
+
+
+	/**
 	 * add
 	 */
 	public add() {
-		this.programmeSer.add(this.addEditForm.value).subscribe(retData => {
+		this.programmeSer.add(this.formData).subscribe(retData => {
 			this.status = retData.status;
 			this.msg = retData.message;
 			if (this.status === 'success') {
@@ -123,7 +141,7 @@ export class ProAddEditComponent implements OnInit {
 	 * update
 	 */
 	public update() {
-		this.programmeSer.update(this.addEditForm.value, this.editId).subscribe(retData => {
+		this.programmeSer.update(this.formData, this.editId).subscribe(retData => {
 			this.status = retData.status;
 			this.msg = retData.message;
 			if (this.status === 'success') {
