@@ -1,39 +1,46 @@
 <div class="w-100 float-left events-lists-home">
-<div class="inner-ev w-100 float-left">
-    <h2 class="widget-title w-100">Upcoming <span>Events</span></h2>
-   
-<div class="w-100 float-left ev-lists-indivisual mb-3">
-        <div class="img-i-ev float-left"><img src="./../../../../assets/images/img03.jpg" alt=""></div>
-        <div class="float-left cont-upcoming">
-            <h4>Event Name</h4>
-            <span class="w-100 float-left">8:00am on 20-07-2019</span>
-            <span class="text-uppercase w-100 float-left">Kolkata, India</span>
-            <p class="w-100 float-left">In et dui mauris, sit amet ullamcorper nisl. Duis a orci nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit elementum...</p>
-        </div>
+    <div class="inner-ev w-100 float-left">
+        <h2 class="widget-title w-100">Upcoming <span>Events</span></h2>
+        <ng-container *ngFor="let lt of list">
+            <a routerLink="/events/details/{{lt.event_id}}">
+                <div class="w-100 float-left ev-lists-indivisual mb-3">
+                    <div class="img-i-ev float-left"><img src="{{lt.image_path}}" alt=""></div>
+                    <div class="float-left cont-upcoming">
+                        <h4>{{lt.event_title}}</h4>
+                        <span class="w-100 float-left">{{lt.event_start_date_time | date:'hh:mmaaa'}} on
+                            {{lt.event_start_date_time | date:'MMM dd, yyyy'}}</span>
+                        <span
+                            class="text-uppercase w-100 float-left">{{getCityStateCountryStr(lt.city_name,lt.r_name,c_name)}}</span>
+                        <p class="w-100 float-left">{{truncate(lt.event_long_desc,150)}}</p>
+                    </div>
+                </div>
+            </a>
+        </ng-container>
+
+        <!-- 
+        <div class="w-100 float-left ev-lists-indivisual mb-3">
+            <div class="img-i-ev float-left"><img src="./../../../../assets/images/img03.jpg" alt=""></div>
+            <div class="float-left cont-upcoming">
+                <h4>Event Name</h4>
+                <span class="w-100 float-left">8:00am on 20-07-2019</span>
+                <span class="text-uppercase w-100 float-left">Kolkata, India</span>
+                <p class="w-100 float-left">In et dui mauris, sit amet ullamcorper nisl. Duis a orci nisi. Lorem ipsum
+                    dolor sit amet, consectetur adipiscing elit elementum...</p>
+            </div>
         </div>
 
-        
-<div class="w-100 float-left ev-lists-indivisual mb-3">
-        <div class="img-i-ev float-left"><img src="./../../../../assets/images/img03.jpg" alt=""></div>
-        <div class="float-left cont-upcoming">
-            <h4>Event Name</h4>
-            <span class="w-100 float-left">8:00am on 20-07-2019</span>
-            <span class="text-uppercase w-100 float-left">Kolkata, India</span>
-            <p class="w-100 float-left">In et dui mauris, sit amet ullamcorper nisl. Duis a orci nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit elementum...</p>
-        </div>
-        </div>
 
-        
-<div class="w-100 float-left ev-lists-indivisual mb-3">
-        <div class="img-i-ev float-left"><img src="./../../../../assets/images/img03.jpg" alt=""></div>
-        <div class="float-left cont-upcoming">
-            <h4>Event Name</h4>
-            <span class="w-100 float-left">8:00am on 20-07-2019</span>
-            <span class="text-uppercase w-100 float-left">Kolkata, India</span>
-            <p class="w-100 float-left">In et dui mauris, sit amet ullamcorper nisl. Duis a orci nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit elementum...</p>
-        </div>
-        </div>
+        <div class="w-100 float-left ev-lists-indivisual mb-3">
+            <div class="img-i-ev float-left"><img src="./../../../../assets/images/img03.jpg" alt=""></div>
+            <div class="float-left cont-upcoming">
+                <h4>Event Name</h4>
+                <span class="w-100 float-left">8:00am on 20-07-2019</span>
+                <span class="text-uppercase w-100 float-left">Kolkata, India</span>
+                <p class="w-100 float-left">In et dui mauris, sit amet ullamcorper nisl. Duis a orci nisi. Lorem ipsum
+                    dolor sit amet, consectetur adipiscing elit elementum...</p>
+            </div>
+        </div> -->
 
-        <a href="#" class="btn-3 float-left mt-4">See all Events</a>
-</div>
+        <a *ngIf="list.length > 0" routerLink="/events" class="btn-3 float-left mt-4">More Events</a>
+    </div>
 </div>

@@ -6,13 +6,15 @@ import { EventsListingComponent } from './events-listing/events-listing.componen
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { RightModule } from '../right/right.module';
 @NgModule({
   declarations: [EventsListingComponent, EventDetailsComponent],
   imports: [
     CommonModule,
     EventsRoutingModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    RightModule,
   ]
 })
 export class EventsModule { }

@@ -19,77 +19,19 @@
                 <div class="slider-funit w-100 float-left">
 
                     <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="inner-sl-funit w-100 float-left">
-                                <div class="w-100 float-left img-sl-funit"><img
-                                        src="./../../../../assets/images/img02.jpg" alt="" /></div>
-                                <div class="cont-funit w-100 float-left">
-                                    <h4>morbi tristique</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id
-                                        dolor dignissim vel vulputate eros feugiat. Mauris accumsan aliquam ultrices.
-                                    </p>
+                        <ng-container *ngFor="let lt of list">
+                            <div class="item">
+                                <div class="inner-sl-funit w-100 float-left">
+                                    <div class="w-100 float-left img-sl-funit">
+                                        <img src="{{lt.image_path}}" alt="{{lt.fu_title}}" /></div>
+                                    <div class="cont-funit w-100 float-left">
+                                        <h4>{{lt.fu_title}}</h4>
+                                        <p>{{ truncate(lt.fu_desc,150)}}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="inner-sl-funit w-100 float-left">
-                                <div class="w-100 float-left img-sl-funit"><img
-                                        src="./../../../../assets/images/img02.jpg" alt="" /></div>
-                                <div class="cont-funit w-100 float-left">
-                                    <h4>morbi tristique</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id
-                                        dolor dignissim vel vulputate eros feugiat. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="inner-sl-funit w-100 float-left">
-                                <div class="w-100 float-left img-sl-funit"><img
-                                        src="./../../../../assets/images/img02.jpg" alt="" /></div>
-                                <div class="cont-funit w-100 float-left">
-                                    <h4>morbi tristique</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id
-                                        dolor dignissim vel vulputate eros feugiat. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="inner-sl-funit w-100 float-left">
-                                <div class="w-100 float-left img-sl-funit"><img
-                                        src="./../../../../assets/images/img02.jpg" alt="" /></div>
-                                <div class="cont-funit w-100 float-left">
-                                    <h4>morbi tristique</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id
-                                        dolor dignissim vel vulputate eros feugiat. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="inner-sl-funit w-100 float-left">
-                                <div class="w-100 float-left img-sl-funit"><img
-                                        src="./../../../../assets/images/img02.jpg" alt="" /></div>
-                                <div class="cont-funit w-100 float-left">
-                                    <h4>morbi tristique</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id
-                                        dolor dignissim vel vulputate eros feugiat. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="inner-sl-funit w-100 float-left">
-                                <div class="w-100 float-left img-sl-funit"><img
-                                        src="./../../../../assets/images/img02.jpg" alt="" /></div>
-                                <div class="cont-funit w-100 float-left">
-                                    <h4>morbi tristique</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id
-                                        dolor dignissim vel vulputate eros feugiat. </p>
-                                </div>
-                            </div>
-                        </div>
+                        </ng-container>
                     </div>
-
-
-
                 </div>
             </div>
 

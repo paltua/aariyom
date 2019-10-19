@@ -38,7 +38,7 @@
         }
     }
     .events-list-content {
-        width: calc(100% - 400px);
+        width: calc(100% - 200px);
         padding: $pix25;
         h2 {
             font-weight: $weight700;
@@ -51,27 +51,8 @@
             color: $gray;
         }
     }
-    .event-held {
-        width: 200px;
-        .info-held {
-            padding: $pix15;
-            background: #ededed;
-            height: 200px;
-            border-radius: 0 15px 15px 0;
-            .wrap-con-ev {
-                i {
-                    font-size: $pix16;
-                    color: $orange;
-                }
-                span {
-                    font-size: $pix13;
-                    font-weight: $weight700;
-                    color: $black;
-                }
-        }
-    }
-    }
 }
+
 ::ng-deep .mat-icon-button {
     outline: none !important;
     box-shadow: none !important;

@@ -1,0 +1,26 @@
+@import './../../../../variables.scss';
+.right-ev-lists {
+    h3 {
+        font-family: 'Noto Serif', serif;
+        font-size: $pix18;
+        color: $gray;
+        font-weight: bold;
+        font-style: italic;
+        margin-bottom: $pix20;
+    }
+    a {
+        background: #fbfbfb;
+        padding: $pix10;
+        font-size: $pix14;
+        font-style: italic;
+        font-family: 'Noto Serif', serif;
+        color: $gray;
+        text-decoration: none;
+        border-radius: $pix5;
+        &:hover {
+            background: $orange;
+            color: $white;
+            box-shadow: 0px 7px 10px rgba(232, 118, 19, 0.47); 
+        }
+    }
+}

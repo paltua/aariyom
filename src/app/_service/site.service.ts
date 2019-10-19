@@ -18,6 +18,33 @@ export class SiteService {
   }
 
   /**
+   * getFunctionalUnitHome
+   */
+  public getFunctionalUnitHome() {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/index_fu').pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * getEventHome
+   */
+  public getEventHome() {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/index_event').pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * getEventHome
+   */
+  public getProgrameHome() {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/index_program').pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
 	 * getEventAll
 	 */
   public getEventAll() {
@@ -42,6 +69,13 @@ export class SiteService {
     return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_all_programs/').pipe(map(retData => {
       return retData;
     }));
+  }
+
+  /**
+	 * truncateStr
+	 */
+  public truncateStr(str = '', charCount = 20) {
+    return (str.length > charCount) ? (str.slice(0, charCount) + '..') : (str);
   }
 
 }

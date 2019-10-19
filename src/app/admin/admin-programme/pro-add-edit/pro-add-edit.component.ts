@@ -50,14 +50,14 @@ export class ProAddEditComponent implements OnInit {
 			this.programmeSer.single(this.editId).subscribe(retData => {
 				// this.programme = retData.data[0];
 				const data: any = retData.data;
-				if (data[0].program_image !== '') {
+				if (data[0].program_image) {
 					this.previewUrl = data[0].image_path;
 				}
-				console.log(this.previewUrl);
+				// console.log(this.previewUrl);
 				this.addEditForm = this.fb.group({
 					program_title: [data[0].program_title, Validators.required],
 					program_desc: [data[0].program_desc, Validators.required],
-					program_image: [this.fileData, Validators.required],
+					program_image: [this.fileData],
 					old_program_image: [data[0].program_image],
 					created_by: [1]
 				});
@@ -117,7 +117,7 @@ export class ProAddEditComponent implements OnInit {
 		this.formData.append('program_image', this.fileData);
 		this.formData.append('old_program_image', this.addEditForm.value.old_program_image);
 		this.formData.append('created_by', this.addEditForm.value.created_by);
-		// this.formData.append('program_id', this.editId);
+		this.formData.append('program_id', this.editId);
 	}
 
 
@@ -141,6 +141,7 @@ export class ProAddEditComponent implements OnInit {
 	 * update
 	 */
 	public update() {
+		console.log(this.formData);
 		this.programmeSer.update(this.formData, this.editId).subscribe(retData => {
 			this.status = retData.status;
 			this.msg = retData.message;

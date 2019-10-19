@@ -20,6 +20,7 @@
                 <thead>
                     <tr class="table-primary">
                         <th>#</th>
+                        <th>Image</th>
                         <th>Title</th>
                         <th>Descriptions</th>
                         <th>Created By</th>
@@ -30,6 +31,8 @@
 
                     <tr *ngFor="let lst of listTables;let i= index;" [ngClass]="tableClass(i)">
                         <th scope="row">{{i + 1}}</th>
+                        <td class="w-15"><img src="{{lst.image_path}}" class="img-fluid img-thumbnail"
+                                alt="{{lst.program_title}}"></td>
                         <td>{{lst.program_title}}</td>
                         <td>{{lst.program_desc}}</td>
                         <td>{{lst.user_name}}</td>
