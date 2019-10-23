@@ -106,4 +106,157 @@
     }
 }
 
+@media (min-width:1200px) and (max-width:1380px) {
+}
+@media (min-width:1024px) and (max-width:1199px) {
+    .wrap-list-events .events-list-content{
+        padding: 10px;
+    }
+}
+@media (min-width:992px) and (max-width:1023px) {
+    .wrap-list-events .events-list-content{
+        padding: 10px;
+    }
+}
+@media (min-width:800px) and (max-width:991px) {
+    .wrap-list-events .events-list-content{
+        padding: 10px;
+    }
+}
+@media (min-width:768px) and (max-width:799px) {
+    .wrap-list-events .events-list-content{
+        padding: 10px;
+    }
+}
+@media (min-width:576px) and (max-width:767px) {
+    .wrap-list-events .event-img-list{
+        width: 100%;
+        border-radius: 0;
+    }
+    .wrap-list-events .event-img-list img {
+        width: 100%;
+        height: auto;
+    }
+    .wrap-list-events .events-list-content {
+        width: 100%;
+        padding: 25px;
+    }
+    .wrap-list-events .event-held .info-held {
+        padding: 15px;
+        background: #ededed;
+        height: auto;
+        border-radius: 0;
+    }
+    .wrap-list-events .event-held{
+        width: 100%;
+    }
+    .wrap-list-events .events-list-content p {
+        margin: 0;
+    }
+}
+@media (min-width:481px) and (max-width:575px) {
+    .wrap-list-events .event-img-list{
+        width: 100%;
+        border-radius: 0;
+    }
+    .wrap-list-events .event-img-list img {
+        width: 100%;
+        height: auto;
+    }
+    .wrap-list-events .events-list-content {
+        width: 100%;
+        padding: 25px;
+    }
+    .wrap-list-events .event-held .info-held {
+        padding: 15px;
+        background: #ededed;
+        height: auto;
+        border-radius: 0;
+    }
+    .wrap-list-events .event-held{
+        width: 100%;
+    }
+    .wrap-list-events .events-list-content p {
+        margin: 0;
+    }
+}
+@media (max-width:480px) {
+    .wrap-list-events .event-img-list{
+        width: 100%;
+        border-radius: 0;
+    }
+    .wrap-list-events .event-img-list img {
+        width: 100%;
+        height: auto;
+    }
+    .wrap-list-events .events-list-content {
+        width: 100%;
+        padding: 25px;
+    }
+    .wrap-list-events .event-held .info-held {
+        padding: 15px;
+        background: #ededed;
+        height: auto;
+        border-radius: 0;
+    }
+    .wrap-list-events .event-held{
+        width: 100%;
+    }
+    .wrap-list-events .events-list-content p {
+        margin: 0;
+    }
+}
+@media (max-width:380px) {
+    .wrap-list-events .event-img-list{
+        width: 100%;
+        border-radius: 0;
+    }
+    .wrap-list-events .event-img-list img {
+        width: 100%;
+        height: auto;
+    }
+    .wrap-list-events .events-list-content {
+        width: 100%;
+        padding: 25px;
+    }
+    .wrap-list-events .event-held .info-held {
+        padding: 15px;
+        background: #ededed;
+        height: auto;
+        border-radius: 0;
+    }
+    .wrap-list-events .event-held{
+        width: 100%;
+    }
+    .wrap-list-events .events-list-content p {
+        margin: 0;
+    }
+}
+@media (max-width:320px) {
+    .wrap-list-events .event-img-list{
+        width: 100%;
+        border-radius: 0;
+    }
+    .wrap-list-events .event-img-list img {
+        width: 100%;
+        height: auto;
+    }
+    .wrap-list-events .events-list-content {
+        width: 100%;
+        padding: 25px;
+    }
+    .wrap-list-events .event-held .info-held {
+        padding: 15px;
+        background: #ededed;
+        height: auto;
+        border-radius: 0;
+    }
+    .wrap-list-events .event-held{
+        width: 100%;
+    }
+    .wrap-list-events .events-list-content p {
+        margin: 0;
+    }
+}
+
 
