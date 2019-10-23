@@ -24,7 +24,7 @@ export class ProDeleteComponent implements OnInit {
     this.programSer.delete(this.program_id).subscribe(retData => {
       localStorage.setItem('status', retData.status);
       localStorage.setItem('msg', retData.message);
-      this.router.navigate(['/admin/programs/listing']);
+      this.router.navigate(['/admin/programs']);
     });
   }
 
