@@ -8,6 +8,7 @@ import { SiteService } from 'src/app/_service/site.service';
 })
 export class ProgrammeListingComponent implements OnInit {
   list: any;
+  listCount: number;
   constructor(
     private siteSer: SiteService
   ) { }
@@ -15,6 +16,7 @@ export class ProgrammeListingComponent implements OnInit {
   ngOnInit() {
     this.siteSer.getAllPrograms().subscribe(retDate => {
       this.list = retDate.data;
+      this.listCount = this.list.length;
     });
   }
 

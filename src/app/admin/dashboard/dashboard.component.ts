@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.commonSer.getDashboardDetails().subscribe(retData => {
       this.details = retData.data;
-      console.log(this.details);
+      // console.log(this.details);
     });
   }
 
