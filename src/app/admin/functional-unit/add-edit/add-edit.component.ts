@@ -63,6 +63,9 @@ export class AddEditComponent implements OnInit {
       fu_title: ['', Validators.required],
       fu_desc: ['', Validators.required],
       fu_image_name: [this.fileData],
+      fu_status: ['active'],
+      fu_managed_by: [''],
+      fu_operating_location: [''],
       old_image_name: [''],
       fu_created_by: [1],
       fu_id: 0,
@@ -74,6 +77,7 @@ export class AddEditComponent implements OnInit {
    */
   public editForm() {
     this.fuSer.getSingle(this.dataId).subscribe(retData => {
+      // console.log(retData);
       if (retData.status === 'success') {
         const data: any = retData.data;
         this.previewUrl = data[0].image_path;
@@ -81,6 +85,9 @@ export class AddEditComponent implements OnInit {
           fu_title: [data[0].fu_title, Validators.required],
           fu_desc: [data[0].fu_desc, Validators.required],
           fu_image_name: [this.fileData],
+          fu_status: [data[0].fu_status],
+          fu_managed_by: [data[0].fu_managed_by],
+          fu_operating_location: [data[0].fu_operating_location],
           old_image_name: [data[0].fu_image],
           fu_created_by: [1],
           fu_id: data[0].fu_id,
@@ -114,8 +121,11 @@ export class AddEditComponent implements OnInit {
 
   public formSave() {
     this.submitted = true;
+
     if (!this.addEditForm.invalid) {
       this.setFormData();
+      // console.log(this.addEditForm);
+      // return true;
       if (this.dataId > 0) {
         this.fuSer.update(this.formData).subscribe(retData => {
           if (retData.status === 'success') {
@@ -148,8 +158,11 @@ export class AddEditComponent implements OnInit {
    */
   public setFormData() {
     this.formData.append('fu_title', this.addEditForm.value.fu_title);
-    this.formData.append('fu_desc', this.addEditForm.value.fu_title);
+    this.formData.append('fu_desc', this.addEditForm.value.fu_desc);
     this.formData.append('fu_image_name', this.fileData);
+    this.formData.append('fu_status', this.addEditForm.value.fu_status);
+    this.formData.append('fu_managed_by', this.addEditForm.value.fu_managed_by);
+    this.formData.append('fu_operating_location', this.addEditForm.value.fu_operating_location);
     this.formData.append('old_image_name', this.addEditForm.value.old_image_name);
     this.formData.append('fu_created_by', this.addEditForm.value.fu_created_by);
     this.formData.append('fu_id', this.addEditForm.value.fu_id);

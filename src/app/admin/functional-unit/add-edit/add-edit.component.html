@@ -55,6 +55,37 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <h4 class="text-muted">{{pageTitle}} <small> Others Details</small></h4>
+                <hr>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">Managed By</label>
+                    <input type="text" formControlName="fu_managed_by" class="form-control" id="validationCustom01"
+                        placeholder="" value="">
+
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">Operating Location</label>
+                    <input type="text" formControlName="fu_operating_location" class="form-control"
+                        id="validationCustom01" placeholder="" value="">
+
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">Status : </label>
+
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline1" formControlName="fu_status"
+                            class="custom-control-input" value="active">
+                        <label class="custom-control-label" for="customRadioInline1">Active</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline2" formControlName="fu_status"
+                            class="custom-control-input" value="inactive">
+                        <label class="custom-control-label" for="customRadioInline2">Inactive</label>
+                    </div>
+
+                </div>
+            </div>
         </div>
         <hr>
         <div class="row">

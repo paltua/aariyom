@@ -39,6 +39,7 @@ export class ProAddEditComponent implements OnInit {
 		this.addEditForm = this.fb.group({
 			program_title: ['', Validators.required],
 			program_desc: ['', Validators.required],
+			program_status: [''],
 			program_image: [this.fileData],
 			old_program_image: [''],
 			created_by: [1]
@@ -57,6 +58,7 @@ export class ProAddEditComponent implements OnInit {
 				this.addEditForm = this.fb.group({
 					program_title: [data[0].program_title, Validators.required],
 					program_desc: [data[0].program_desc, Validators.required],
+					program_status: [''],
 					program_image: [this.fileData],
 					old_program_image: [data[0].program_image],
 					created_by: [1]
