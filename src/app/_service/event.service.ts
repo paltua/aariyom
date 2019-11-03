@@ -29,7 +29,7 @@ export class EventService {
 	}
 
 	/**
-	 * GetSingle
+	 * Get List with pagination
 	 */
 	public list(postData = {}) {
 		// console.log('service', postData);

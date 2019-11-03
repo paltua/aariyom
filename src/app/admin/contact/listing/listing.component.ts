@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { EventService } from './../../../_service/event.service';
+import { ContactService } from 'src/app/_service/contact.service';
 
 class ListTable {
   program_id: any[];
@@ -31,7 +31,7 @@ export class ListingComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private eventSer: EventService,
+    private contactSer: ContactService,
   ) {
     this.pageTitle = 'Contact Us';
     this.status = '';
@@ -78,7 +78,7 @@ export class ListingComponent implements OnInit {
       processing: true,
       ajax: (dataTablesParameters: any, callback) => {
         // console.log(dataTablesParameters);
-        that.eventSer.list(dataTablesParameters).subscribe(resp => {
+        that.contactSer.list(dataTablesParameters).subscribe(resp => {
           that.listTables = resp.data.list;
           this.listCount = resp.data.recordsFiltered;
           callback({
@@ -89,12 +89,11 @@ export class ListingComponent implements OnInit {
         });
       },
       columns: [
-        { data: 'EM.event_id', searchable: false, orderable: true },
-        { data: 'EM.event_title', searchable: true, orderable: true },
-        { data: 'EM.event_start_date_time', searchable: true, orderable: true },
-        { data: 'PRO.program_title', searchable: true, orderable: false },
-        // { data: 'EM.event_end_date_time', searchable: true, orderable: true },
-        { data: 'location', searchable: false, orderable: false },
+        { data: 'con_id', searchable: false, orderable: true },
+        { data: 'name', searchable: true, orderable: true },
+        { data: 'email', searchable: true, orderable: true },
+        { data: 'mobile', searchable: true, orderable: true },
+        { data: 'desccription', searchable: true, orderable: false },
       ]
     };
   }
