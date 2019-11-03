@@ -90,6 +90,7 @@ export class ListingComponent implements OnInit {
         { data: 'FU.fu_id', searchable: false, orderable: true },
         { data: 'image_path', searchable: false, orderable: false },
         { data: 'FU.fu_title', searchable: true, orderable: true },
+        { data: 'FU.fu_status', searchable: true, orderable: false },
         // { data: 'FU.event_end_date_time', searchable: true, orderable: true },
       ]
     };
