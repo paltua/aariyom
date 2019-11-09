@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 			email: ['', [Validators.required, Validators.email]],
 			password: ['', Validators.required]
 		});
-		this.returnUrl = this.router.snapshot.queryParams['returnUrl'] || '/';
+		this.returnUrl = this.router.snapshot.queryParams['returnUrl'] || '/admin/dashboard';
 	}
 
 
@@ -63,11 +63,10 @@ export class LoginComponent implements OnInit {
 				if (retData.status === 'success') {
 					this.status = '';
 					this.msg = '';
-					// this.route.navigate(['/admin/dashboard']);
 					this.route.navigate([this.returnUrl]);
 				} else if (retData.status === 'danger') {
 					this.status = 'danger';
-					this.msg = 'Sorry! Something went wrong.Please try again.';
+					this.msg = retData.message;
 				} else {
 					this.status = 'danger';
 					this.msg = 'Sorry! Something went wrong.Please try again.';
