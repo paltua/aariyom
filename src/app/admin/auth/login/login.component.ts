@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 	status: any;
 	msg: any;
 	returnUrl: string;
-
+	loader: Boolean;
 	constructor(
 		private fb: FormBuilder,
 		private authService: AuthService,
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
 		}
 		this.status = '';
 		this.msg = '';
+		this.loader = false;
 	}
 
 	ngOnInit() {
@@ -55,11 +56,13 @@ export class LoginComponent implements OnInit {
 	 * formSubmit
 	 */
 	public formSubmit() {
+		this.loader = true;
 		this.submitted = true;
 		let formData = this.loginForm;
 		// console.log(formData.value);
 		if (!this.loginForm.invalid) {
 			this.authService.login(formData.value).subscribe(retData => {
+				this.loader = false;
 				if (retData.status === 'success') {
 					this.status = '';
 					this.msg = '';
