@@ -48,6 +48,13 @@ export class CommonService {
 	}
 
 	/**
+	 * getFu
+	 */
+	public getFu() {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/common/fu_list/');
+	}
+
+	/**
 	 * getDashboardDetails
 	 */
 	public getDashboardDetails() {

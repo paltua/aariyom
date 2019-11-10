@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'events', component: AdminTemplateComponent, loadChildren: () => import('./event/event.module').then(m => m.EventModule), canActivate: [AuthGuard] },
   { path: 'programs', component: AdminTemplateComponent, loadChildren: () => import('./admin-programme/admin-programme.module').then(m => m.AdminProgrammeModule), canActivate: [AuthGuard] },
   { path: 'contacts', component: AdminTemplateComponent, loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule), canActivate: [AuthGuard] },
-  { path: 'users', component: AdminTemplateComponent, loadChildren: () => import('./user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] }
+  { path: 'users', component: AdminTemplateComponent, loadChildren: () => import('./user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
+  { path: 'settings', component: AdminTemplateComponent, loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule), canActivate: [AuthGuard] }
 ];
 
 @NgModule({
