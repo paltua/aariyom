@@ -2,13 +2,13 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-template-sidebar',
-  templateUrl: './admin-template-sidebar.component.html',
-  styleUrls: ['./admin-template-sidebar.component.scss']
+    selector: 'app-admin-template-sidebar',
+    templateUrl: './admin-template-sidebar.component.html',
+    styleUrls: ['./admin-template-sidebar.component.scss']
 })
 export class AdminTemplateSidebarComponent implements OnInit {
 
-  isActive: boolean;
+    isActive: boolean;
     collapsed: boolean;
     showMenu: string;
     pushRightClass: string;
@@ -40,11 +40,7 @@ export class AdminTemplateSidebarComponent implements OnInit {
     }
 
     addExpandClass(element: any) {
-        if (element === this.showMenu) {
-            this.showMenu = '0';
-        } else {
-            this.showMenu = element;
-        }
+        this.showMenu = element;
     }
 
     toggleCollapsed() {

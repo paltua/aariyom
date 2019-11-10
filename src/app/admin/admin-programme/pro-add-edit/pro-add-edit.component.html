@@ -25,12 +25,16 @@
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">{{pageTitle}} Description</label>
-                    <textarea formControlName="program_desc" class="form-control" rows="7" id="program_desc"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.program_desc.errors }"
-                        required></textarea>
-                    <div *ngIf="submitted && f.program_desc.errors " class="invalid-feedback">
-                        <div *ngIf="f.program_desc.errors.required">{{pageTitle}} Description is required</div>
+                    <label for="validationCustom01">Organized by</label>
+                    <select class="form-control" formControlName="org_by" id="org_by"
+                        [ngClass]="{ 'is-invalid': submitted && f.org_by.errors }" required multiple>
+                        <option value="">Select One</option>
+                        <option *ngFor="let cl of fuList" [value]="cl.fu_id" selected="selected">{{cl.fu_title}}
+                        </option>
+                    </select>
+
+                    <div *ngIf="submitted && f.org_by.errors " class="invalid-feedback">
+                        <div *ngIf="f.org_by.errors.required">Organized by is required</div>
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
@@ -50,6 +54,35 @@
 
                     <div class="mb-3" *ngIf="uploadedFilePath">
                         {{uploadedFilePath}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">{{pageTitle}} Description</label>
+                    <textarea formControlName="program_desc" class="form-control" rows="5" id="program_desc"
+                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.program_desc.errors }"
+                        required></textarea>
+                    <div *ngIf="submitted && f.program_desc.errors " class="invalid-feedback">
+                        <div *ngIf="f.program_desc.errors.required">{{pageTitle}} Description is required</div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">Status : </label>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline1" formControlName="program_status"
+                            class="custom-control-input" value="ongoing">
+                        <label class="custom-control-label" for="customRadioInline1">Ongoing</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline2" formControlName="program_status"
+                            class="custom-control-input" value="upcoming">
+                        <label class="custom-control-label" for="customRadioInline2">Upcoming</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline3" formControlName="program_status"
+                            class="custom-control-input" value="completed">
+                        <label class="custom-control-label" for="customRadioInline3">Completed</label>
                     </div>
                 </div>
             </div>
