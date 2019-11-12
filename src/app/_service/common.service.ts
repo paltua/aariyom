@@ -61,6 +61,20 @@ export class CommonService {
 		return this.http.get<ApiResponses>(this.apiUrl + 'api/common/dashboard_details/');
 	}
 
+	/**
+	 * getSettings
+	 */
+	public getSettings(type = 'home') {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/common/settings/' + type);
+	}
+
+	/**
+	 * getSettings
+	 */
+	public updateSettings(data = {}) {
+		return this.http.post<ApiResponses>(this.apiUrl + 'api/common/settings_update/', data);
+	}
+
 
 
 }
