@@ -83,7 +83,7 @@ export class AddEditComponent implements OnInit {
 			address: ['', Validators.required],
 			pin: ['', Validators.required],
 			event_created_by: [1],
-			event_id: 0,
+			event_id: [0],
 		});
 	}
 
@@ -113,7 +113,7 @@ export class AddEditComponent implements OnInit {
 					address: [data[0].address, Validators.required],
 					pin: [data[0].pin, Validators.required],
 					event_created_by: [1],
-					event_id: this.eventId,
+					event_id: [this.eventId],
 				});
 			}
 		})

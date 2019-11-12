@@ -1,1 +1,31 @@
-<p>setting-about-us works!</p>
+<div [@routerTransition]>
+    <h2 class="text-muted"><small>
+        </small>{{pageTitle}} </h2>
+    <hr>
+    <ng-container *ngIf="status != '' && msg != ''">
+        <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
+            <div [innerHTML]="msg"></div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <hr>
+    </ng-container>
+    <form [formGroup]="settingsForm" (submit)="formSave()">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <h4 class="text-muted">Details</h4>
+                <hr>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">Main Text</label>
+                    <textarea formControlName="main_text" class="form-control" rows="4" id="validationCustom01"
+                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.main_text.errors }"
+                        required></textarea>
+                    <div *ngIf="submitted && f.main_text.errors " class="invalid-feedback">
+                        <div *ngIf="f.main_text.errors.required">{{pageTitle}} Objectives is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
