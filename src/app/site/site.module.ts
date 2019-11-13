@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SiteRoutingModule } from './site-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -16,7 +17,7 @@ import { BannerComponent } from './home/banner/banner.component';
   declarations: [HomeComponent, AboutUsComponent, ContactUsComponent, SliderComponent, AboutFunctionalComponent, UpcomingEventsComponent, ActivitiesHomeComponent, BannerComponent],
   imports: [
     CommonModule,
-    SiteRoutingModule
+    SiteRoutingModule, FormsModule, ReactiveFormsModule
   ]
 })
 export class SiteModule { }
