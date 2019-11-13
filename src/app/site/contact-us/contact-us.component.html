@@ -16,18 +16,17 @@
             <div class="col2 column2 last">
                 <div class="sec2innercont">
                     <div class="sec2addr">
-                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> Address Will Come
-                            here</p>
-                        <p><i class="fa fa-phone" aria-hidden="true"></i> +91 9126306858</p>
-                        <p><i class="fa fa-envelope-open" aria-hidden="true"></i> demo@gmail.com</p>
+                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{address}}</p>
+                        <p><i class="fa fa-phone" aria-hidden="true"></i> {{mobile}}</p>
+                        <p><i class="fa fa-envelope-open" aria-hidden="true"></i> {{email}}</p>
                     </div>
                 </div>
                 <div class="sec2contactform">
                     <h3 class="sec2frmtitle">Want to Know More?</h3>
-                    <form action="">
+                    <form [formGroup]="contactForm" (submit)="formSave()">
                         <div class="clearfix">
-                            <input class="col2 first" type="text" placeholder="FirstName">
-                            <input class="col2 last" type="text" placeholder="LastName">
+                            <input class="col2 first is-invalid" type="text" placeholder="FirstName" required>
+                            <input class="col2 last" type="text" placeholder="LastName" required>
                         </div>
                         <div class="clearfix">
                             <input class="col2 first" type="Email" placeholder="Email">
