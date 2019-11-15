@@ -23,18 +23,62 @@
                 </div>
                 <div class="sec2contactform">
                     <h3 class="sec2frmtitle">Want to Know More?</h3>
+                    <div *ngIf="status != ''" class="alert alert-{{status}}" role="alert">
+                        {{msg}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <form [formGroup]="contactForm" (submit)="formSave()">
-                        <div class="clearfix">
-                            <input class="col2 first is-invalid" type="text" placeholder="FirstName" required>
-                            <input class="col2 last" type="text" placeholder="LastName" required>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <input formControlName="firstName" type="text" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                                    id="validationServer03" placeholder="Firstname" required>
+                                <div *ngIf="submitted && f.firstName.errors " class="invalid-feedback">
+                                    Please provide First Name.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input formControlName="lastName" type="text" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" id="validationServer03"
+                                    placeholder="Lastname" required>
+                                <div *ngIf="submitted && f.lastName.errors " class="invalid-feedback">
+                                    Please provide Last Name.
+                                </div>
+                            </div>
                         </div>
-                        <div class="clearfix">
-                            <input class="col2 first" type="Email" placeholder="Email">
-                            <input class="col2 last" type="text" placeholder="Contact Number">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <input formControlName="email" type="text" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" id="validationServer03"
+                                    placeholder="Email" required>
+                                <div *ngIf="submitted && f.email.errors " class="invalid-feedback">
+                                    Please provide a valid email.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input formControlName="mobile" type="text" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" id="validationServer03"
+                                    placeholder="Mobile" required>
+                                <div *ngIf="submitted && f.mobile.errors " class="invalid-feedback">
+                                    Please provide a valid mobile.
+                                </div>
+                            </div>
                         </div>
-                        <div class="clearfix">
-                            <textarea name="textarea" id="" cols="30" rows="7">Your message here...</textarea>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <textarea formControlName="desccription" name="textarea"
+                                    [ngClass]="{ 'is-invalid': submitted && f.desccription.errors }"
+                                    class="form-control" id="" cols="30" rows="5" placeholder="Your message here..."
+                                    required></textarea>
+                                <div *ngIf="submitted && f.desccription.errors " class="invalid-feedback">
+                                    Please provide your message.
+                                </div>
+                            </div>
+
                         </div>
+
                         <div class="clearfix"><input type="submit" class="button-submit" value="Send"></div>
                     </form>
                 </div>
