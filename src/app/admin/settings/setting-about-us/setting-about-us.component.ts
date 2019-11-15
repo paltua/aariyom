@@ -53,7 +53,17 @@ export class SettingAboutUsComponent implements OnInit {
    * formSave
    */
   public formSave() {
-    console.log(this.settingsForm.value);
+    if (this.settingsForm.valid) {
+      this.submitted = true;
+      this.commonService.updateSettings(this.settingsForm.value).subscribe(retData => {
+        this.status = 'success';
+        this.msg = 'You have successfully updated the ' + this.pageTitle;
+      });
+    } else if (this.settingsForm.invalid) {
+      this.submitted = true;
+      this.status = 'danger';
+      this.msg = 'Please find the error(s) as below.';
+    }
   }
 
 }
