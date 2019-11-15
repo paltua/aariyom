@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/_service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { SiteService } from 'src/app/_service/site.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -12,11 +13,15 @@ export class ContactUsComponent implements OnInit {
   mobile: String;
   address: String;
   contactForm: any;
-  constructor(public commonSer: CommonService, private fb: FormBuilder, ) { }
+  submitted = false;
+  status: any = '';
+  msg: any = '';
+  constructor(public commonSer: CommonService, private fb: FormBuilder, private siteSer: SiteService) { }
 
   ngOnInit() {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required, Validators],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       mobile: ['', Validators.required],
       desccription: ['', Validators.required],
@@ -29,11 +34,31 @@ export class ContactUsComponent implements OnInit {
     })
   }
 
+  get f(): any {
+    return this.contactForm.controls;
+  }
+
   /**
    * formSave
    */
   public formSave() {
-    console.log(this.contactForm);
+    this.submitted = true;
+    if (this.contactForm.status === 'VALID') {
+      this.siteSer.addContactUs(this.contactForm.value).subscribe(retData => {
+        if (retData.status === 'success') {
+          this.submitted = false;
+          this.contactForm.reset();
+          this.status = 'success';
+          this.msg = 'You have successfully submited your query';
+        } else {
+          this.status = 'danger';
+          this.msg = retData.message;
+        }
+      })
+    } else if (this.contactForm.status === 'INVALID') {
+      this.status = 'danger';
+      this.msg = 'Please find the error(s) as below';
+    }
   }
 
 }

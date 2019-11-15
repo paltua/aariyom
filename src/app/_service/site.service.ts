@@ -87,4 +87,13 @@ export class SiteService {
     return (str.length > charCount) ? (str.slice(0, charCount) + '..') : (str);
   }
 
+  /**
+   * addContactUs
+   */
+  public addContactUs(data) {
+    return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/contactus/add', data).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
 }
