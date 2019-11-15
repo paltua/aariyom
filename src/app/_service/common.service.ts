@@ -71,7 +71,7 @@ export class CommonService {
 	/**
 	 * getSettings
 	 */
-	public updateSettings(data = {}) {
+	public updateSettings(data = []) {
 		return this.http.post<ApiResponses>(this.apiUrl + 'api/common/settings_update/', data);
 	}
 
