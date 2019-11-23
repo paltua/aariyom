@@ -19,3 +19,123 @@
 .nav-custom li.active a {
     color: $orange;
 }
+
+
+@media (min-width:1200px) and (max-width:1380px) {
+}
+@media (min-width:1024px) and (max-width:1199px) {
+}
+@media (min-width:992px) and (max-width:1023px) {
+}
+@media (min-width:800px) and (max-width:991px) {
+    .navbar-toggler-icon {
+        background: url(./../../../assets/images/menu.png) no-repeat;
+    }
+    .navbar-toggler {
+        outline: none !important;
+        cursor: pointer;
+    }
+    .nav-custom ul {
+        width: 100%;
+        margin-top: $pix20;
+         li{
+             margin: $pix5 0;
+         }
+    }
+}
+@media (min-width:768px) and (max-width:799px) {
+    .navbar-toggler-icon {
+        background: url(./../../../assets/images/menu.png) no-repeat;
+    }
+    .navbar-toggler {
+        outline: none !important;
+        cursor: pointer;
+    }
+    .nav-custom ul {
+        width: 100%;
+        margin-top: $pix20;
+         li{
+             margin: $pix5 0;
+         }
+    }
+}
+@media (min-width:576px) and (max-width:767px) {
+    .navbar-toggler-icon {
+        background: url(./../../../assets/images/menu.png) no-repeat;
+    }
+    .navbar-toggler {
+        outline: none !important;
+        cursor: pointer;
+    }
+    .nav-custom ul {
+        width: 100%;
+        margin-top: $pix20;
+         li{
+             margin: $pix5 0;
+         }
+    }
+}
+@media (min-width:481px) and (max-width:575px) {
+    .navbar-toggler-icon {
+        background: url(./../../../assets/images/menu.png) no-repeat;
+    }
+    .navbar-toggler {
+        outline: none !important;
+        cursor: pointer;
+    }
+    .nav-custom ul {
+        width: 100%;
+        margin-top: $pix20;
+         li{
+             margin: $pix5 0;
+         }
+    }
+}
+@media (max-width:480px) {
+    .navbar-toggler-icon {
+        background: url(./../../../assets/images/menu.png) no-repeat;
+    }
+    .navbar-toggler {
+        outline: none !important;
+        cursor: pointer;
+    }
+    .nav-custom ul {
+        width: 100%;
+        margin-top: $pix20;
+         li{
+             margin: $pix5 0;
+         }
+    }
+}
+@media (max-width:380px) {
+    .navbar-toggler-icon {
+        background: url(./../../../assets/images/menu.png) no-repeat;
+    }
+    .navbar-toggler {
+        outline: none !important;
+        cursor: pointer;
+    }
+    .nav-custom ul {
+        width: 100%;
+        margin-top: $pix20;
+         li{
+             margin: $pix5 0;
+         }
+    }
+}
+@media (max-width:320px) {
+    .navbar-toggler-icon {
+        background: url(./../../../assets/images/menu.png) no-repeat;
+    }
+    .navbar-toggler {
+        outline: none !important;
+        cursor: pointer;
+    }
+    .nav-custom ul {
+        width: 100%;
+        margin-top: $pix20;
+         li{
+             margin: $pix5 0;
+         }
+    }
+}
