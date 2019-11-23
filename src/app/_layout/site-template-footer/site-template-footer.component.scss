@@ -43,3 +43,73 @@ span.copy {
     color: $gray1;
     margin-top: $pix15;
 }
+
+
+@media (min-width:1200px) and (max-width:1380px) {
+}
+@media (min-width:1024px) and (max-width:1199px) {
+}
+@media (min-width:992px) and (max-width:1023px) {
+}
+@media (min-width:800px) and (max-width:991px) {
+}
+@media (min-width:768px) and (max-width:799px) {
+}
+@media (min-width:576px) and (max-width:767px) {
+    .social-footer {
+        margin-top: $pix20;
+        float: left !important;
+    }
+    .links-footer {
+        float: left !important;
+        width: 100%;
+    }
+    .copy  {
+        width: 100%;
+    }
+}
+@media (min-width:481px) and (max-width:575px) {
+    .social-footer {
+        margin-top: $pix20;
+        float: left !important;
+    }
+    .links-footer {
+        float: left !important;
+    }
+    .copy  {
+        width: 100%;
+    }
+}
+@media (max-width:480px) {
+    .links-footer {
+        float: left !important;
+    }
+    .social-footer {
+        margin-top: $pix20;
+        float: left !important;
+    }
+    .copy  {
+        width: 100%;
+    }
+}
+@media (max-width:380px) {
+    .social-footer {
+        margin-top: $pix20;
+        float: left !important;
+    }
+    .links-footer {
+        float: left !important;
+    }
+    .copy  {
+        width: 100%;
+    }
+}
+@media (max-width:320px) {
+    .social-footer {
+        margin-top: $pix20;
+        float: left !important;
+    }
+    .links-footer {
+        float: left !important;
+    }
+}
