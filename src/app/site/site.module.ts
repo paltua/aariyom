@@ -19,6 +19,7 @@ import { PageLoaderComponent } from './page-loader/page-loader.component';
   imports: [
     CommonModule,
     SiteRoutingModule, FormsModule, ReactiveFormsModule
-  ]
+  ],
+  exports: [PageLoaderComponent]
 })
 export class SiteModule { }

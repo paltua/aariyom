@@ -9,6 +9,7 @@ import { SiteService } from 'src/app/_service/site.service';
 export class EventsListingComponent implements OnInit {
   eventList: any;
   eventListCount: any;
+  loader: Boolean = true;
   constructor(
     private siteSer: SiteService
   ) {
@@ -20,6 +21,7 @@ export class EventsListingComponent implements OnInit {
       const newData: any = retData.data;
       this.eventList = newData.list;
       this.eventListCount = this.eventList.length;
+      this.loader = false;
       // console.log(retData);
     })
   }

@@ -9,6 +9,7 @@ import { SiteService } from 'src/app/_service/site.service';
 export class ProgrammeListingComponent implements OnInit {
   list: any;
   listCount: number;
+  loader: Boolean = true;
   constructor(
     private siteSer: SiteService
   ) { }
@@ -17,6 +18,7 @@ export class ProgrammeListingComponent implements OnInit {
     this.siteSer.getAllPrograms().subscribe(retDate => {
       this.list = retDate.data;
       this.listCount = this.list.length;
+      this.loader = false;
     });
   }
 

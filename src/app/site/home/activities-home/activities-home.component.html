@@ -1,6 +1,7 @@
 <div class="w-100 float-left events-lists-home">
 	<div class="inner-ev w-100 float-left">
 		<h2 class="widget-title w-100">Our <span>Programs</span></h2>
+		<app-page-loader *ngIf="loader"></app-page-loader>
 		<ng-container *ngFor="let lt of list">
 			<div class="w-100 float-left ev-lists-indivisual mb-3">
 				<div class="img-i-ev float-left"><img src="{{lt.image_path}}" alt=""></div>

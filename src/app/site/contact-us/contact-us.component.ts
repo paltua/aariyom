@@ -16,6 +16,7 @@ export class ContactUsComponent implements OnInit {
   submitted = false;
   status: any = '';
   msg: any = '';
+  loader: Boolean = true;
   constructor(public commonSer: CommonService, private fb: FormBuilder, private siteSer: SiteService) { }
 
   ngOnInit() {
@@ -31,6 +32,7 @@ export class ContactUsComponent implements OnInit {
       this.email = data.email;
       this.mobile = data.mobile;
       this.address = data.address;
+      this.loader = false;
     })
   }
 

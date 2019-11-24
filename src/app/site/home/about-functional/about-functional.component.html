@@ -17,7 +17,7 @@
             <div class="col-12 col-md-12 col-lg-12 float-left about-us fuc-umit">
                 <h2 class="widget-title w-100 text-center">functional <span>unit</span></h2>
                 <div class="slider-funit w-100 float-left">
-
+                    <app-page-loader *ngIf="loader"></app-page-loader>
                     <div class="owl-carousel owl-theme">
                         <ng-container *ngFor="let lt of list">
                             <div class="item">

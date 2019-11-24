@@ -8,7 +8,8 @@ declare let $: any;
 })
 export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 	list: any;
-	listCount: Number = 0;
+	listCount: Number = 4;
+	loader: Boolean = true;
 	constructor(
 		public siteSer: SiteService
 	) { }
@@ -50,6 +51,7 @@ export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 		this.siteSer.getFunctionalUnitHome().subscribe(retData => {
 			this.list = retData.data;
 			this.listCount = this.list.length + 1;
+			this.loader = false;
 			// this.setCarousel();
 		})
 	}
@@ -64,7 +66,7 @@ export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 	ngAfterViewInit() {
 		setTimeout(() => {
 			this.setCarousel();
-		}, 1000);
+		}, 2000);
 	}
 
 }

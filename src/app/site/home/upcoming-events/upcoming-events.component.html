@@ -1,6 +1,7 @@
 <div class="w-100 float-left events-lists-home">
     <div class="inner-ev w-100 float-left">
         <h2 class="widget-title w-100">Upcoming <span>Events</span></h2>
+        <app-page-loader *ngIf="loader"></app-page-loader>
         <ng-container *ngFor="let lt of list">
             <a routerLink="/events/details/{{lt.event_id}}">
                 <div class="w-100 float-left ev-lists-indivisual mb-3">
