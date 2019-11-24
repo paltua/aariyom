@@ -75,6 +75,8 @@ export class LoginComponent implements OnInit {
 					this.msg = 'Sorry! Something went wrong.Please try again.';
 				}
 			})
+		} else {
+			this.loader = false;
 		}
 	}
 

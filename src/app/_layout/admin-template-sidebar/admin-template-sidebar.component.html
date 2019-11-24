@@ -156,6 +156,40 @@
                 </ul>
             </li>
         </div>
+        <div class="header-fields">
+            <a class="list-group-item">
+                <!-- <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span> -->
+            </a>
+            <div class="nested-menu">
+                <a class="list-group-item" (click)="addExpandClass('profile')">
+                    <span><i class="fa fa-user"></i>&nbsp; Admin</span>
+                </a>
+                <li class="nested" [class.expand]="showMenu === 'profile'">
+                    <ul class="submenu">
+                        <!-- <li>
+                        <a href="javascript:void(0)">
+                            <span><i class="fa fa-fw fa-user"></i> Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span><i class="fa fa-fw fa-envelope"></i> Inbox</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span><i class="fa fa-fw fa-gear"></i> Settings</span>
+                        </a>
+                    </li> -->
+                        <li>
+                            <a [routerLink]="['/admin/auth/logout']" (click)="onLoggedout()">
+                                <span><i class="fa fa-fw fa-power-off"></i> Log Out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
     </div>
     <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
         <i class="fa fa-fw fa-angle-double-{{collapsed?'right':'left'}}"></i>&nbsp;
