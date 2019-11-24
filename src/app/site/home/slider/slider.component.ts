@@ -9,6 +9,7 @@ declare const $: any;
 })
 export class SliderComponent implements OnInit {
   list: any;
+  loader: Boolean = true;
   constructor(
     public siteSer: SiteService
   ) { }
@@ -16,6 +17,7 @@ export class SliderComponent implements OnInit {
   ngOnInit() {
     this.siteSer.getEventHomeSlider().subscribe(retData => {
       this.list = retData.data;
+      this.loader = false;
       // console.log(this.list);
     })
   }

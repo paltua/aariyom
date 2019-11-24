@@ -40,6 +40,7 @@ export class EventDetailsComponent implements OnInit {
   event_about: any = '';
   program_title: any = '';
   image_path: any = '';
+  loader: Boolean = true;
   constructor(
     private siteSer: SiteService,
     private route: ActivatedRoute,
@@ -51,7 +52,8 @@ export class EventDetailsComponent implements OnInit {
     this.siteSer.getSingleEvent(this.dataId).subscribe(retData => {
       this.data = retData.data;
       this.setVariableValue();
-      console.log(this.data);
+      // console.log(this.data);
+      this.loader = false;
     })
   }
 

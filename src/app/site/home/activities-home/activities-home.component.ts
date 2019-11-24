@@ -8,6 +8,7 @@ import { SiteService } from 'src/app/_service/site.service';
 })
 export class ActivitiesHomeComponent implements OnInit {
   list: any;
+  loader: Boolean = true;
   constructor(
     public siteSer: SiteService
   ) { }
@@ -23,6 +24,7 @@ export class ActivitiesHomeComponent implements OnInit {
   public getData() {
     this.siteSer.getProgrameHome().subscribe(retData => {
       this.list = retData.data;
+      this.loader = false;
       // this.setCarousel();
     })
   }
