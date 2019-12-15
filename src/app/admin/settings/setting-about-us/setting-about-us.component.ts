@@ -21,6 +21,10 @@ export class SettingAboutUsComponent implements OnInit {
   public editorData = '';
   public start_date = '';
   public model: any;
+  fileData: File = null;
+  previewUrl: any = null;
+  fileUploadProgress: string = null;
+  uploadedFilePath: string = null;
   constructor(
     private fb: FormBuilder,
     private commonService: CommonService
@@ -29,19 +33,25 @@ export class SettingAboutUsComponent implements OnInit {
       page: [this.page],
       who_we_are: ['', Validators.required],
       our_mission: ['', Validators.required],
+      image: [''],
+      old_image: [''],
     });
   }
 
   ngOnInit() {
     this.commonService.getSettings(this.page).subscribe(retData => {
       let data: any = retData.data;
-      this.editorData = data.who_we_are;
-      // console.log(this.editorData);
-      this.settingsForm = this.fb.group({
-        page: [this.page],
-        who_we_are: [this.editorData, Validators.required],
-        our_mission: [data.our_mission, Validators.required],
-      });
+      // this.settingsForm = this.fb.group({
+      //   page: [this.page],
+      //   who_we_are: [data.who_we_are, Validators.required],
+      //   our_mission: [data.our_mission, Validators.required],
+      //   image: [''],
+      //   old_image: [''],
+      // });
+      this.settingsForm.get('who_we_are').setValue(data.who_we_are);
+      this.settingsForm.get('our_mission').setValue(data.our_mission);
+      this.settingsForm.get('image').setValue(data.image);
+      this.settingsForm.get('old_image').setValue(data.old_image);
     });
   }
 
@@ -63,6 +73,26 @@ export class SettingAboutUsComponent implements OnInit {
       this.submitted = true;
       this.status = 'danger';
       this.msg = 'Please find the error(s) as below.';
+    }
+    window.scroll(0, 0);
+  }
+
+  fileProgress(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
+    this.preview();
+  }
+
+  preview() {
+    // Show preview 
+    var mimeType = this.fileData.type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+
+    var reader = new FileReader();
+    reader.readAsDataURL(this.fileData);
+    reader.onload = (_event) => {
+      this.previewUrl = reader.result;
     }
   }
 

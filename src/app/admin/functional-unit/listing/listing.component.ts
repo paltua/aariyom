@@ -99,8 +99,14 @@ export class ListingComponent implements OnInit {
 	/**
 	 * delete
 	 */
-  public delete(fu_id = '0') {
-    this.router.navigate(['/admin/functional-units/delete/' + fu_id]);
+  public delete(fu_id = 0) {
+    let confirmStatus: boolean = false;
+    if (fu_id > 0) {
+      confirmStatus = confirm('Are you sure to delete this Functional Unit?');
+    }
+    if (confirmStatus === true) {
+      this.router.navigate(['/admin/functional-units/delete/' + fu_id]);
+    }
   }
 
 }
