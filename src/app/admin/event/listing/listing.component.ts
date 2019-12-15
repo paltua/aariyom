@@ -101,8 +101,14 @@ export class ListingComponent implements OnInit {
 	/**
 	 * delete
 	 */
-  public delete(program_id = '0') {
-    this.router.navigate(['/admin/events/delete/' + program_id]);
+  public delete(event_id = 0) {
+    let confirmStatus: boolean = false;
+    if (event_id > 0) {
+      confirmStatus = confirm('Are you sure to delete this Event?');
+    }
+    if (confirmStatus === true) {
+      this.router.navigate(['/admin/events/delete/' + event_id]);
+    }
   }
 
 }

@@ -76,6 +76,7 @@ export class ListingComponent implements OnInit {
       pageLength: 10,
       serverSide: true,
       processing: true,
+      responsive: true,
       ajax: (dataTablesParameters: any, callback) => {
         // console.log(dataTablesParameters);
         that.contactSer.list(dataTablesParameters).subscribe(resp => {

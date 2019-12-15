@@ -23,6 +23,7 @@ export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 	 * setCarousel
 	 */
 	public setCarousel() {
+		// console.log(this.listCount);
 		$('.owl-carousel').owlCarousel({
 			items: this.listCount,
 			margin: 10,
@@ -51,8 +52,10 @@ export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 		this.siteSer.getFunctionalUnitHome().subscribe(retData => {
 			this.list = retData.data;
 			this.listCount = this.list.length + 1;
-			this.loader = false;
-			// this.setCarousel();
+			setTimeout(() => {
+				this.loader = false;
+				this.setCarousel();
+			}, 1500);
 		})
 	}
 
@@ -64,9 +67,11 @@ export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		setTimeout(() => {
-			this.setCarousel();
-		}, 2000);
+
+	}
+
+	ngAfterViewChecked() {
+
 	}
 
 }
