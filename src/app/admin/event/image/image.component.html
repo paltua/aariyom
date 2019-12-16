@@ -1,23 +1,27 @@
 <div [@routerTransition]>
-    <h2 class="text-muted">{{pageTitle}} <small>Images</small> <span class="float-right"></span>
-        <!-- <a href="javascript:void(0)" class="float-right btn btn-success btn-lg"><i class="fa fa-plus-square"></i> Add
+    <div class="row">
+        <div class="col col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
+            <h2 class="text-muted">{{pageTitle}} <small>Images</small> <span class="float-right"></span>
+                <!-- <a href="javascript:void(0)" class="float-right btn btn-success btn-lg"><i class="fa fa-plus-square"></i> Add
             New
             Images</a> -->
-        <a routerLink="/admin/events" class="float-right btn btn-secondary btn-lg"><i class="fa fa-undo"></i>
-            Back</a>
-    </h2>
-    <hr>
-    <ng-container *ngIf="status != '' && msg != ''">
-        <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
-            <div [innerHTML]="msg"></div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                <a routerLink="/admin/events" class="float-right btn btn-secondary btn-lg"><i class="fa fa-undo"></i>
+                    Back</a>
+            </h2>
+            <hr>
+            <ng-container *ngIf="status != '' && msg != ''">
+                <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
+                    <div [innerHTML]="msg"></div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <hr>
+            </ng-container>
         </div>
-        <hr>
-    </ng-container>
+    </div>
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
             <h3>Choose File</h3>
             <div class="form-group">
                 <input type="file" name="image" (change)="fileProgress($event)" />
@@ -37,46 +41,51 @@
                 <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
             </div>
         </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            <table class="card-body table hover table-image" style="width:100%">
-                <thead>
-                    <tr class="table-primary">
-                        <th scope="col">#</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Default</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <ng-container *ngIf="listCount > 0">
-                        <tr *ngFor="let lst of list;let i= index;">
-                            <th scope="row">{{i+1}}</th>
-                            <td class="w-15">
-                                <img src="{{lst.image_path}}" class="img-fluid img-thumbnail" alt="{{lst.image_path}}">
-                            </td>
-                            <td>
-                                <div class="form-check">
-                                    <input *ngIf="lst.is_default!=1" class="form-check-input" type="radio"
-                                        name="exampleRadios" id="exampleRadios1" value="{{lst.ei_id}}"
-                                        (click)="changeDefault(lst.ei_id)">
-                                    <input *ngIf="lst.is_default==1" class="form-check-input" type="radio"
-                                        name="exampleRadios" id="exampleRadios1" value="{{lst.ei_id}}" checked>
+        <div class="col col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-body table-responsive">
+                    <table class="table table-striped  dt-responsive nowrap table-image" style="width:100%">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col">#</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Default</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngIf="listCount > 0">
+                                <tr *ngFor="let lst of list;let i= index;">
+                                    <th scope="row">{{i+1}}</th>
+                                    <td class="w-15">
+                                        <img src="{{lst.image_path}}" class="img-fluid img-thumbnail"
+                                            alt="{{lst.image_path}}">
+                                    </td>
+                                    <td>
+                                        <div class="form-check">
+                                            <input *ngIf="lst.is_default!=1" class="form-check-input" type="radio"
+                                                name="exampleRadios" id="exampleRadios1" value="{{lst.ei_id}}"
+                                                (click)="changeDefault(lst.ei_id)">
+                                            <input *ngIf="lst.is_default==1" class="form-check-input" type="radio"
+                                                name="exampleRadios" id="exampleRadios1" value="{{lst.ei_id}}" checked>
 
-                                </div>
+                                        </div>
 
-                            </td>
-                            <td><a href="javascript:void(0)" (click)="delete(lst.ei_id,lst.is_default)"
-                                    class="btn btn-danger"><i class="fa fa-trash fa-lg"></i>Delete</a></td>
-                        </tr>
-                    </ng-container>
+                                    </td>
+                                    <td><a href="javascript:void(0)" (click)="delete(lst.ei_id,lst.is_default)"
+                                            class="btn btn-danger"><i class="fa fa-trash fa-lg"></i>Delete</a></td>
+                                </tr>
+                            </ng-container>
 
-                    <tr *ngIf="listCount <= 0">
-                        <td colspan="4" class="no-data-available table-secondary text-danger">
-                            <span class="float-left"><i class="fa fa-database fa-lg"></i> No
-                                records found!</span></td>
-                    </tr>
-                </tbody>
-            </table>
+                            <tr *ngIf="listCount <= 0">
+                                <td colspan="4" class="no-data-available table-secondary text-danger">
+                                    <span class="float-left"><i class="fa fa-database fa-lg"></i> No
+                                        records found!</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
