@@ -1,66 +1,73 @@
 <div [@routerTransition]>
-    <h2 class="text-muted">{{pageTitle}} <small>Listing</small> <span class="float-right"><a
-                class="btn btn-success btn-lg" routerLink="/admin/functional-units/add"><i
-                    class="fa fa-plus-square"></i> Add New
-                {{pageTitle}}</a></span>
-    </h2>
-    <hr>
-    <ng-container *ngIf="status != '' && msg != ''">
-        <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
-            <div [innerHTML]="msg"></div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <hr>
-    </ng-container>
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
+            <h2 class="text-muted">{{pageTitle}} <small>Listing</small> <span class="float-right"><a
+                        class="btn btn-success btn-lg" routerLink="/admin/functional-units/add"><i
+                            class="fa fa-plus-square"></i> Add New
+                        {{pageTitle}}</a></span>
+            </h2>
+            <hr>
+            <ng-container *ngIf="status != '' && msg != ''">
+                <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
+                    <div [innerHTML]="msg"></div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <hr>
+            </ng-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-body table-responsive">
+                    <table datatable [dtOptions]="dtOptions" class="table table-striped  dt-responsive nowrap"
+                        style="width:100%">
+                        <thead>
+                            <tr class="table-primary">
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <!-- <th>Dsecription</th> -->
+                                <th>Others Details</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let lst of listTables;let i= index;" [ngClass]="tableClass(i)">
+                                <th scope="row">{{i + 1}}</th>
+                                <td class="w-15"><img src="{{lst.image_path}}" class="img-fluid img-thumbnail"
+                                        alt="{{lst.fu_title}}"></td>
+                                <td>{{lst.fu_title}}</td>
+                                <!-- <td [innerHTML]="lst.fu_desc"></td> -->
 
-            <table datatable [dtOptions]="dtOptions" class="card-body table hover" style="width:100%">
-                <thead>
-                    <tr class="table-primary">
-                        <th>#</th>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Dsecription</th>
-                        <th>Others Details</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let lst of listTables;let i= index;" [ngClass]="tableClass(i)">
-                        <th scope="row">{{i + 1}}</th>
-                        <td class="w-15"><img src="{{lst.image_path}}" class="img-fluid img-thumbnail"
-                                alt="{{lst.fu_title}}"></td>
-                        <td>{{lst.fu_title}}</td>
-                        <td [innerHTML]="lst.fu_desc"></td>
-
-                        <td>
-                            <p>Status: <span class="badge badge-warning">{{lst.fu_status}}</span></p>
-                            <p *ngIf="lst.fu_managed_by">Managed By: <span
-                                    class="badge badge-warning">{{lst.fu_managed_by}}</span></p>
-                            <p *ngIf="lst.fu_operating_location">Operating Location: <span
-                                    class="badge badge-warning">{{lst.fu_operating_location}}</span></p>
-                        </td>
-                        <td><a routerLink="/admin/functional-units/edit/{{lst.fu_id}}" class="btn btn-primary"><i
-                                    class="fa fa-edit fa-lg"></i> Edit</a>
-                            <!-- <a routerLink="/admin/fus/image/{{lst.fu_id}}" class="btn btn-warning"><i
+                                <td>
+                                    <p>Status: <span class="badge badge-warning">{{lst.fu_status}}</span></p>
+                                    <p *ngIf="lst.fu_managed_by">Managed By: <span
+                                            class="badge badge-warning">{{lst.fu_managed_by}}</span></p>
+                                    <p *ngIf="lst.fu_operating_location">Operating Location: <span
+                                            class="badge badge-warning">{{lst.fu_operating_location}}</span></p>
+                                </td>
+                                <td><a routerLink="/admin/functional-units/edit/{{lst.fu_id}}"
+                                        class="btn btn-primary"><i class="fa fa-edit fa-lg"></i> Edit</a>
+                                    <!-- <a routerLink="/admin/fus/image/{{lst.fu_id}}" class="btn btn-warning"><i
                                     class="fa fa-picture-o fa-lg"></i>Images</a> -->
-                            <a href="javascript:void(0)" (click)="delete(lst.fu_id)" class="btn btn-danger"><i
-                                    class="fa fa-trash fa-lg"></i>Delete</a></td>
-                    </tr>
+                                    <a href="javascript:void(0)" (click)="delete(lst.fu_id)" class="btn btn-danger"><i
+                                            class="fa fa-trash fa-lg"></i>Delete</a></td>
+                            </tr>
 
-                </tbody>
-                <tbody *ngIf="listCount == 0">
-                    <tr>
-                        <td colspan="5" class="no-data-available table-secondary text-danger">
-                            <span class="float-left"><i class="fa fa-database fa-lg"></i> No
-                                records found!</span></td>
-                    </tr>
-                <tbody>
-            </table>
-
+                        </tbody>
+                        <tbody *ngIf="listCount == 0">
+                            <tr>
+                                <td colspan="5" class="no-data-available table-secondary text-danger">
+                                    <span class="float-left"><i class="fa fa-database fa-lg"></i> No
+                                        records found!</span></td>
+                            </tr>
+                        <tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
