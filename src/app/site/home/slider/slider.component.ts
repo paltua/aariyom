@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from 'src/app/_service/site.service';
+import 'lazysizes';
 declare const $: any;
 
 @Component({

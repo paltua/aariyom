@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from 'src/app/_service/site.service';
+import 'lazysizes';
 
 @Component({
   selector: 'app-upcoming-events',

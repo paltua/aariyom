@@ -13,7 +13,7 @@
           <ng-container *ngFor="let sl of list;let i=index;">
             <div class="carousel-item position-relative " [ngClass]="{'active':i==0}">
               <div class="col-12 col-md-6 col-lg-7 float-left p-0 slider-left-wrap position-absolute">
-                <img class="d-block w-100" src="{{sl.image_path}}" alt="{{sl.event_title}}">
+                <img class="d-block w-100 lazyload" data-src="{{sl.image_path}}" alt="{{sl.event_title}}">
               </div>
               <div
                 class="col-12 col-md-6 col-lg-5 float-right p-0 content-slider position-relative d-flex align-items-center justify-content-center text-left">

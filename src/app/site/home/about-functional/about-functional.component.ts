@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { SiteService } from 'src/app/_service/site.service';
+import 'lazysizes';
 declare let $: any;
 @Component({
 	selector: 'app-about-functional',
