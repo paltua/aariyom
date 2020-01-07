@@ -51,7 +51,8 @@ export class SettingAboutUsComponent implements OnInit {
       this.settingsForm.get('who_we_are').setValue(data.who_we_are);
       this.settingsForm.get('our_mission').setValue(data.our_mission);
       this.settingsForm.get('image').setValue(data.image);
-      this.settingsForm.get('old_image').setValue(data.old_image);
+      this.settingsForm.get('old_image').setValue(data.image);
+      this.previewUrl = data.image;
     });
   }
 
