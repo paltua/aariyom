@@ -25,6 +25,7 @@ export class SettingAboutUsComponent implements OnInit {
   previewUrl: any = null;
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
+  formData: any;
   constructor(
     private fb: FormBuilder,
     private commonService: CommonService
@@ -39,20 +40,18 @@ export class SettingAboutUsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.formData = new FormData();
     this.commonService.getSettings(this.page).subscribe(retData => {
       let data: any = retData.data;
-      // this.settingsForm = this.fb.group({
-      //   page: [this.page],
-      //   who_we_are: [data.who_we_are, Validators.required],
-      //   our_mission: [data.our_mission, Validators.required],
-      //   image: [''],
-      //   old_image: [''],
-      // });
-      this.settingsForm.get('who_we_are').setValue(data.who_we_are);
-      this.settingsForm.get('our_mission').setValue(data.our_mission);
-      this.settingsForm.get('image').setValue(data.image);
-      this.settingsForm.get('old_image').setValue(data.image);
-      this.previewUrl = data.image;
+      console.log(data);
+      this.previewUrl = data.image_path;
+      this.settingsForm = this.fb.group({
+        who_we_are: [data.who_we_are, Validators.required],
+        our_mission: [data.our_mission, Validators.required],
+        image: [this.fileData],
+        old_image: [data.image],
+      });
+
     });
   }
 
@@ -65,8 +64,9 @@ export class SettingAboutUsComponent implements OnInit {
    */
   public formSave() {
     if (this.settingsForm.valid) {
+      this.setFormData();
       this.submitted = true;
-      this.commonService.updateSettings(this.settingsForm.value).subscribe(retData => {
+      this.commonService.updateSettings(this.formData).subscribe(retData => {
         this.status = 'success';
         this.msg = 'You have successfully updated the ' + this.pageTitle;
       });
@@ -95,6 +95,16 @@ export class SettingAboutUsComponent implements OnInit {
     reader.onload = (_event) => {
       this.previewUrl = reader.result;
     }
+  }
+
+  /**
+   * setFormData
+   */
+  public setFormData() {
+    this.formData.append('who_we_are', this.settingsForm.value.who_we_are);
+    this.formData.append('our_mission', this.settingsForm.value.our_mission);
+    this.formData.append('image', this.fileData);
+    this.formData.append('old_image', this.settingsForm.value.old_image);
   }
 
 }
