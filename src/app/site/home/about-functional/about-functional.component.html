@@ -17,13 +17,14 @@
             <div class="col-12 col-md-12 col-lg-12 float-left about-us fuc-umit">
                 <h2 class="widget-title w-100 text-center">functional <span>unit</span></h2>
                 <div class="slider-funit w-100 float-left">
-
+                    <app-page-loader *ngIf="loader"></app-page-loader>
                     <div class="owl-carousel owl-theme">
                         <ng-container *ngFor="let lt of list">
                             <div class="item">
                                 <div class="inner-sl-funit w-100 float-left">
                                     <div class="w-100 float-left img-sl-funit">
-                                        <img src="{{lt.image_path}}" alt="{{lt.fu_title}}" /></div>
+                                        <img class="lazyload" data-src="{{lt.image_path}}" alt="{{lt.fu_title}}" />
+                                    </div>
                                     <div class="cont-funit w-100 float-left">
                                         <h4>{{lt.fu_title}}</h4>
                                         <p>{{ truncate(lt.fu_desc,150)}}</p>

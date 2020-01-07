@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ProgrammeService } from 'src/app/_service/programme.service';
+import { ProgrammeService } from '../../../_service/programme.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiResponses, Programme } from './../../../_models';
+import { CommonService } from '../../../_service';
 
 
 @Component({
@@ -27,11 +28,13 @@ export class ProAddEditComponent implements OnInit {
 	fileUploadProgress: string = null;
 	uploadedFilePath: string = null;
 	formData: any;
+	fuList: any;
 	constructor(
 		private fb: FormBuilder,
 		private programmeSer: ProgrammeService,
 		private router: Router,
 		private route: ActivatedRoute,
+		private commonSer: CommonService,
 	) {
 		this.pageTitle = 'Programme';
 		this.status = '';
@@ -39,6 +42,8 @@ export class ProAddEditComponent implements OnInit {
 		this.addEditForm = this.fb.group({
 			program_title: ['', Validators.required],
 			program_desc: ['', Validators.required],
+			program_status: ['ongoing'],
+			org_by: ['', Validators.required],
 			program_image: [this.fileData],
 			old_program_image: [''],
 			created_by: [1]
@@ -47,16 +52,18 @@ export class ProAddEditComponent implements OnInit {
 		this.pageAction = 'Add';
 		if (this.editId > 0) {
 			this.pageAction = 'Edit';
-			this.programmeSer.single(this.editId).subscribe(retData => {
+			this.programmeSer.single(this.editId).subscribe(async retData => {
 				// this.programme = retData.data[0];
 				const data: any = retData.data;
 				if (data[0].program_image) {
 					this.previewUrl = data[0].image_path;
 				}
-				// console.log(this.previewUrl);
+				const fuArr = await this.setFuArr(retData.data);
 				this.addEditForm = this.fb.group({
 					program_title: [data[0].program_title, Validators.required],
 					program_desc: [data[0].program_desc, Validators.required],
+					program_status: [data[0].program_status],
+					org_by: [fuArr, Validators.required],
 					program_image: [this.fileData],
 					old_program_image: [data[0].program_image],
 					created_by: [1]
@@ -85,6 +92,7 @@ export class ProAddEditComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.getFuList();
 		this.formData = new FormData();
 	}
 
@@ -100,6 +108,7 @@ export class ProAddEditComponent implements OnInit {
 		this.submitted = true;
 		if (!this.addEditForm.invalid) {
 			this.setFormData();
+			// console.log(this.formData);
 			if (this.editId > 0) {
 				this.update();
 			} else {
@@ -118,6 +127,8 @@ export class ProAddEditComponent implements OnInit {
 		this.formData.append('old_program_image', this.addEditForm.value.old_program_image);
 		this.formData.append('created_by', this.addEditForm.value.created_by);
 		this.formData.append('program_id', this.editId);
+		this.formData.append('org_by', this.addEditForm.value.org_by);
+		this.formData.append('program_status', this.addEditForm.value.program_status);
 	}
 
 
@@ -141,7 +152,8 @@ export class ProAddEditComponent implements OnInit {
 	 * update
 	 */
 	public update() {
-		console.log(this.formData);
+		// console.log(this.formData);
+		// return false;
 		this.programmeSer.update(this.formData, this.editId).subscribe(retData => {
 			this.status = retData.status;
 			this.msg = retData.message;
@@ -151,6 +163,36 @@ export class ProAddEditComponent implements OnInit {
 				this.router.navigate(['/admin/programs']);
 			}
 		});
+	}
+
+	/**
+	 * getFuList
+	 */
+	public getFuList() {
+		this.fuList = [];
+		this.commonSer.getFu().subscribe(retData => {
+			this.fuList = retData.data;
+		});
+	}
+
+	/**
+	 * setFuArr
+	 */
+	public setFuArr(retData = []) {
+		return new Promise((resolve, reject) => {
+			if (retData.length > 0) {
+				const proData = retData.map((elem) => {
+					if (elem.fu_id) {
+						return elem.fu_id.toString();
+					} else {
+						return elem.fu_id;
+					}
+				});
+				resolve(proData);
+			} else {
+				resolve([]);
+			}
+		})
 	}
 
 }

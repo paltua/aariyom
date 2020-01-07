@@ -86,7 +86,7 @@ export class ImageComponent implements OnInit {
 	 * changeDefault
 	 */
 	public changeDefault(ei_id = 0) {
-		console.log(this.eventId, ei_id);
+		// console.log(this.eventId, ei_id);
 		this.eventSer.updateDefaultImage(this.eventId, ei_id).subscribe(retData => {
 			this.status = retData.status;
 			this.msg = retData.message;

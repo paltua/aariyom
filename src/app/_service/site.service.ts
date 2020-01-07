@@ -36,7 +36,16 @@ export class SiteService {
   }
 
   /**
-   * getEventHome
+   * getEventHomeSlider
+   */
+  public getEventHomeSlider() {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/index_event_slider').pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * getProgrameHome
    */
   public getProgrameHome() {
     return this.http.get<ApiResponses>(this.apiUrl + 'api/home/index_program').pipe(map(retData => {
@@ -76,6 +85,15 @@ export class SiteService {
 	 */
   public truncateStr(str = '', charCount = 20) {
     return (str.length > charCount) ? (str.slice(0, charCount) + '..') : (str);
+  }
+
+  /**
+   * addContactUs
+   */
+  public addContactUs(data) {
+    return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/contactus/add', data).pipe(map(retData => {
+      return retData;
+    }));
   }
 
 }

@@ -4,6 +4,10 @@
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>Dashboard</span>
         </a>
+        <a routerLink="/admin/functional-units" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+            <span>Functional Units</span>
+        </a>
         <a routerLink="/admin/programs" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-star-o" aria-hidden="true"></i>&nbsp;
             <span>Programs</span>
@@ -12,10 +16,7 @@
             <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;
             <span>Events</span>
         </a>
-        <a routerLink="/admin/functional-units" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
-            <span>Functional Units</span>
-        </a>
+
 
         <!-- <a routerLink="/admin/users" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-users"></i>&nbsp;
@@ -130,36 +131,65 @@
                     </ul>
                 </li>
             </div>
+        </div> -->
+        <div class="nested-menu">
+            <a [routerLinkActive]="['router-link-active']" class="list-group-item" (click)="addExpandClass('settings')">
+                <span><i class="fa fa-cogs"></i>&nbsp; Settings</span>
+            </a>
+            <li class="nested" [ngClass]="{'expand':showMenu == 'settings'}">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="/admin/settings/home" [routerLinkActive]="['router-link-active']">
+                            <span><i class="fa fa-fw fa-home"></i> Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/settings/about-us" [routerLinkActive]="['router-link-active']">
+                            <span><i class="fa fa-fw fa-address-card"></i> About Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/settings/contact-us" [routerLinkActive]="['router-link-active']">
+                            <span><i class="fa fa-fw fa-at"></i> Contact Us</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <div class="header-fields">
+            <a class="list-group-item">
+                <!-- <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span> -->
+            </a>
             <div class="nested-menu">
                 <a class="list-group-item" (click)="addExpandClass('profile')">
-                    <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
+                    <span><i class="fa fa-user"></i>&nbsp; Admin</span>
                 </a>
                 <li class="nested" [class.expand]="showMenu === 'profile'">
                     <ul class="submenu">
+                        <!-- <li>
+                        <a href="javascript:void(0)">
+                            <span><i class="fa fa-fw fa-user"></i> Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span><i class="fa fa-fw fa-envelope"></i> Inbox</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span><i class="fa fa-fw fa-gear"></i> Settings</span>
+                        </a>
+                    </li> -->
                         <li>
-                            <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-user"></i> Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-envelope"></i> Inbox</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-gear"></i> Settings</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="['/login']" (click)="onLoggedout()">
+                            <a [routerLink]="['/admin/auth/logout']" (click)="onLoggedout()">
                                 <span><i class="fa fa-fw fa-power-off"></i> Log Out</span>
                             </a>
                         </li>
                     </ul>
                 </li>
             </div>
-        </div> -->
+        </div>
     </div>
     <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
         <i class="fa fa-fw fa-angle-double-{{collapsed?'right':'left'}}"></i>&nbsp;

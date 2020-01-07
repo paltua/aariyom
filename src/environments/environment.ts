@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://127.0.0.1/aariyom_api/',
+  // apiUrl: 'https://aariyomfoundation.com/aariyom_api/',
+  apiUrl: 'http://localhost/aariyom_api/',
 };
 
 /*

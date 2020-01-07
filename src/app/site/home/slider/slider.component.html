@@ -1,14 +1,30 @@
 <section class="slider-section float-left w-100 mt-3 mb-3">
   <div class="container">
+    <app-page-loader *ngIf="loader"></app-page-loader>
     <div class="w-100 float-left slider-inner">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li *ngFor="let sl of list;let i=index;" data-target="#carouselExampleIndicators" data-slide-to="i"
+            [ngClass]="{'active':i==0}"></li>
+          <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item position-relative active">
+          <ng-container *ngFor="let sl of list;let i=index;">
+            <div class="carousel-item position-relative " [ngClass]="{'active':i==0}">
+              <div class="col-12 col-md-6 col-lg-7 float-left p-0 slider-left-wrap position-absolute">
+                <img class="d-block w-100 lazyload" data-src="{{sl.image_path}}" alt="{{sl.event_title}}">
+              </div>
+              <div
+                class="col-12 col-md-6 col-lg-5 float-right p-0 content-slider position-relative d-flex align-items-center justify-content-center text-left">
+                <div class="container">
+                  <h4>{{sl.event_title}}</h4>
+                  <p>{{truncate(sl.event_long_desc,350)}}</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <!-- <div class="carousel-item position-relative active" >
             <div class="col-12 col-md-6 col-lg-7 float-left p-0 slider-left-wrap position-absolute">
               <img class="d-block w-100" src="./../../../../assets/images/sl01.jpg" alt="Third slide">
             </div>
@@ -50,7 +66,7 @@
                   condimentum velit</p>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

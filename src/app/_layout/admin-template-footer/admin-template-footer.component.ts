@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-template-footer.component.scss']
 })
 export class AdminTemplateFooterComponent implements OnInit {
-
+  todayYear: Date = new Date();
   constructor() { }
 
   ngOnInit() {

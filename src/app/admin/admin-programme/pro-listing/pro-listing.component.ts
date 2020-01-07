@@ -86,8 +86,14 @@ export class ProListingComponent implements OnInit, AfterViewInit, OnDestroy {
 	/**
 	 * delete
 	 */
-	public delete(program_id = '0') {
-		this.router.navigate(['/admin/programs/delete/' + program_id]);
+	public delete(program_id = 0) {
+		let confirmStatus: boolean = false;
+		if (program_id > 0) {
+			confirmStatus = confirm('Are you sure to delete this Programme?');
+		}
+		if (confirmStatus === true) {
+			this.router.navigate(['/admin/programs/delete/' + program_id]);
+		}
 	}
 
 	/**

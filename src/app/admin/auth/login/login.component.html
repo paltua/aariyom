@@ -5,6 +5,18 @@
                 <img src="assets/images/logo.png" />
             </a>
             <h1>{{title}}</h1>
+            <ng-container *ngIf="status != '' && msg != ''">
+                <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
+                    <div [innerHTML]="msg"></div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </ng-container>
+
+            <p *ngIf="loader">
+                <span class="spinner-border text-danger"></span> <span class="text-danger">Please wait..</span>
+            </p>
             <form [formGroup]="loginForm" (submit)="formSubmit()" role="form">
                 <div class="form-content">
                     <div class="form-group">

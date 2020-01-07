@@ -90,6 +90,7 @@ export class ListingComponent implements OnInit {
         { data: 'FU.fu_id', searchable: false, orderable: true },
         { data: 'image_path', searchable: false, orderable: false },
         { data: 'FU.fu_title', searchable: true, orderable: true },
+        { data: 'FU.fu_status', searchable: true, orderable: false },
         // { data: 'FU.event_end_date_time', searchable: true, orderable: true },
       ]
     };
@@ -98,8 +99,14 @@ export class ListingComponent implements OnInit {
 	/**
 	 * delete
 	 */
-  public delete(fu_id = '0') {
-    this.router.navigate(['/admin/functional-units/delete/' + fu_id]);
+  public delete(fu_id = 0) {
+    let confirmStatus: boolean = false;
+    if (fu_id > 0) {
+      confirmStatus = confirm('Are you sure to delete this Functional Unit?');
+    }
+    if (confirmStatus === true) {
+      this.router.navigate(['/admin/functional-units/delete/' + fu_id]);
+    }
   }
 
 }

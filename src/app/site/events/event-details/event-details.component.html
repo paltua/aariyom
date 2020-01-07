@@ -6,11 +6,27 @@
 </div>
 <div class="w-100 float-left events-wrap">
     <div class="container">
-        <div class="w-100 float-left wraper-inside-container mt-5 mb-5">
+        <app-in-page-loader *ngIf="loader"></app-in-page-loader>
+        <div [ngClass]="{'d-none':loader}" class="w-100 float-left wraper-inside-container mt-5 mb-5">
             <div class="col-lg-9 col-md-12 col-12 float-left events-left">
                 <div class="w-100 float-left img-event-sing">
                     <img src="{{image_path}}" alt="{{event_title}}" class="img-fluid w-100 img-height" alt="">
+
                 </div>
+                <div class="slider-funit w-100 float-left">
+                    <div class="w-100 float-left text-center owl-carousel owl-theme">
+                        <ng-container *ngFor="let imgs of imageList">
+                            <div class="item">
+                                <div class="inner-sl-funit w-100 float-left">
+                                    <div class="w-100 float-left img-sl-funit" (click)="changeImage(imgs.image_path)">
+                                        <img src="{{imgs.image_path}}" class="rounded" alt="{{imgs.image_path}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+
                 <div class="w-100 float-left even-main-contanet mt-5">
                     <h1>{{event_title}}</h1>
                     <div class="date-time-eve w-100 float-left mb-5">
