@@ -16,11 +16,15 @@
                 </div>
                 <div class="w-100 float-left our-mission">
                     <h3 class="col-lg-12 float-left">What Our Mission</h3>
-                    <div class="col-12 col-md-12 col-lg-6 float-left left-wmission" [innerHtml]="our_mission">
+                    <div class="col-12 col-md-12 float-left left-wmission"
+                        [ngClass]="{'col-lg-6':image,'col-lg-12':!image}" [innerHtml]="our_mission">
                     </div>
-                    <div class="col-12 col-md-12 col-lg-6 float-left right-wmission">
-                        <img src="./../../../assets/images/imgabt02.jpg" class="img-fluid" alt="">
-                    </div>
+                    <ng-container *ngIf="image">
+                        <div class="col-12 col-md-12 col-lg-6 float-left right-wmission">
+                            <img src="{{image}}" class="img-fluid" alt="">
+                        </div>
+                    </ng-container>
+
                 </div>
 
             </div>
