@@ -108,7 +108,7 @@ export class ProListingComponent implements OnInit, AfterViewInit, OnDestroy {
 			processing: true,
 			ajax: (dataTablesParameters: any, callback) => {
 				that.programSer.list(dataTablesParameters).subscribe(resp => {
-					that.listTables = resp.data.list;
+					this.listTables = resp.data.list;
 					this.listCount = resp.data.recordsFiltered;
 					callback({
 						recordsTotal: resp.data.recordsTotal,
