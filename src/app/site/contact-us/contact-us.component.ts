@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/_service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SiteService } from 'src/app/_service/site.service';

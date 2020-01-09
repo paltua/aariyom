@@ -96,4 +96,22 @@ export class SiteService {
     }));
   }
 
+  /**
+   * getUpcomingEvent
+   */
+  public getUpcomingEvent() {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/getUpcomingEvent').pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * getArchive
+   */
+  public getArchive() {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/getArchive').pipe(map(retData => {
+      return retData;
+    }));
+  }
+
 }

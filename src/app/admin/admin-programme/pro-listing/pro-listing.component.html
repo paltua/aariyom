@@ -30,24 +30,20 @@
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Title</th>
-                                <!-- <th>Descriptions</th> -->
                                 <th>Created By</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr *ngFor="let lst of listTables;let i= index;" [ngClass]="tableClass(i)">
+                            <tr *ngFor="let lst of listTables;let i= index;">
                                 <th scope="row">{{i + 1}}</th>
                                 <td class="w-15"><img src="{{lst.image_path}}" class="img-fluid img-thumbnail"
                                         alt="{{lst.program_title}}"></td>
                                 <td>{{lst.program_title}}</td>
-                                <!-- <td>{{lst.program_desc}}</td> -->
                                 <td>{{lst.user_name}}</td>
                                 <td><a routerLink="/admin/programs/edit/{{lst.program_id}}" class="btn btn-primary"><i
                                             class="fa fa-edit fa-lg"></i> Edit</a>
-                                    <!-- <a (click)="" class="btn btn-success"><i
-                                        class="fa fa-toggle-on"></i>{{lst.program_desc}}</a> -->
+
                                     <a href="javascript:void(0)" (click)="delete(lst.program_id)"
                                         class="btn btn-danger"><i class="fa fa-trash fa-lg"></i>Delete</a></td>
                             </tr>
