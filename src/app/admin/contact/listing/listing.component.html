@@ -36,7 +36,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let lst of listTables;let i= index;" [ngClass]="tableClass(i)">
+                            <tr *ngFor="let lst of listTables;let i= index;">
                                 <th scope="row">{{i + 1}}</th>
                                 <td class="w-15">{{lst.name}}</td>
                                 <td>{{lst.email}}</td>

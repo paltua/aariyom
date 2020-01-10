@@ -43,7 +43,7 @@ export class SettingAboutUsComponent implements OnInit {
     this.formData = new FormData();
     this.commonService.getSettings(this.page).subscribe(retData => {
       let data: any = retData.data;
-      console.log(data);
+      // console.log(data);
       this.previewUrl = data.image_path;
       this.settingsForm = this.fb.group({
         who_we_are: [data.who_we_are, Validators.required],
