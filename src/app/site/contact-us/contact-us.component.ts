@@ -1,7 +1,8 @@
-import { Component, AfterViewInit, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/_service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SiteService } from 'src/app/_service/site.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact-us',
@@ -11,13 +12,15 @@ import { SiteService } from 'src/app/_service/site.service';
 export class ContactUsComponent implements OnInit {
   email: String;
   mobile: String;
-  address: String;
+  address: string;
   contactForm: any;
   submitted = false;
   status: any = '';
   msg: any = '';
   loader: Boolean = true;
-  constructor(public commonSer: CommonService, private fb: FormBuilder, private siteSer: SiteService) { }
+  mapString: any;
+  constructor(public commonSer: CommonService, private fb: FormBuilder, private siteSer: SiteService,
+    public sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.contactForm = this.fb.group({
@@ -32,8 +35,18 @@ export class ContactUsComponent implements OnInit {
       this.email = data.email;
       this.mobile = data.mobile;
       this.address = data.address;
+      this.mapString = "https://www.google.com/maps/embed/v1/place?q=" + ('Aariyom Foundation, ' + this.address).split(' ').join('+') + "&key=AIzaSyC_9Bu_aS5H64hB0fsN2lKrUSUDfL_HdGQ";
+      // console.log(this.mapString);
       this.loader = false;
-    })
+    });
+
+  }
+
+  /**
+   * getMapUrl
+   */
+  public getMapUrl() {
+    return this.sanitizer.bypassSecurityTrustUrl(this.mapString);
   }
 
   get f(): any {
