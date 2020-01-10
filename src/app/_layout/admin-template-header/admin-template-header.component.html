@@ -8,17 +8,24 @@
     <div class="collapse navbar-collapse">
 
         <ul class="navbar-nav ml-auto">
-
-
             <li class="nav-item dropdown" ngbDropdown>
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-                    <i class="fa fa-user"></i> Admin <b class="caret"></b>
+                    <i class="fa fa-user"></i> Admin
+                    <!-- <b class="caret"></b> -->
+                </a>
+                <div class="">
+                    <a class="nav-link" [routerLink]="['/admin/auth/logout']" (click)="onLoggedout()">
+                        <i class="fa fa-fw fa-power-off"></i> Log Out
+                    </a>
+                </div>
+                <!-- <a class="nav-link" [routerLink]="['/admin/auth/logout']" (click)="onLoggedout()">
+                    <i class="fa fa-fw fa-power-off"></i> Log Out
                 </a>
                 <div class="dropdown-menu-right" ngbDropdownMenu>
                     <a class="dropdown-item" [routerLink]="['/admin/auth/logout']" (click)="onLoggedout()">
                         <i class="fa fa-fw fa-power-off"></i> Log Out
                     </a>
-                </div>
+                </div> -->
             </li>
         </ul>
     </div>
