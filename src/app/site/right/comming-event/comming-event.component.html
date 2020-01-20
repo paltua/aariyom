@@ -1,15 +1,8 @@
 <div class="w-100 float-left right-ev-lists">
     <h3>Upcoming Events</h3>
     <ng-container *ngFor="let ev of events">
-        <a class="w-100 float-left side-events mb-3" href="/events/details/{{ev.event_id}}">
+        <a class="w-100 float-left side-events mb-3" routerLink="/events/details/{{ev.event_id}}">
             {{ev.event_title}}
         </a>
     </ng-container>
-
-    <!-- <a routerLink="/events/details" class="w-100 float-left side-events mb-3">
-        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-    </a>
-    <a routerLink="/events/details" class="w-100 float-left side-events mb-3">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    </a> -->
 </div>
