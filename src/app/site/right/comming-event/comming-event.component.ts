@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SiteService } from 'src/app/_service/site.service';
 
 @Component({
   selector: 'app-comming-event',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comming-event.component.scss']
 })
 export class CommingEventComponent implements OnInit {
-
-  constructor() { }
+  events: any = [];
+  constructor(private siteSer: SiteService) { }
 
   ngOnInit() {
+    this.siteSer.getUpcomingEvent().subscribe(retData => {
+      // console.log(retData);
+      if (retData.status === 'success') {
+        let datas: any = retData.data;
+        this.events = datas.list;
+      }
+    })
   }
 
 }

@@ -51,10 +51,10 @@ export class EventDetailsComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		// console.log(this.dataId);
 		this.siteSer.getSingleEvent(this.dataId).subscribe(retData => {
 			this.data = retData.data;
 			this.imageList = this.data.images;
-			// console.log(this.imageList);
 			this.setVariableValue();
 			setTimeout(() => {
 				this.loader = false;
