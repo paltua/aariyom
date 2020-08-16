@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { SiteService } from 'src/app/_service/site.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -47,21 +47,24 @@ export class EventDetailsComponent implements OnInit {
 		private siteSer: SiteService,
 		private route: ActivatedRoute,
 	) {
-		this.dataId = (this.route.snapshot.paramMap.get('event_id') ? this.route.snapshot.paramMap.get('event_id') : 0);
+
 	}
 
-	ngOnInit() {
-		// console.log(this.dataId);
-		this.siteSer.getSingleEvent(this.dataId).subscribe(retData => {
-			this.data = retData.data;
-			this.imageList = this.data.images;
-			this.setVariableValue();
-			setTimeout(() => {
-				this.loader = false;
-				this.setCarousel();
-			}, 1500);
 
-		})
+	ngOnInit() {
+		this.route.params.subscribe(routeParams => {
+			this.dataId = routeParams.event_id;
+			this.siteSer.getSingleEvent(this.dataId).subscribe(retData => {
+				this.data = retData.data;
+				this.imageList = this.data.images;
+				this.setVariableValue();
+			})
+		});
+		setTimeout(() => {
+			this.loader = false;
+			this.setCarousel();
+		}, 2000);
+
 	}
 
 	/**
