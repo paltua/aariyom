@@ -5,6 +5,7 @@ import { ProgrammeService } from '../../../_service/programme.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiResponses, Programme } from './../../../_models';
 import { CommonService } from '../../../_service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 @Component({
@@ -29,6 +30,10 @@ export class ProAddEditComponent implements OnInit {
 	uploadedFilePath: string = null;
 	formData: any;
 	fuList: any;
+
+	public editor = ClassicEditor;
+	othersOthersDiv: boolean = false;
+
 	constructor(
 		private fb: FormBuilder,
 		private programmeSer: ProgrammeService,
@@ -42,6 +47,8 @@ export class ProAddEditComponent implements OnInit {
 		this.addEditForm = this.fb.group({
 			program_title: ['', Validators.required],
 			program_desc: ['', Validators.required],
+			program_about: [''],
+			program_objectives: [''],
 			program_status: ['ongoing'],
 			org_by: ['', Validators.required],
 			program_image: [this.fileData],
@@ -62,6 +69,8 @@ export class ProAddEditComponent implements OnInit {
 				this.addEditForm = this.fb.group({
 					program_title: [data[0].program_title, Validators.required],
 					program_desc: [data[0].program_desc, Validators.required],
+					program_about: [''],
+					program_objectives: [''],
 					program_status: [data[0].program_status],
 					org_by: [fuArr, Validators.required],
 					program_image: [this.fileData],
@@ -193,6 +202,18 @@ export class ProAddEditComponent implements OnInit {
 				resolve([]);
 			}
 		})
+	}
+
+	/**
+	 * onChangeCreateOthers
+	 */
+	public onChangeCreateOthers(newValue) {
+		if (this.addEditForm.value.org_by.filter(x => x == "0").length > 0) {
+			this.othersOthersDiv = true;
+		} else {
+			this.othersOthersDiv = false;
+		}
+
 	}
 
 }

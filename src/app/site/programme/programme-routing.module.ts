@@ -4,7 +4,8 @@ import { ProgrammeListingComponent } from './programme-listing/programme-listing
 
 
 const routes: Routes = [
-  { path: '', component: ProgrammeListingComponent }
+  { path: '', component: ProgrammeListingComponent },
+  { path: 'details/:programme_id', component: ProgrammeListingComponent }
 ];
 
 @NgModule({

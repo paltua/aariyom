@@ -26,15 +26,7 @@
                         <div *ngIf="f.fu_title.errors.required">{{pageTitle}} Title is required</div>
                     </div>
                 </div>
-                <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">{{pageTitle}} Description</label>
-                    <textarea formControlName="fu_desc" class="form-control" rows="4" id="validationCustom01"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.fu_desc.errors }"
-                        required></textarea>
-                    <div *ngIf="submitted && f.fu_desc.errors " class="invalid-feedback">
-                        <div *ngIf="f.fu_desc.errors.required">{{pageTitle}} Description is required</div>
-                    </div>
-                </div>
+
                 <div class="col-md-12 mb-3">
                     <div class="form-group">
                         <input formControlName="fu_image_name" type="file" (change)="fileProgress($event)"
@@ -54,10 +46,6 @@
                         {{uploadedFilePath}}
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                <h4 class="text-muted">{{pageTitle}} <small> Others Details</small></h4>
-                <hr>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Managed By</label>
                     <input type="text" formControlName="fu_managed_by" class="form-control" id="validationCustom01"
@@ -84,6 +72,27 @@
                         <label class="custom-control-label" for="customRadioInline2">Inactive</label>
                     </div>
 
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <h4 class="text-muted">{{pageTitle}} <small> Others Details</small></h4>
+                <hr>
+
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">{{pageTitle}} Description</label>
+                    <ckeditor [editor]="editor" formControlName="fu_desc"
+                        [ngClass]="{ 'is-invalid': submitted && f.fu_desc.errors }"> </ckeditor>
+                    <div *ngIf="submitted && f.fu_desc.errors " class="invalid-feedback">
+                        <div *ngIf="f.fu_desc.errors.required">{{pageTitle}} Description is required</div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">{{pageTitle}} About</label>
+                    <ckeditor [editor]="editor" formControlName="fu_about"> </ckeditor>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">{{pageTitle}} Objectives</label>
+                    <ckeditor [editor]="editor" formControlName="fu_objectives"> </ckeditor>
                 </div>
             </div>
         </div>

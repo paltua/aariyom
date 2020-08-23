@@ -7,6 +7,7 @@ import { CommonService } from 'src/app/_service';
 import { EventService } from './../../../_service/event.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FunctionalunitService } from 'src/app/_service/functionalunit.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-add-edit',
@@ -32,6 +33,7 @@ export class AddEditComponent implements OnInit {
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
   formData: any;
+  public editor = ClassicEditor;
   constructor(
     private fb: FormBuilder,
     private commonSer: CommonService,
@@ -62,6 +64,8 @@ export class AddEditComponent implements OnInit {
     this.addEditForm = this.fb.group({
       fu_title: ['', Validators.required],
       fu_desc: ['', Validators.required],
+      fu_about: [''],
+      fu_objectives: [''],
       fu_image_name: [this.fileData],
       fu_status: ['active'],
       fu_managed_by: [''],
@@ -84,6 +88,8 @@ export class AddEditComponent implements OnInit {
         this.addEditForm = this.fb.group({
           fu_title: [data[0].fu_title, Validators.required],
           fu_desc: [data[0].fu_desc, Validators.required],
+          fu_about: [''],
+          fu_objectives: [''],
           fu_image_name: [this.fileData],
           fu_status: [data[0].fu_status],
           fu_managed_by: [data[0].fu_managed_by],
