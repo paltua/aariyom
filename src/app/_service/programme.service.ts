@@ -75,4 +75,40 @@ export class ProgrammeService {
 			return retData;
 		}));
 	}
+
+	/**
+	 * upload
+	 */
+	public upload(postData = {}) {
+		return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/programme/image_upload/', postData).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
+	/**
+	 * image_list
+	 */
+	public image_list(program_id = '0') {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/programme/image_list/' + program_id).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
+	/**
+	 * updateDefaultImage
+	 */
+	public updateDefaultImage(program_id = 0, prog_img_id = 0) {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/programme/image_list_default/' + program_id + '/' + prog_img_id).pipe(map(retData => {
+			return retData;
+		}));
+	}
+
+	/**
+	 * deleteImage
+	 */
+	public deleteImage(program_id = 0, prog_img_id = 0) {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/programme/delete_image/' + program_id + '/' + prog_img_id).pipe(map(retData => {
+			return retData;
+		}));
+	}
 }

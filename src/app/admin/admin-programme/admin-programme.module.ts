@@ -10,13 +10,14 @@ import { MatInputModule, MatTableModule, MatToolbarModule } from '@angular/mater
 import { DataTablesModule } from 'angular-datatables';
 import { ProDeleteComponent } from './pro-delete/pro-delete.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProImageComponent } from './pro-image/pro-image.component';
 
 
 
 
 
 @NgModule({
-  declarations: [ProListingComponent, ProAddEditComponent, ProDeleteComponent],
+  declarations: [ProListingComponent, ProAddEditComponent, ProDeleteComponent, ProImageComponent],
   imports: [
     CommonModule,
     AdminProgrammeRoutingModule,

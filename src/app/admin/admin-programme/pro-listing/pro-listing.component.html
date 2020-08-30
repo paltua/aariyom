@@ -43,7 +43,8 @@
                                 <td>{{lst.user_name}}</td>
                                 <td><a routerLink="/admin/programs/edit/{{lst.program_id}}" class="btn btn-primary"><i
                                             class="fa fa-edit fa-lg"></i> Edit</a>
-
+                                    <a routerLink="/admin/programs/images/{{lst.program_id}}" class="btn btn-warning"><i
+                                            class="fa fa-picture-o fa-lg"></i>Images</a>
                                     <a href="javascript:void(0)" (click)="delete(lst.program_id)"
                                         class="btn btn-danger"><i class="fa fa-trash fa-lg"></i>Delete</a></td>
                             </tr>

@@ -51,8 +51,7 @@ export class ProAddEditComponent implements OnInit {
 			program_objectives: [''],
 			program_status: ['ongoing'],
 			org_by: ['', Validators.required],
-			program_image: [this.fileData],
-			old_program_image: [''],
+			org_by_custom_name: [''],
 			created_by: [1]
 		});
 		this.editId = (this.route.snapshot.paramMap.get('id') ? this.route.snapshot.paramMap.get('id') : 0);
@@ -60,21 +59,16 @@ export class ProAddEditComponent implements OnInit {
 		if (this.editId > 0) {
 			this.pageAction = 'Edit';
 			this.programmeSer.single(this.editId).subscribe(async retData => {
-				// this.programme = retData.data[0];
 				const data: any = retData.data;
-				if (data[0].program_image) {
-					this.previewUrl = data[0].image_path;
-				}
 				const fuArr = await this.setFuArr(retData.data);
 				this.addEditForm = this.fb.group({
 					program_title: [data[0].program_title, Validators.required],
 					program_desc: [data[0].program_desc, Validators.required],
-					program_about: [''],
-					program_objectives: [''],
+					program_about: [data[0].program_about],
+					program_objectives: [data[0].program_objectives],
 					program_status: [data[0].program_status],
 					org_by: [fuArr, Validators.required],
-					program_image: [this.fileData],
-					old_program_image: [data[0].program_image],
+					org_by_custom_name: [data[0].org_by_custom_name],
 					created_by: [1]
 				});
 			});
@@ -132,12 +126,13 @@ export class ProAddEditComponent implements OnInit {
 	public setFormData() {
 		this.formData.append('program_title', this.addEditForm.value.program_title);
 		this.formData.append('program_desc', this.addEditForm.value.program_desc);
-		this.formData.append('program_image', this.fileData);
-		this.formData.append('old_program_image', this.addEditForm.value.old_program_image);
+		this.formData.append('program_about', this.addEditForm.value.program_about);
+		this.formData.append('program_objectives', this.addEditForm.value.program_objectives);
 		this.formData.append('created_by', this.addEditForm.value.created_by);
 		this.formData.append('program_id', this.editId);
 		this.formData.append('org_by', this.addEditForm.value.org_by);
 		this.formData.append('program_status', this.addEditForm.value.program_status);
+		this.formData.append('org_by_custom_name', this.addEditForm.value.org_by_custom_name);
 	}
 
 
@@ -194,7 +189,12 @@ export class ProAddEditComponent implements OnInit {
 					if (elem.fu_id) {
 						return elem.fu_id.toString();
 					} else {
-						return elem.fu_id;
+						if (elem.fu_id === null) {
+							this.othersOthersDiv = true;
+							return "0";
+						} else {
+							return elem.fu_id;
+						}
 					}
 				});
 				resolve(proData);

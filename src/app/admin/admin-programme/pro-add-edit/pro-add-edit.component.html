@@ -25,26 +25,6 @@
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">Organized by</label>
-                    <select class="form-control" formControlName="org_by" id="org_by"
-                        (change)="onChangeCreateOthers($event.target.value)"
-                        [ngClass]="{ 'is-invalid': submitted && f.org_by.errors }" required multiple>
-                        <option value="">Select One</option>
-                        <option *ngFor="let cl of fuList" [value]="cl.fu_id" selected="selected">{{cl.fu_title}}
-                        </option>
-                        <option value="0">Others</option>
-                    </select>
-                    <div *ngIf="submitted && f.org_by.errors " class="invalid-feedback">
-                        <div *ngIf="f.org_by.errors.required">Organized by is required</div>
-                    </div>
-                </div>
-                <div class="col-md-12 mb-3" *ngIf="othersOthersDiv">
-                    <label for="validationCustom01">Others Organized by</label>
-                    <input type="text" formControlName="program_title" class="form-control" id="program_title"
-                        placeholder="" value="">
-                </div>
-
-                <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Status : </label>
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="customRadioInline1" formControlName="program_status"
@@ -63,6 +43,27 @@
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">Organized by</label>
+                    <select class="form-control" formControlName="org_by" id="org_by"
+                        (change)="onChangeCreateOthers($event.target.value)"
+                        [ngClass]="{ 'is-invalid': submitted && f.org_by.errors }" required multiple>
+                        <option value="">Select One</option>
+                        <option *ngFor="let cl of fuList" [value]="cl.fu_id" selected="selected">{{cl.fu_title}}
+                        </option>
+                        <option value="0">Others</option>
+                    </select>
+                    <div *ngIf="submitted && f.org_by.errors " class="invalid-feedback">
+                        <div *ngIf="f.org_by.errors.required">Organized by is required</div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3" *ngIf="othersOthersDiv">
+                    <label for="validationCustom01">Others Organized by</label>
+                    <input type="text" formControlName="org_by_custom_name" class="form-control" id="org_by_custom_name"
+                        placeholder="" value="">
+                </div>
+
+
+                <!-- <div class="col-md-12 mb-3">
                     <div class="form-group">
                         <input formControlName="program_image" type="file" (change)="fileProgress($event)"
                             [ngClass]="{ 'is-invalid': submitted && f.program_image.errors }" />
@@ -80,7 +81,7 @@
                     <div class="mb-3" *ngIf="uploadedFilePath">
                         {{uploadedFilePath}}
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="col-md-12 mb-3">
