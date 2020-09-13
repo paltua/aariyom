@@ -3,25 +3,24 @@
     <app-page-loader *ngIf="loader"></app-page-loader>
     <div class="w-100 float-left slider-inner">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
+        <!-- <ol class="carousel-indicators">
           <li *ngFor="let sl of list;let i=index;" data-target="#carouselExampleIndicators" data-slide-to="i"
             [ngClass]="{'active':i==0}"></li>
-          <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
-        </ol>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol> -->
         <div class="carousel-inner">
           <ng-container *ngFor="let sl of list;let i=index;">
             <div class="carousel-item position-relative " [ngClass]="{'active':i==0}">
-              <div class="col-12 col-md-6 col-lg-7 float-left p-0 slider-left-wrap position-absolute">
-                <img class="d-block w-100 lazyload" data-src="{{sl.image_path}}" alt="{{sl.event_title}}">
-              </div>
-              <div
-                class="col-12 col-md-6 col-lg-5 float-right p-0 content-slider position-relative d-flex align-items-center justify-content-center text-left">
-                <div class="container">
-                  <h4>{{sl.event_title}}</h4>
-                  <p>{{truncate(sl.event_long_desc,350)}}</p>
+              <a routerLink="/events/details/{{sl.event_id}}">
+                <div class="col-12 col-md-12 col-lg-12 float-left p-0 slider-left-wrap position-relative">
+                  <img class="d-block w-100 lazyload" data-src="{{sl.image_path}}" alt="{{sl.event_title}}">
                 </div>
-              </div>
+                <div class="col-12 col-md-12 col-lg-12 float-right content-slider text-left">
+                  <h4>{{sl.event_title}}</h4>
+                  <p>{{truncate(sl.event_short_desc,280)}}</p>
+                </div>
+              </a>
             </div>
           </ng-container>
           <!-- <div class="carousel-item position-relative active" >

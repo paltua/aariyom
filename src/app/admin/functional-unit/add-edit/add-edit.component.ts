@@ -63,6 +63,7 @@ export class AddEditComponent implements OnInit {
   public addForm() {
     this.addEditForm = this.fb.group({
       fu_title: ['', Validators.required],
+      fu_short_desc: ['', Validators.required],
       fu_desc: ['', Validators.required],
       fu_about: [''],
       fu_objectives: [''],
@@ -84,12 +85,13 @@ export class AddEditComponent implements OnInit {
       // console.log(retData);
       if (retData.status === 'success') {
         const data: any = retData.data;
-        this.previewUrl = data[0].image_path;
+        this.previewUrl = data[0].image_path_thumb;
         this.addEditForm = this.fb.group({
           fu_title: [data[0].fu_title, Validators.required],
+          fu_short_desc: [data[0].fu_short_desc, Validators.required],
           fu_desc: [data[0].fu_desc, Validators.required],
-          fu_about: [''],
-          fu_objectives: [''],
+          fu_about: [data[0].fu_about],
+          fu_objectives: [data[0].fu_objectives],
           fu_image_name: [this.fileData],
           fu_status: [data[0].fu_status],
           fu_managed_by: [data[0].fu_managed_by],
@@ -164,6 +166,9 @@ export class AddEditComponent implements OnInit {
    */
   public setFormData() {
     this.formData.append('fu_title', this.addEditForm.value.fu_title);
+    this.formData.append('fu_short_desc', this.addEditForm.value.fu_short_desc);
+    this.formData.append('fu_about', this.addEditForm.value.fu_about);
+    this.formData.append('fu_objectives', this.addEditForm.value.fu_objectives);
     this.formData.append('fu_desc', this.addEditForm.value.fu_desc);
     this.formData.append('fu_image_name', this.fileData);
     this.formData.append('fu_status', this.addEditForm.value.fu_status);

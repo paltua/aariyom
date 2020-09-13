@@ -1,6 +1,6 @@
 @import './../../../../variables.scss';
 .about-us-section{
-    padding: $pix50 $pix0 $pix0;
+    padding: $pix35 $pix0 $pix0;
 }
 .abt-img {
     border-radius: $pix15;
@@ -21,7 +21,6 @@
         overflow: hidden;
         img {
             width: 100%;
-            height: 185px;
         }
     }
     .cont-funit  {
@@ -35,9 +34,6 @@
         }
         p {
             font-size: $pix14;
-            min-height: 140px;
-            max-height: 140px;
-            overflow: hidden;
         }
     }
 }

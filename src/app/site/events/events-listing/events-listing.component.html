@@ -7,26 +7,26 @@
 <app-in-page-loader *ngIf="loader"></app-in-page-loader>
 <div class="w-100 float-left events-wrap">
     <div class="container">
-        <div class="w-100 float-left wraper-inside-container mt-5 mb-5">
+        <div class="w-100 float-left wraper-inside-container mt-2 mb-5">
             <div class="col-lg-9 col-md-12 col-12 float-left events-left">
                 <ng-container *ngFor="let list of eventList">
                     <a routerLink="/events/details/{{list.event_id}}"
                         class="wrap-list-events float-left w-100 mb-2 mt-2">
-                        <div class="event-img-list float-left"><img src="{{list.image_path}}" alt="">
+                        <div class="event-img-list float-left"><img src="{{list.image_path_thumb}}" alt="">
                         </div>
                         <div class="events-list-content float-left">
                             <h2>{{list.event_title}}</h2>
-                            <p>{{list.event_long_desc}}</p>
+                            <p>{{truncate(list.event_short_desc,200)}}</p>
                         </div>
                         <div class="event-held float-left text-center">
                             <div
                                 class="info-held w-100 text-center float-left d-flex justify-content-center align-items-center flex-column">
                                 <div class="w-100 float-left wrap-con-ev">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <span class="w-100 float-left text-center mb-4">
+                                    <span class="w-100 float-left text-center mb-2">
                                         <ng-container *ngIf="list.address != ''">{{list.address}},</ng-container>
                                         <ng-container *ngIf="list.pin != ''">{{list.pin}},</ng-container>
-                                        <ng-container *ngIf="list.c_name != ''">{{list.c_name}},</ng-container>
+                                        <ng-container *ngIf="list.c_name != ''">{{list.c_name}}</ng-container>
                                     </span>
                                 </div>
                                 <div class="w-100 float-left wrap-con-ev">
@@ -34,9 +34,6 @@
                                     <span class="w-100 float-left text-center">
                                         <!-- 30th Aug, 2019 -->
                                         {{list.event_start_date_time | date:'MMM dd, yyyy'}}
-                                    </span>
-                                    <span class="w-100 float-left text-center">
-                                        <!-- 5:30PM -->
                                         {{list.event_start_date_time | date:'hh:mmaaa'}}
                                     </span>
                                 </div>

@@ -7,7 +7,7 @@
 <div class="w-100 float-left events-wrap">
     <app-in-page-loader *ngIf="loader"></app-in-page-loader>
     <div class="container">
-        <div class="w-100 float-left wraper-inside-container mt-5 mb-5">
+        <div class="w-100 float-left wraper-inside-container mt-2 mb-5">
             <div class="col-lg-9 col-md-12 col-12 float-left events-left">
                 <!-- <a routerLink="/events/details" class="wrap-list-events float-left w-100 mb-2 mt-2"> -->
                 <ng-container *ngFor="let lt of list">
@@ -16,7 +16,7 @@
                         </div>
                         <div class="events-list-content float-left">
                             <h2>{{lt.program_title}}</h2>
-                            <p>{{lt.program_desc}}</p>
+                            <p>{{truncate(lt.program_short_desc,200)}}</p>
                         </div>
                     </div>
                 </ng-container>

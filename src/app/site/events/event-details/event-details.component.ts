@@ -90,25 +90,26 @@ export class EventDetailsComponent implements OnInit {
 	   * setCarousel
 	   */
 	public setCarousel() {
-		$('.owl-carousel').owlCarousel({
-			items: this.imageList.length,
-			margin: 10,
-			loop: false,
-			autoplay: false,
-			nav: true,
-			dots: false,
-			responsive: {
-				0: {
-					items: 2
-				},
-				600: {
-					items: 3
-				},
-				1000: {
-					items: 4
-				}
-			}
-		})
+		// $('.owl-carousel').owlCarousel({
+		// 	items: this.imageList.length,
+		// 	margin: 10,
+		// 	loop: true,
+		// 	autoplay: true,
+		// 	nav: true,
+		// 	dots: true,
+		// 	responsive: {
+		// 		0: {
+		// 			items: 2
+		// 		},
+		// 		600: {
+		// 			items: 3
+		// 		},
+		// 		1000: {
+		// 			items: 4
+		// 		}
+		// 	}
+		// })
+
 	}
 
 	/**

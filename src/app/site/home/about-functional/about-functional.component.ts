@@ -64,7 +64,11 @@ export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 	 * truncate
 	 */
 	public truncate(str = '', counter = 0) {
-		return this.siteSer.truncateStr(str, counter);
+		if (str != '') {
+			return this.siteSer.truncateStr(str, counter);
+		} else {
+			return '';
+		}
 	}
 
 	ngAfterViewInit() {

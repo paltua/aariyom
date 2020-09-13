@@ -34,7 +34,11 @@ export class ActivitiesHomeComponent implements OnInit {
    * truncate
    */
   public truncate(str = '', counter = 0) {
-    return this.siteSer.truncateStr(str, counter);
+    if (str != '' && str != null) {
+      return this.siteSer.truncateStr(str, counter);
+    } else {
+      return '';
+    }
   }
 
 

@@ -3,6 +3,7 @@ import { routerTransition } from '../../../router.animations';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { EventService } from './../../../_service/event.service';
 import { FormBuilder } from '@angular/forms';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
 	selector: 'app-image',
@@ -75,6 +76,7 @@ export class ImageComponent implements OnInit {
 			this.msg = 'Please select a image.';
 		} else {
 			this.eventSer.upload(formData).subscribe(retData => {
+				this.uploadedFilePath = '';
 				this.status = retData.status;
 				this.msg = retData.message;
 				this.ngOnInit();

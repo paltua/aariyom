@@ -5,7 +5,7 @@
         <ng-container *ngFor="let lt of list">
             <a routerLink="/events/details/{{lt.event_id}}">
                 <div class="w-100 float-left ev-lists-indivisual mb-3">
-                    <div class="img-i-ev float-left"><img class="lazyload" data-src="{{lt.image_path}}"
+                    <div class="img-i-ev float-left"><img class="lazyload" data-src="{{lt.image_path_thumb}}"
                             alt="{{lt.event_title}}"></div>
                     <div class="float-left cont-upcoming">
                         <h4>{{lt.event_title}}</h4>
@@ -13,7 +13,7 @@
                             {{lt.event_start_date_time | date:'MMM dd, yyyy'}}</span>
                         <span
                             class="text-uppercase w-100 float-left">{{getCityStateCountryStr(lt.city_name,lt.r_name,lt.c_name)}}</span>
-                        <p class="w-100 float-left">{{truncate(lt.event_long_desc,150)}}</p>
+                        <!-- <p class="w-100 float-left">{{truncate(lt.event_short_desc,150)}}</p> -->
                     </div>
                 </div>
             </a>

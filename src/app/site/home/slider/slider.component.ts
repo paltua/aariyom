@@ -20,6 +20,7 @@ export class SliderComponent implements OnInit {
       this.list = retData.data;
       this.loader = false;
       // console.log(this.list);
+
     })
   }
 
@@ -27,7 +28,11 @@ export class SliderComponent implements OnInit {
    * truncate
    */
   public truncate(str = '', counter = 0) {
-    return this.siteSer.truncateStr(str, counter);
+    if (str != '') {
+      return this.siteSer.truncateStr(str, counter);
+    } else {
+      return '';
+    }
   }
 
 }

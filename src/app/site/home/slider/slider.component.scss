@@ -1,9 +1,11 @@
 @import './../../../../variables.scss';  
 .content-slider {
-    background-image: linear-gradient(to right bottom, #338cff, #2887f4, #1d82e9, #107dde, #0078d3);
-    top: 0;
+    background: rgba(0,97,165,0.8);
     text-align: center;
-    min-height: 450px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 15px;
     h1 {
         color: $white;
         letter-spacing: $pix4;
@@ -17,12 +19,12 @@
     font-style: italic;
     font-weight: bold;
     letter-spacing: 1px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
     p {
         color: $white;
-        padding: $pix0 20% 0 0;
         font-weight: $weight300;
+        margin: 0
     }
     .readmore-slider {
         color: $white;
@@ -63,15 +65,10 @@
 .carousel-indicators {
     bottom: $pix50;
 }
-.carousel-item {
-    max-height: 450px;
-    overflow: hidden;
-}
 .slider-left-wrap {
     height: 100%;
     overflow: hidden;
     img {
-        height: 100%;
         width: auto !important;
         min-width: 100%;
     }
@@ -145,6 +142,7 @@
     .content-slider {
         min-height: inherit;
         padding: 15px !important;
+        position: relative;
         h4 {
             font-size: 17px;
         }
@@ -159,12 +157,12 @@
         position: relative !important;
         img {
             width: 100% !important;
-            height: 314px;
         }
     }
     .content-slider {
         min-height: inherit;
         padding: 15px !important;
+        position: relative;
         h4 {
             font-size: 17px;
         }
@@ -179,12 +177,12 @@
         position: relative !important;
         img {
             width: 100% !important;
-            height: 314px;
         }
     }
     .content-slider {
         min-height: inherit;
         padding: 15px !important;
+        position: relative;
         h4 {
             font-size: 17px;
         }
@@ -199,12 +197,12 @@
         position: relative !important;
         img {
             width: 100% !important;
-            height: 314px;
         }
     }
     .content-slider {
         min-height: inherit;
         padding: 15px !important;
+        position: relative;
         h4 {
             font-size: 17px;
         }
@@ -219,12 +217,12 @@
         position: relative !important;
         img {
             width: 100% !important;
-            height: 300px;
         }
     }
     .content-slider {
         min-height: inherit;
         padding: 15px !important;
+        position: relative;
         h4 {
             font-size: 17px;
         }

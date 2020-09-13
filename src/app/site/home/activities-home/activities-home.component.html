@@ -3,14 +3,16 @@
 		<h2 class="widget-title w-100">Our <span>Programs</span></h2>
 		<app-page-loader *ngIf="loader"></app-page-loader>
 		<ng-container *ngFor="let lt of list">
-			<div class="w-100 float-left ev-lists-indivisual mb-3">
-				<div class="img-i-ev float-left"><img class="lazyload" data-src="{{lt.image_path}}"
-						alt="{{lt.program_title}}"></div>
-				<div class="float-left cont-upcoming">
-					<h4>{{lt.program_title}}</h4>
-					<p class="w-100 float-left">{{truncate(lt.program_desc,250)}}</p>
+			<a routerLink="/programme/details/{{lt.program_id}}">
+				<div class="w-100 float-left ev-lists-indivisual mb-3">
+					<div class="img-i-ev float-left"><img class="lazyload" data-src="{{lt.image_path_thumb}}"
+							alt="{{lt.program_title}}"></div>
+					<div class="float-left cont-upcoming">
+						<h4>{{lt.program_title}}</h4>
+						<p class="w-100 float-left">{{truncate(lt.program_short_desc,120)}}</p>
+					</div>
 				</div>
-			</div>
+			</a>
 		</ng-container>
 		<!-- <div class="w-100 float-left ev-lists-indivisual mb-3">
 			<div class="img-i-ev float-left"><img src="./../../../../assets/images/img04.jpg" alt=""></div>

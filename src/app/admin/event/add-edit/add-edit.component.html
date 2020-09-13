@@ -134,7 +134,7 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Address(Street/Road/House No)</label>
-                    <textarea formControlName="address" class="form-control" rows="4" id="validationCustom01"
+                    <textarea formControlName="address" class="form-control" rows="3" id="validationCustom01"
                         placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
                         required></textarea>
                     <div *ngIf="submitted && f.address.errors " class="invalid-feedback">
@@ -161,8 +161,8 @@
                 <hr>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">{{pageTitle}} Short Desc</label>
-                    <textarea cols="90" formControlName="event_short_desc"></textarea>
-                    <!-- <ckeditor [editor]="editor" formControlName="event_short_desc"> </ckeditor> -->
+                    <textarea class="form-control" rows="3" id="validationCustom01"
+                        formControlName="event_short_desc"></textarea>
                     <div *ngIf="submitted && f.event_short_desc.errors " class="invalid-feedback">
                         <div *ngIf="f.event_short_desc.errors.required">{{pageTitle}} Short Desc is required</div>
                     </div>

@@ -52,6 +52,7 @@ export class ProAddEditComponent implements OnInit {
 			program_status: ['ongoing'],
 			org_by: ['', Validators.required],
 			org_by_custom_name: [''],
+			program_short_desc: ['', Validators.required],
 			created_by: [1]
 		});
 		this.editId = (this.route.snapshot.paramMap.get('id') ? this.route.snapshot.paramMap.get('id') : 0);
@@ -69,6 +70,7 @@ export class ProAddEditComponent implements OnInit {
 					program_status: [data[0].program_status],
 					org_by: [fuArr, Validators.required],
 					org_by_custom_name: [data[0].org_by_custom_name],
+					program_short_desc: [data[0].program_short_desc, Validators.required],
 					created_by: [1]
 				});
 			});
@@ -133,6 +135,7 @@ export class ProAddEditComponent implements OnInit {
 		this.formData.append('org_by', this.addEditForm.value.org_by);
 		this.formData.append('program_status', this.addEditForm.value.program_status);
 		this.formData.append('org_by_custom_name', this.addEditForm.value.org_by_custom_name);
+		this.formData.append('program_short_desc', this.addEditForm.value.program_short_desc);
 	}
 
 

@@ -175,7 +175,25 @@
     right: -$pix25;
     outline: none !important;
 }
-
+.slider-funit {
+    ::ng-deep .owl-nav {
+        position: absolute;
+        width: 100%;
+        top: 49%;
+        left: 0;
+        ::ng-deep .owl-prev {
+            left: -12px;
+            position: relative;
+            font-size: 19px;
+        }
+        ::ng-deep .owl-next {
+            right: -11px;
+            position: relative;
+            float: right;
+            font-size: 19px;
+        }
+    }
+}
 @media (min-width:1200px) and (max-width:1380px) {
 }
 @media (min-width:1024px) and (max-width:1199px) {

@@ -61,7 +61,14 @@
                     <input type="text" formControlName="org_by_custom_name" class="form-control" id="org_by_custom_name"
                         placeholder="" value="">
                 </div>
-
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">{{pageTitle}} Short Desc</label>
+                    <textarea class="form-control" rows="3" id="validationCustom01"
+                        formControlName="program_short_desc"></textarea>
+                    <div *ngIf="submitted && f.program_short_desc.errors " class="invalid-feedback">
+                        <div *ngIf="f.program_short_desc.errors.required">{{pageTitle}} Short Desc is required</div>
+                    </div>
+                </div>
 
                 <!-- <div class="col-md-12 mb-3">
                     <div class="form-group">

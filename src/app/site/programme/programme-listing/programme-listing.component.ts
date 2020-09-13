@@ -22,4 +22,15 @@ export class ProgrammeListingComponent implements OnInit {
     });
   }
 
+  /**
+ * truncate
+ */
+  public truncate(str = '', counter = 0) {
+    if (str != '' && str != null) {
+      return this.siteSer.truncateStr(str, counter);
+    } else {
+      return '';
+    }
+  }
+
 }

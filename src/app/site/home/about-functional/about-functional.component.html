@@ -20,17 +20,20 @@
                     <app-page-loader *ngIf="loader"></app-page-loader>
                     <div class="owl-carousel owl-theme">
                         <ng-container *ngFor="let lt of list">
-                            <div class="item">
-                                <div class="inner-sl-funit w-100 float-left">
-                                    <div class="w-100 float-left img-sl-funit">
-                                        <img class="lazyload" data-src="{{lt.image_path}}" alt="{{lt.fu_title}}" />
-                                    </div>
-                                    <div class="cont-funit w-100 float-left">
-                                        <h4>{{lt.fu_title}}</h4>
-                                        <p>{{ truncate(lt.fu_desc,150)}}</p>
+                            <a routerLink="/functional-unit/details/{{lt.fu_id}}">
+                                <div class="item">
+                                    <div class="inner-sl-funit w-100 float-left">
+                                        <div class="w-100 float-left img-sl-funit">
+                                            <img class="lazyload" data-src="{{lt.image_path_thumb}}"
+                                                alt="{{lt.fu_title}}" />
+                                        </div>
+                                        <div class="cont-funit w-100 float-left">
+                                            <h4>{{lt.fu_title}}</h4>
+                                            <p>{{ truncate(lt.fu_short_desc,150)}}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </ng-container>
                     </div>
                 </div>

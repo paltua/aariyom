@@ -73,11 +73,19 @@
                     </div>
 
                 </div>
+
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                 <h4 class="text-muted">{{pageTitle}} <small> Others Details</small></h4>
                 <hr>
-
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">{{pageTitle}} Short Desc</label>
+                    <textarea class="form-control" rows="3" id="validationCustom01"
+                        formControlName="fu_short_desc"></textarea>
+                    <div *ngIf="submitted && f.fu_short_desc.errors " class="invalid-feedback">
+                        <div *ngIf="f.fu_short_desc.errors.required">{{pageTitle}} Short Desc is required</div>
+                    </div>
+                </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">{{pageTitle}} Description</label>
                     <ckeditor [editor]="editor" formControlName="fu_desc"

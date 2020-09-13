@@ -1,7 +1,6 @@
 @import './../../../../variables.scss';
 .img-i-ev {
-    width: 110px;
-    height: 110px;
+    width: 140px;
     border-radius: $pix5;
     float: left;
     overflow: hidden;
@@ -10,7 +9,7 @@
     }
 }
 .cont-upcoming {
-    width: calc(100% - 110px);
+    width: calc(100% - 140px);
     padding-left: $pix20;
     h4 {
         font-weight: $weight700;
