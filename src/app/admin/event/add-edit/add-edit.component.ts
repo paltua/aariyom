@@ -82,14 +82,15 @@ export class AddEditComponent implements OnInit {
 			city_id: [''],
 			address: ['', Validators.required],
 			pin: ['', Validators.required],
+			event_youtube_url: [''],
 			event_created_by: [1],
 			event_id: [0],
+			event_short_desc: ['', Validators.required],
 		});
 	}
 
 	public editForm() {
 		this.eventSer.getSingle(this.eventId).subscribe(async retData => {
-			// console.log(retData);
 			if (retData.status === 'success') {
 				const data: any = retData.data;
 				this.getStateList(data[0].country_id);
@@ -112,8 +113,10 @@ export class AddEditComponent implements OnInit {
 					city_id: [data[0].city_id],
 					address: [data[0].address, Validators.required],
 					pin: [data[0].pin, Validators.required],
+					event_youtube_url: [data[0].event_youtube_url],
 					event_created_by: [1],
 					event_id: [this.eventId],
+					event_short_desc: [data[0].event_short_desc, Validators.required],
 				});
 			}
 		})
@@ -124,8 +127,12 @@ export class AddEditComponent implements OnInit {
 	 */
 	public setProgramArr(retData = []) {
 		return new Promise((resolve, reject) => {
-			const proData = retData.map((elem) => { return elem.program_id.toString(); });
-			resolve(proData);
+			if (retData.length > 0) {
+				const proData = retData.map((elem) => { if (elem.program_id != '') { return elem.program_id.toString(); } });
+				resolve(proData);
+			} else {
+				resolve([]);
+			}
 		})
 	}
 
@@ -175,7 +182,7 @@ export class AddEditComponent implements OnInit {
 	public formSave() {
 		this.submitted = true;
 		// console.log(this.addEditForm.value);
-		if (!this.addEditForm.invalid) {
+		if (this.addEditForm.valid) {
 			if (this.eventId > 0) {
 				this.eventSer.update(this.addEditForm.value).subscribe(retData => {
 					if (retData.status === 'success') {
@@ -201,6 +208,9 @@ export class AddEditComponent implements OnInit {
 					}
 				})
 			}
+		} else {
+			this.status = 'danger';
+			this.msg = 'Please fill the mandatory fields as below.';
 		}
 	}
 

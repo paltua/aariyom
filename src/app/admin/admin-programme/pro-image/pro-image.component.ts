@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { programmeService } from './../../../_service/event.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProgrammeService } from 'src/app/_service/programme.service';
 

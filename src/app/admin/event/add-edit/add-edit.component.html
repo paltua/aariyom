@@ -27,15 +27,6 @@
                         <div *ngIf="f.event_title.errors.required">{{pageTitle}} Title is required</div>
                     </div>
                 </div>
-
-                <!-- <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">Invite People</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Select Country"
-                        value="" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div> -->
                 <div class="col-md-12 mb-3">
                     <label for="validationCustomPrograms">Programs</label>
                     <select class="form-control" formControlName="programs" id="programs"
@@ -68,11 +59,9 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col">
                             <label for="validationCustom01">{{pageTitle}} End Date</label>
-
                             <div class="input-group datepicker-input">
                                 <input formControlName="event_end_date" class="form-control" placeholder="yyyy-mm-dd"
                                     ngbDatepicker #d="ngbDatepicker"
@@ -120,7 +109,6 @@
                         <option value="">Select One</option>
                         <option *ngFor="let cl of countryList" [value]="cl.id">{{cl.name}}</option>
                     </select>
-
                     <div *ngIf="submitted && f.country_id.errors " class="invalid-feedback">
                         <div *ngIf="f.country_id.errors.required">Country is required</div>
                     </div>
@@ -146,7 +134,7 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Address(Street/Road/House No)</label>
-                    <textarea formControlName="address" class="form-control" rows="3" id="validationCustom01"
+                    <textarea formControlName="address" class="form-control" rows="4" id="validationCustom01"
                         placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
                         required></textarea>
                     <div *ngIf="submitted && f.address.errors " class="invalid-feedback">
@@ -161,34 +149,41 @@
                         <div *ngIf="f.pin.errors.required">Pin is required</div>
                     </div>
                 </div>
+                <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">Youtube Url</label>
+                    <input type="text" formControlName="event_youtube_url" class="form-control" id="validationCustom01"
+                        placeholder="" value="">
+
+                </div>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                 <h4 class="text-muted">{{pageTitle}} <small>Others</small></h4>
                 <hr>
                 <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">{{pageTitle}} Short Desc</label>
+                    <textarea cols="90" formControlName="event_short_desc"></textarea>
+                    <!-- <ckeditor [editor]="editor" formControlName="event_short_desc"> </ckeditor> -->
+                    <div *ngIf="submitted && f.event_short_desc.errors " class="invalid-feedback">
+                        <div *ngIf="f.event_short_desc.errors.required">{{pageTitle}} Short Desc is required</div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3">
                     <label for="validationCustom01">{{pageTitle}} About</label>
-                    <textarea formControlName="event_about" class="form-control" rows="4" id="validationCustom01"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_about.errors }"
-                        required></textarea>
+                    <ckeditor [editor]="editor" formControlName="event_about"> </ckeditor>
                     <div *ngIf="submitted && f.event_about.errors " class="invalid-feedback">
                         <div *ngIf="f.event_about.errors.required">{{pageTitle}} About is required</div>
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">{{pageTitle}} Objectives</label>
-                    <!-- <ckeditor formControlName="event_long_desc" [editor]="editor" [data]="editorData" data=""></ckeditor> -->
-                    <textarea formControlName="event_objectives" class="form-control" rows="4" id="validationCustom01"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_objectives.errors }"
-                        required></textarea>
+                    <ckeditor [editor]="editor" formControlName="event_objectives"> </ckeditor>
                     <div *ngIf="submitted && f.event_objectives.errors " class="invalid-feedback">
                         <div *ngIf="f.event_objectives.errors.required">{{pageTitle}} Objectives is required</div>
                     </div>
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">{{pageTitle}} Details</label>
-                    <textarea formControlName="event_long_desc" class="form-control" rows="4" id="validationCustom01"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.event_long_desc.errors }"
-                        required></textarea>
+                    <ckeditor [editor]="editor" formControlName="event_long_desc"> </ckeditor>
                     <div *ngIf="submitted && f.event_long_desc.errors " class="invalid-feedback">
                         <div *ngIf="f.event_long_desc.errors.required">{{pageTitle}} Details is required</div>
                     </div>
