@@ -77,21 +77,15 @@
                     </div>
                     <div *ngIf="event_long_desc != ''" class="w-100 float-left our-mission">
                         <h3 class="w-100 float-left">Description</h3>
-                        <div class="w-100 float-left left-wmission">
-                            <p>{{event_long_desc}}</p>
-                        </div>
+                        <div class="w-100 float-left left-wmission" [innerHtml]="event_long_desc"></div>
                     </div>
                     <div *ngIf="event_about != ''" class="w-100 float-left our-mission">
                         <h3 class="w-100 float-left">About</h3>
-                        <div class="w-100 float-left left-wmission">
-                            <p>{{event_about}}</p>
-                        </div>
+                        <div class="w-100 float-left left-wmission" [innerHtml]="event_about"></div>
                     </div>
                     <div *ngIf="event_objectives != ''" class="w-100 float-left our-mission">
                         <h3 class="w-100 float-left">Objectives</h3>
-                        <div class="w-100 float-left left-wmission">
-                            <p>{{event_objectives}}</p>
-                        </div>
+                        <div class="w-100 float-left left-wmission" [innerHtml]="event_objectives"></div>
                     </div>
                 </div>
 

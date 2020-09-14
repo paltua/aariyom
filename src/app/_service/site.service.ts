@@ -114,4 +114,22 @@ export class SiteService {
     }));
   }
 
+  /**
+   * getSingleProgrammeDetails
+   */
+  public getSingleProgrammeDetails(programe_id = 0) {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_programme_details/' + programe_id).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * getSingleFunctionalUnitDetails
+   */
+  public getSingleFunctionalUnitDetails(fu_id = 0) {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_fu_details/' + fu_id).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
 }

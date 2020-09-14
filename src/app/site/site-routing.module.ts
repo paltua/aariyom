@@ -7,12 +7,12 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'events', loadChildren: './events/events.module#EventsModule' },
   { path: 'functional-unit', loadChildren: () => import('./fu/fu.module').then(m => m.FuModule) },
   { path: 'programme', loadChildren: () => import('./programme/programme.module').then(m => m.ProgrammeModule) },
-  { path: 'event-details', loadChildren: './events/events.module#EventsModule' },
 ];
 
 @NgModule({

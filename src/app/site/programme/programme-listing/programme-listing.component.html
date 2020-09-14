@@ -8,17 +8,19 @@
     <app-in-page-loader *ngIf="loader"></app-in-page-loader>
     <div class="container">
         <div class="w-100 float-left wraper-inside-container mt-2 mb-5">
-            <div class="col-lg-9 col-md-12 col-12 float-left events-left">
+            <div class="col-lg-9 col-md-12 col-12 float-right events-left">
                 <!-- <a routerLink="/events/details" class="wrap-list-events float-left w-100 mb-2 mt-2"> -->
                 <ng-container *ngFor="let lt of list">
-                    <div class="wrap-list-events float-left w-100 mb-2 mt-2">
-                        <div class="event-img-list float-left"><img src="{{lt.image_path}}" alt="">
+                    <a routerLink="/programme/details/{{lt.program_id}}">
+                        <div class="wrap-list-events float-left w-100 mb-2 mt-2">
+                            <div class="event-img-list float-left"><img src="{{lt.image_path}}" alt="">
+                            </div>
+                            <div class="events-list-content float-left">
+                                <h2>{{lt.program_title}}</h2>
+                                <p>{{truncate(lt.program_short_desc,250)}}</p>
+                            </div>
                         </div>
-                        <div class="events-list-content float-left">
-                            <h2>{{lt.program_title}}</h2>
-                            <p>{{truncate(lt.program_short_desc,200)}}</p>
-                        </div>
-                    </div>
+                    </a>
                 </ng-container>
                 <!-- </a> -->
             </div>

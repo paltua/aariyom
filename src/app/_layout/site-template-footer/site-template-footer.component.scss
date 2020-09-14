@@ -1,10 +1,10 @@
 @import './../../../variables.scss';
 .sitefooter {
     background: #f2f2f2;
-    padding: $pix50 $pix0;
+    padding: $pix10 $pix0;
 }
 .links-footer {
-    margin-top: $pix15;
+    margin-top: $pix10;
     ul {
         margin: $pix0;
         padding: $pix0;
@@ -41,7 +41,7 @@
 span.copy {
     font-size: $pix12;
     color: $gray1;
-    margin-top: $pix15;
+    margin-top: $pix10;
 }
 
 

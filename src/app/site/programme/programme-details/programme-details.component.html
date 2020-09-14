@@ -1,1 +1,89 @@
-<p>programme-details works!</p>
+<div class="w-100 float-left img-page-banner position-relative">
+    <div
+        class="col-12 col-md-12 col-lg-12 col-xl-12 float-left d-flex justify-content-center align-items-center title-area-all position-absolute">
+        <h1 class="text-uppercase">Programme</h1>
+    </div>
+</div>
+<div class="w-100 float-left events-wrap">
+    <div class="container">
+        <app-in-page-loader *ngIf="loader"></app-in-page-loader>
+        <div [ngClass]="{'d-none':loader}" class="w-100 float-left wraper-inside-container mt-3 mb-5">
+            <div class="col-lg-9 col-md-12 col-12 float-left events-left">
+                <div class="w-100 float-left slider-inner">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <ng-container *ngFor="let sl of imageList;let i=index;">
+                                <div class="carousel-item position-relative " [ngClass]="{'active':i==0}">
+                                    <img src="{{sl.image_path}}" alt="{{program_title}}" class="img-fluid">
+                                </div>
+                            </ng-container>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- <div class="slider-funit w-100 float-left">/</div> -->
+                <ng-container *ngIf="masterDetails !== 'undefined'">
+                    <div class="w-100 float-left even-main-contanet mt-3">
+                        <h1 *ngIf="program_title != ''">{{program_title}}</h1>
+                        <!-- <div class="date-time-eve w-100 float-left mb-3">
+                            <span class="float-left mr-5">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <ng-container *ngIf="address != ''">{{address}},
+                                </ng-container>
+                                <ng-container *ngIf="city_name != ''">{{city_name}},
+                                </ng-container>
+                                <ng-container *ngIf="r_name != ''">{{r_name}},
+                                </ng-container>
+                                <ng-container *ngIf="c_name != ''">{{c_name}},
+                                </ng-container>
+                                <ng-container *ngIf="pin != ''">{{pin}}
+                                </ng-container>
+                            </span>
+                        </div> -->
+                        <div *ngIf="data.details.length > 0 || org_by_custom_name != ''"
+                            class="w-100 float-left our-mission">
+                            <h3 class="w-100 float-left">Functional Unit</h3>
+                            <div class="w-100 float-left left-wmission">
+                                <ng-container *ngFor="let row of data.details;let i=index;">
+                                    <a routerLink="/functional-unit/details/{{row.fu_id}}">
+                                        <span class="float-left mr-5" *ngIf="row.fu_title">{{row.fu_title}}</span>
+                                    </a>
+                                </ng-container>
+
+                                <span class="float-left mr-5" *ngIf="org_by_custom_name">{{org_by_custom_name}}</span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="program_desc != ''" class="w-100 float-left our-mission">
+                            <h3 class="w-100 float-left">Description</h3>
+                            <div class="w-100 float-left left-wmission" [innerHtml]="program_desc">
+                            </div>
+                        </div>
+                        <div *ngIf="program_about != ''" class="w-100 float-left our-mission">
+                            <h3 class="w-100 float-left">About</h3>
+                            <div class="w-100 float-left left-wmission" [innerHtml]="program_about"></div>
+                        </div>
+                        <div *ngIf="program_objectives != ''" class="w-100 float-left our-mission">
+                            <h3 class="w-100 float-left">Objectives</h3>
+                            <div class="w-100 float-left left-wmission" [innerHtml]="program_objectives">
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="col-lg-3 col-md-12 col-12 float-left events-right mt-3">
+                <app-comming-event></app-comming-event>
+                <app-archive-event></app-archive-event>
+            </div>
+        </div>
+    </div>
+</div>
