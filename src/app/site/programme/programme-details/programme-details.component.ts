@@ -20,6 +20,7 @@ export class ProgrammeDetailsComponent implements OnInit {
   program_objectives: string = '';
   program_title: string = '';
   org_by_custom_name: string = '';
+  fu_details: any;
   constructor(
     private siteSer: SiteService,
     private route: ActivatedRoute,
@@ -36,9 +37,9 @@ export class ProgrammeDetailsComponent implements OnInit {
         this.program_about = this.masterDetails.program_about;
         this.program_desc = this.masterDetails.program_desc;
         this.program_objectives = this.masterDetails.program_objectives;
+        this.fu_details = this.data.details;
         this.org_by_custom_name = this.masterDetails.org_by_custom_name;
         this.imageList = this.data.images;
-        console.log(this.data);
       })
     });
   }

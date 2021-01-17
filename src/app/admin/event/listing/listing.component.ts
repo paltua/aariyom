@@ -111,4 +111,19 @@ export class ListingComponent implements OnInit {
     }
   }
 
+
+
+  /**
+   * hideEditButton
+   */
+  public hideEditButton(date_time = new Date()) {
+    let nowDateTime = new Date();
+    let eventEndDate = new Date(date_time);
+    if (eventEndDate > nowDateTime) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

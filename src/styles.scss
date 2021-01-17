@@ -6,7 +6,9 @@ body {
     font-family: 'Roboto', sans-serif !important;
     font-size: $pix13;
     color: $black;
-    background: $white;
+    background: $white url(./assets/images/ar-bg.jpg) no-repeat;
+    background-position: top center;
+    background-size: cover;
     padding: $pix0;
     margin: $pix0;
 }
@@ -35,7 +37,7 @@ p {
     }
 }
 .btn-2 {
-    padding: $pix15 $pix30;
+    padding: 9px 16px;
     color: $white;
     border-radius: $pix4;
     background: $blue;
@@ -49,7 +51,7 @@ p {
     }
 }
 .btn-3 {
-    padding: $pix15 $pix30;
+    padding: 9px 16px;
     color: $white;
     border-radius: $pix4;
     background: $orange;
@@ -61,6 +63,13 @@ p {
         background: $black;
         color: $white;
     }
+}
+.completed-event{
+    color: $black;
+    display: block;
+    margin: 3px 0;
+    margin-bottom: 10px;
+
 }
 @media screen and (max-width: 992px) {
     .push-right {

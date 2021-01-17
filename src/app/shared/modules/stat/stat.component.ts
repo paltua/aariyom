@@ -26,7 +26,6 @@ export class StatComponent implements OnInit {
    * goToPage
    */
   public goToPage() {
-    console.log(this.url);
     this.router.navigate([this.url]);
   }
 

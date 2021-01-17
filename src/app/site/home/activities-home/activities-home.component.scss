@@ -19,12 +19,12 @@
     }
     p {
         font-size: $pix13;
-        color: $gray2
+        color:$black
     }
 }
 .widget-title {
     display: inline-block;
-    border-bottom: $pix3 solid #ccc;
+    border-bottom: $pix3 solid #fff;
     width: auto !important;
     padding-bottom: $pix12;
     color: $blue;

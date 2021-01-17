@@ -12,19 +12,9 @@
     }
 }
 .slider-funit {
-    ::ng-deep .owl-stage {
-        display: flex;
-        align-items: stretch;
-    }
-    a {
-        height: 100%;
-        float: left;
-        width:100%;
-    }
     .item {
         padding: $pix15 $pix10;
         display: inline-block;
-        height: 100%;
     }
     .img-sl-funit {
         border-radius: $pix15;
@@ -51,7 +41,6 @@
     border-radius: $pix15;
     background: #f5f5f5;
     box-shadow: $pix0 $pix7 $pix10 rgba(0,0,0,0.1);
-    height: 100%;
 }
 .about-us ::ng-deep .owl-nav {
     position: absolute;

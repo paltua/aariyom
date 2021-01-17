@@ -2,6 +2,7 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { SiteService } from 'src/app/_service/site.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 declare let $: any;
 
 class Details {
@@ -41,11 +42,16 @@ export class EventDetailsComponent implements OnInit {
 	event_title: any = '';
 	event_about: any = '';
 	program_title: any = '';
+	event_youtube_url: any = '';
 	image_path: any = '';
 	loader: Boolean = true;
+
+	urlSafe: SafeResourceUrl;
+
 	constructor(
 		private siteSer: SiteService,
 		private route: ActivatedRoute,
+		public sanitizer: DomSanitizer
 	) {
 
 	}
@@ -56,8 +62,11 @@ export class EventDetailsComponent implements OnInit {
 			this.dataId = routeParams.event_id;
 			this.siteSer.getSingleEvent(this.dataId).subscribe(retData => {
 				this.data = retData.data;
-				this.imageList = this.data.images;
-				this.setVariableValue();
+				console.log(this.data);
+				if (this.data.details.length > 0) {
+					this.imageList = this.data.images;
+					this.setVariableValue();
+				}
 			})
 		});
 		setTimeout(() => {
@@ -84,6 +93,10 @@ export class EventDetailsComponent implements OnInit {
 		this.event_about = this.data.details[0].event_about;
 		this.program_title = this.data.details[0].program_title;
 		this.image_path = this.data.details[0].image_path;
+		this.event_youtube_url = this.data.details[0].event_youtube_url;
+		if (this.event_youtube_url != '') {
+			this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.event_youtube_url);
+		}
 	}
 
 	/**

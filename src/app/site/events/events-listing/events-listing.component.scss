@@ -6,7 +6,7 @@
     background: #ffeeb0;
 }
 .img-page-banner {
-	height: 150px;
+	height: 65px;
 	overflow: hidden;
 }
 .title-area-all {
@@ -19,6 +19,7 @@
         color: $black;
     }
 }
+
 .wrap-list-events {
     background: $white;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
@@ -26,14 +27,15 @@
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding: 10px;
     &:hover {
         box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
         z-index: 9;
     }
     .event-img-list {
         width: 200px;
-        padding-left: 10px;
+        padding-left: 0;
         overflow: hidden;
         
         img {
@@ -43,7 +45,7 @@
     }
     .events-list-content {
         width: calc(100% - 400px);
-        padding: $pix25;
+        padding: 0 10px;
         h2 {
             font-weight: $weight700;
             font-size: $pix16;
@@ -62,7 +64,7 @@
             padding: $pix15;
             background: #ededed;
             height: 150px;
-            border-radius: 0 15px 15px 0;
+            border-radius: 15px;
             .wrap-con-ev {
                 i {
                     font-size: $pix16;
@@ -110,7 +112,14 @@
         }
     }
 }
-
+.completed-event {
+    background: $orange;
+    color: $white;
+    font-size: 13px;
+    float: left;
+    border-radius: 15px;
+    padding: 2px 10px;
+}
 @media (min-width:1200px) and (max-width:1380px) {
 }
 @media (min-width:1024px) and (max-width:1199px) {

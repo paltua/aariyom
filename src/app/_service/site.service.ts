@@ -84,7 +84,12 @@ export class SiteService {
 	 * truncateStr
 	 */
   public truncateStr(str = '', charCount = 20) {
-    return (str.length > charCount) ? (str.slice(0, charCount) + '..') : (str);
+    if (str != null) {
+      return (str.length > charCount) ? (str.slice(0, charCount) + '..') : (str);
+    } else {
+      return '';
+    }
+
   }
 
   /**
@@ -101,6 +106,15 @@ export class SiteService {
    */
   public getUpcomingEvent() {
     return this.http.get<ApiResponses>(this.apiUrl + 'api/home/getUpcomingEvent').pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * getEventByProgramme
+   */
+  public getEventByProgramme(program_id = 0) {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/getEventByProgramme/' + program_id).pipe(map(retData => {
       return retData;
     }));
   }
@@ -130,6 +144,37 @@ export class SiteService {
     return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_fu_details/' + fu_id).pipe(map(retData => {
       return retData;
     }));
+  }
+
+  /**
+   * getOthersProgramme
+   */
+  public getOthersProgramme(id = 0) {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_others_programme/' + id).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * getOthersFu
+   */
+  public getOthersFu(id = 0) {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_others_fu/' + id).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * completedStatus
+   */
+  public completedStatus(date_time = new Date()) {
+    let nowDateTime = new Date();
+    let eventEndDate = new Date(date_time);
+    if (eventEndDate > nowDateTime) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

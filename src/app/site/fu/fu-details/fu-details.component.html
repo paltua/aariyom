@@ -81,5 +81,9 @@
                 <app-archive-event></app-archive-event>
             </div>
         </div>
+        <div [ngClass]="{'d-none':loader}" class="w-100 float-left wraper-inside-container mt-3 mb-5">
+            <app-others-fus [dataId]="dataId"></app-others-fus>
+        </div>
+
     </div>
 </div>

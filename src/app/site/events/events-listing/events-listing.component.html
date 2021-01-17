@@ -10,13 +10,17 @@
         <div class="w-100 float-left wraper-inside-container mt-2 mb-5">
             <div class="col-lg-9 col-md-12 col-12 float-left events-left">
                 <ng-container *ngFor="let list of eventList">
-                    <a routerLink="/events/details/{{list.event_id}}"
+                    <a routerLink="/events/details/{{list.event_title_url}}"
                         class="wrap-list-events float-left w-100 mb-2 mt-2">
                         <div class="event-img-list float-left"><img src="{{list.image_path_thumb}}" alt="">
                         </div>
                         <div class="events-list-content float-left">
-                            <h2>{{list.event_title}}</h2>
-                            <p>{{truncate(list.event_short_desc,200)}}</p>
+                            <div *ngIf="checkCompleted(list.event_end_date_time)" class="w-100 float-left"> <span
+                                    class="completed-event"><i class="fa fa-check-circle"></i> Completed</span></div>
+                            <h2>{{list.event_title}} </h2>
+
+
+                            <p>{{truncate(list.event_short_desc,150)}}</p>
                         </div>
                         <div class="event-held float-left text-center">
                             <div

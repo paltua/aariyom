@@ -1,13 +1,14 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SiteService } from 'src/app/_service/site.service';
 import 'lazysizes';
 declare let $: any;
 @Component({
-	selector: 'app-about-functional',
-	templateUrl: './about-functional.component.html',
-	styleUrls: ['./about-functional.component.scss']
+	selector: 'app-others-programme',
+	templateUrl: './others-programme.component.html',
+	styleUrls: ['./others-programme.component.scss']
 })
-export class AboutFunctionalComponent implements OnInit, AfterViewInit {
+export class OthersProgrammeComponent implements OnInit {
+	@Input() dataId: any;
 	list: any;
 	listCount: Number = 4;
 	loader: Boolean = true;
@@ -16,8 +17,14 @@ export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 	) { }
 
 	ngOnInit() {
-		this.list = [];
-		this.getData();
+		this.siteSer.getOthersProgramme(this.dataId).subscribe(resData => {
+			this.list = resData.data;
+			this.listCount = this.list.length + 1;
+			setTimeout(() => {
+				this.loader = false;
+				this.setCarousel();
+			}, 1500);
+		})
 	}
 
 	/**
@@ -29,7 +36,7 @@ export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 			items: this.listCount,
 			margin: 10,
 			loop: true,
-			autoplay: false,
+			autoplay: true,
 			nav: true,
 			dots: true,
 			responsive: {
@@ -47,20 +54,6 @@ export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 	}
 
 	/**
-	 * getData
-	 */
-	public getData() {
-		this.siteSer.getFunctionalUnitHome().subscribe(retData => {
-			this.list = retData.data;
-			this.listCount = this.list.length + 1;
-			setTimeout(() => {
-				this.loader = false;
-				this.setCarousel();
-			}, 1500);
-		})
-	}
-
-	/**
 	 * truncate
 	 */
 	public truncate(str = '', counter = 0) {
@@ -69,14 +62,6 @@ export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 		} else {
 			return '';
 		}
-	}
-
-	ngAfterViewInit() {
-
-	}
-
-	ngAfterViewChecked() {
-
 	}
 
 }

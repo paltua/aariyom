@@ -40,7 +40,7 @@
                         <tbody>
                             <tr *ngFor="let lst of listTables;let i= index;">
                                 <th scope="row">{{i + 1}}</th>
-                                <td class="w-15"><img src="{{lst.image_path}}" class="img-fluid img-thumbnail"
+                                <td class="w-15"><img src="{{lst.image_path_thumb}}" class="img-fluid "
                                         alt="{{lst.event_title}}"></td>
                                 <td>{{lst.event_title}}</td>
                                 <td>
@@ -55,7 +55,9 @@
                                     <p *ngIf="lst.pin">Pin:{{lst.pin}}</p>
                                 </td>
                                 <!-- <td>{{lst.user_name}}</td> -->
-                                <td><a routerLink="/admin/events/edit/{{lst.event_id}}" class="btn btn-primary"><i
+                                <td>
+                                    <a *ngIf=" hideEditButton(lst.event_end_date_time)"
+                                        routerLink="/admin/events/edit/{{lst.event_id}}" class="btn btn-primary"><i
                                             class="fa fa-edit fa-lg"></i> Edit</a>
                                     <a routerLink="/admin/events/image/{{lst.event_id}}" class="btn btn-warning"><i
                                             class="fa fa-picture-o fa-lg"></i>Images</a>

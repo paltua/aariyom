@@ -9,6 +9,7 @@ import 'lazysizes';
 })
 export class UpcomingEventsComponent implements OnInit {
   list: any;
+  listArr: any;
   loader: Boolean = true;
   constructor(
     public siteSer: SiteService
@@ -25,6 +26,10 @@ export class UpcomingEventsComponent implements OnInit {
   public getData() {
     this.siteSer.getEventHome().subscribe(retData => {
       this.list = retData.data;
+      this.listArr = [...this.list];
+      if (this.listArr.length > 4) {
+        this.list.pop();
+      }
       this.loader = false;
       // this.setCarousel();
     })

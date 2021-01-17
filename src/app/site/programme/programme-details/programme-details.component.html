@@ -1,7 +1,7 @@
 <div class="w-100 float-left img-page-banner position-relative">
     <div
         class="col-12 col-md-12 col-lg-12 col-xl-12 float-left d-flex justify-content-center align-items-center title-area-all position-absolute">
-        <h1 class="text-uppercase">Programme</h1>
+        <h1 class="text-uppercase">Our Mission</h1>
     </div>
 </div>
 <div class="w-100 float-left events-wrap">
@@ -31,29 +31,14 @@
                     </div>
                 </div>
                 <!-- <div class="slider-funit w-100 float-left">/</div> -->
-                <ng-container *ngIf="masterDetails !== 'undefined'">
+                <ng-container *ngIf="data != 'undefined'">
                     <div class="w-100 float-left even-main-contanet mt-3">
                         <h1 *ngIf="program_title != ''">{{program_title}}</h1>
-                        <!-- <div class="date-time-eve w-100 float-left mb-3">
-                            <span class="float-left mr-5">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <ng-container *ngIf="address != ''">{{address}},
-                                </ng-container>
-                                <ng-container *ngIf="city_name != ''">{{city_name}},
-                                </ng-container>
-                                <ng-container *ngIf="r_name != ''">{{r_name}},
-                                </ng-container>
-                                <ng-container *ngIf="c_name != ''">{{c_name}},
-                                </ng-container>
-                                <ng-container *ngIf="pin != ''">{{pin}}
-                                </ng-container>
-                            </span>
-                        </div> -->
-                        <div *ngIf="data.details.length > 0 || org_by_custom_name != ''"
+                        <div *ngIf=" (fu_details != 'undefined') || org_by_custom_name != ''"
                             class="w-100 float-left our-mission">
                             <h3 class="w-100 float-left">Functional Unit</h3>
                             <div class="w-100 float-left left-wmission">
-                                <ng-container *ngFor="let row of data.details;let i=index;">
+                                <ng-container *ngFor="let row of fu_details;let i=index;">
                                     <a routerLink="/functional-unit/details/{{row.fu_id}}">
                                         <span class="float-left mr-5" *ngIf="row.fu_title">{{row.fu_title}}</span>
                                     </a>
@@ -81,9 +66,11 @@
                 </ng-container>
             </div>
             <div class="col-lg-3 col-md-12 col-12 float-left events-right mt-3">
-                <app-comming-event></app-comming-event>
-                <app-archive-event></app-archive-event>
+                <app-event-by-program [dataId]="dataId"></app-event-by-program>
             </div>
+        </div>
+        <div [ngClass]="{'d-none':loader}" class="w-100 float-left wraper-inside-container mt-3 mb-5">
+            <app-others-programme [dataId]="dataId"></app-others-programme>
         </div>
     </div>
 </div>

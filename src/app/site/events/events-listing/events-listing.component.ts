@@ -22,7 +22,7 @@ export class EventsListingComponent implements OnInit {
       this.eventList = newData.list;
       this.eventListCount = this.eventList.length;
       this.loader = false;
-      // console.log(retData);
+      console.log(retData);
     })
   }
 
@@ -34,6 +34,23 @@ export class EventsListingComponent implements OnInit {
       return this.siteSer.truncateStr(str, counter);
     } else {
       return '';
+    }
+  }
+
+  /**
+   * checkCompleted
+   */
+  public checkCompleted(event_end_date_time) {
+    if (event_end_date_time) {
+      let today = new Date();
+      let eventData = new Date(event_end_date_time);
+      if (eventData < today) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
     }
   }
 

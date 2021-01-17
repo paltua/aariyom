@@ -6,7 +6,7 @@
 	background: #ffeeb0;
 }
 .img-page-banner {
-	height: 150px;
+	height: 65px;
 	overflow: hidden;
 }
 .title-area-all {
@@ -50,7 +50,7 @@
 .even-main-contanet {
     h1 {
         font-family: 'Noto Serif', serif;
-        color: $gray;
+        color: $black;
         font-size: $pix25;
         margin-bottom: $pix25;
     }
@@ -58,10 +58,10 @@
         span {
             font-size: $pix14;
             font-weight: $weight700;
-            color: $orange;
+            color: $black;
             i {
                 font-size: $pix18;
-                color: $blue;
+                color: $black;
                 position: relative;
                 margin-right: $pix8;
                 display: inline-block;
@@ -78,8 +78,9 @@
             font-family: 'Noto Serif', serif;
             margin-bottom: $pix10;
             font-style: italic;
-            color: $orange;
+            color: $black;
             font-weight: bold;
+            font-size: 19px;
             
         }
     }

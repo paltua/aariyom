@@ -3,7 +3,7 @@
         <h2 class="widget-title w-100">Upcoming <span>Events</span></h2>
         <app-page-loader *ngIf="loader"></app-page-loader>
         <ng-container *ngFor="let lt of list">
-            <a routerLink="/events/details/{{lt.event_id}}">
+            <a routerLink="/events/details/{{lt.event_title_url}}">
                 <div class="w-100 float-left ev-lists-indivisual mb-3">
                     <div class="img-i-ev float-left"><img class="lazyload" data-src="{{lt.image_path_thumb}}"
                             alt="{{lt.event_title}}"></div>
@@ -18,31 +18,6 @@
                 </div>
             </a>
         </ng-container>
-
-        <!-- 
-        <div class="w-100 float-left ev-lists-indivisual mb-3">
-            <div class="img-i-ev float-left"><img src="./../../../../assets/images/img03.jpg" alt=""></div>
-            <div class="float-left cont-upcoming">
-                <h4>Event Name</h4>
-                <span class="w-100 float-left">8:00am on 20-07-2019</span>
-                <span class="text-uppercase w-100 float-left">Kolkata, India</span>
-                <p class="w-100 float-left">In et dui mauris, sit amet ullamcorper nisl. Duis a orci nisi. Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit elementum...</p>
-            </div>
-        </div>
-
-
-        <div class="w-100 float-left ev-lists-indivisual mb-3">
-            <div class="img-i-ev float-left"><img src="./../../../../assets/images/img03.jpg" alt=""></div>
-            <div class="float-left cont-upcoming">
-                <h4>Event Name</h4>
-                <span class="w-100 float-left">8:00am on 20-07-2019</span>
-                <span class="text-uppercase w-100 float-left">Kolkata, India</span>
-                <p class="w-100 float-left">In et dui mauris, sit amet ullamcorper nisl. Duis a orci nisi. Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit elementum...</p>
-            </div>
-        </div> -->
-
-        <a *ngIf="list.length > 0" routerLink="/events" class="btn-3 float-left mt-4">More Events</a>
+        <a *ngIf="listArr.length > 4" routerLink="/events" class="btn-3 float-left mt-0">More Events</a>
     </div>
 </div>

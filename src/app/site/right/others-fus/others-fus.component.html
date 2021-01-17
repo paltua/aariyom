@@ -2,9 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12 float-left about-us fuc-umit">
-                <h2 class="widget-title w-100 text-center">functional <span>unit</span></h2>
+                <h2 class="widget-title w-100 text-left"> Others <span>functional unit</span></h2>
                 <div class="slider-funit w-100 float-left">
-                    <app-page-loader *ngIf="loader"></app-page-loader>
+                    <app-in-page-loader *ngIf="loader"></app-in-page-loader>
                     <div class="owl-carousel owl-theme">
                         <ng-container *ngFor="let lt of list">
                             <a routerLink="/functional-unit/details/{{lt.fu_id}}">

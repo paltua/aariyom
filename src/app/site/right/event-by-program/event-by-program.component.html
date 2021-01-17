@@ -1,1 +1,8 @@
-<p>event-by-program works!</p>
+<div *ngIf="events.length > 0" class="w-100 float-left right-ev-lists">
+    <h3>Related Events</h3>
+    <ng-container *ngFor="let ev of events">
+        <a class="w-100 float-left side-events mb-3" routerLink="/events/details/{{ev.event_title_url}}">
+            {{ev.event_title}}
+        </a>
+    </ng-container>
+</div>

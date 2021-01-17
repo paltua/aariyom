@@ -21,7 +21,7 @@
         font-size: $pix13;
         margin: $pix0;
         padding: $pix0;
-        color: $gray1;
+        color: $black;
     }
     p {
         font-size: $pix13;
@@ -32,7 +32,7 @@
 }
 .widget-title {
     display: inline-block;
-    border-bottom: $pix3 solid #ccc;
+    border-bottom: $pix3 solid #fff;
     width: auto !important;
     padding-bottom: $pix12;
 }
