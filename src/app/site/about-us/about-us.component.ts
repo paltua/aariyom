@@ -15,6 +15,7 @@ export class AboutUsComponent implements OnInit {
 
   ngOnInit() {
     this.commonSer.getSettings('about_us').subscribe(retData => {
+      console.log(retData);
       let data: any = retData.data;
       this.who_we_are = data.who_we_are;
       this.our_mission = data.our_mission;
