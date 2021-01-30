@@ -22,9 +22,11 @@ export class AuthService {
 
 	) {
 		this.apiUrl = environment.apiUrl;
-		console.log(localStorage.getItem('currentUser'));
-		this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-		this.currentUser = this.currentUserSubject.asObservable();
+		if (localStorage.getItem('currentUser') != undefined) {
+			this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+			this.currentUser = this.currentUserSubject.asObservable();
+		}
+
 	}
 
 	public get currentUserValue(): User {
@@ -37,7 +39,6 @@ export class AuthService {
 	public login(postData = {}) {
 		return this.http.post<ApiResponses>(this.apiUrl + 'api/auth/login', postData).pipe(map(retData => {
 			let userDet: any = retData.data;
-			
 			localStorage.setItem('currentUser', JSON.stringify(retData.data));
 			this.currentUserSubject.next(userDet.user_id);
 			return retData;

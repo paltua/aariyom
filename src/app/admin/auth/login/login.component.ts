@@ -30,10 +30,6 @@ export class LoginComponent implements OnInit {
 		private route: Router,
 		private router: ActivatedRoute,
 	) {
-		console.log(this.authService)
-		if (this.authService && this.authService.currentUserValue) {
-			this.route.navigate(['/admin/dashboard']);
-		}
 		this.status = '';
 		this.msg = '';
 		this.loader = false;
