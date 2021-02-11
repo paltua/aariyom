@@ -132,4 +132,21 @@ export class EventDetailsComponent implements OnInit {
 		this.image_path = path;
 	}
 
+	/**
+   * checkCompleted
+   */
+	public checkCompleted(event_end_date_time) {
+		if (event_end_date_time) {
+			let today = new Date();
+			let eventData = new Date(event_end_date_time);
+			if (eventData < today) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
 }

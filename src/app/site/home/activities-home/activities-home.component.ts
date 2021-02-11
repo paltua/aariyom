@@ -8,8 +8,8 @@ import 'lazysizes';
   styleUrls: ['./activities-home.component.scss']
 })
 export class ActivitiesHomeComponent implements OnInit {
-  list: any;
-  listArr: any;
+  list: any = [];
+  listArr: any = [];
   loader: Boolean = true;
   constructor(
     public siteSer: SiteService
@@ -31,7 +31,6 @@ export class ActivitiesHomeComponent implements OnInit {
         this.list.pop();
       }
       this.loader = false;
-      // this.setCarousel();
     })
   }
 

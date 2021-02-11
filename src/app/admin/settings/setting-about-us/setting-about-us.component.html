@@ -20,18 +20,7 @@
                     <label for="validationCustom01">Who We Are:</label>
                     <ckeditor [editor]="editor" formControlName="who_we_are">
                     </ckeditor>
-                    <!-- <textarea formControlName="main_text" class="form-control" rows="4" id="validationCustom01"
-                        placeholder="" value="" [ngClass]="{ 'is-invalid': submitted && f.main_text.errors }"
-                        required></textarea>
-                    <div *ngIf="submitted && f.who_we_are.errors " class="invalid-feedback">
-                        <div *ngIf="f.who_we_are.errors.required">{{pageTitle}} Who we are is required</div>
-                    </div> -->
                 </div>
-                <!-- <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">Our Mission:</label>
-                    <ckeditor formControlName="our_mission" [editor]="editor" [data]="editorData" data="editorData">
-                    </ckeditor>
-                </div> -->
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom02">Our Mission:</label>
                     <ckeditor [editor]="editor" formControlName="our_mission">

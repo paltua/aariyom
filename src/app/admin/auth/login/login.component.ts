@@ -30,6 +30,10 @@ export class LoginComponent implements OnInit {
 		private route: Router,
 		private router: ActivatedRoute,
 	) {
+		const currentUser = this.authService.currentUserValue;
+		if (!currentUser) {
+			this.route.navigate(['/admin/dashboard']);
+		}
 		this.status = '';
 		this.msg = '';
 		this.loader = false;

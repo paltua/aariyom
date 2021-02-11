@@ -22,10 +22,8 @@ export class AuthService {
 
 	) {
 		this.apiUrl = environment.apiUrl;
-		if (localStorage.getItem('currentUser') != undefined) {
-			this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-			this.currentUser = this.currentUserSubject.asObservable();
-		}
+		this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('arAdminUser')));
+		this.currentUser = this.currentUserSubject.asObservable();
 
 	}
 
@@ -39,7 +37,7 @@ export class AuthService {
 	public login(postData = {}) {
 		return this.http.post<ApiResponses>(this.apiUrl + 'api/auth/login', postData).pipe(map(retData => {
 			let userDet: any = retData.data;
-			localStorage.setItem('currentUser', JSON.stringify(retData.data));
+			localStorage.setItem('arAdminUser', JSON.stringify(retData.data));
 			this.currentUserSubject.next(userDet.user_id);
 			return retData;
 		}));
@@ -49,7 +47,7 @@ export class AuthService {
 	 * logout
 	 */
 	public logout() {
-		localStorage.removeItem('currentUser');
+		localStorage.removeItem('arAdminUser');
 		localStorage.clear();
 		this.currentUserSubject.next(null);
 		this.router.navigate(['/admin/auth/login']);

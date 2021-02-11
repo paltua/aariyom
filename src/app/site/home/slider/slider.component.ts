@@ -9,7 +9,7 @@ declare const $: any;
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
-  list: any;
+  list: [];
   loader: Boolean = true;
   constructor(
     public siteSer: SiteService
@@ -19,8 +19,6 @@ export class SliderComponent implements OnInit {
     this.siteSer.getEventHomeSlider().subscribe(retData => {
       this.list = retData.data;
       this.loader = false;
-      // console.log(this.list);
-
     })
   }
 

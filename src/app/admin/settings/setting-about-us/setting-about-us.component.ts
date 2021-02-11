@@ -108,3 +108,4 @@ export class SettingAboutUsComponent implements OnInit {
   }
 
 }
+

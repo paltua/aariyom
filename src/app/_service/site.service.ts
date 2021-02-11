@@ -54,8 +54,8 @@ export class SiteService {
   }
 
   /**
-	 * getEventAll
-	 */
+   * getEventAll
+   */
   public getEventAll() {
     return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_event_all').pipe(map(retData => {
       return retData;
@@ -63,8 +63,8 @@ export class SiteService {
   }
 
   /**
-	 * getSingleEvent
-	 */
+   * getSingleEvent
+   */
   public getSingleEvent(event_id = 0) {
     return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_event_details/' + event_id).pipe(map(retData => {
       return retData;
@@ -72,8 +72,8 @@ export class SiteService {
   }
 
   /**
-	 * getAllPrograms
-	 */
+   * getAllPrograms
+   */
   public getAllPrograms() {
     return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_all_programs/').pipe(map(retData => {
       return retData;
@@ -81,8 +81,8 @@ export class SiteService {
   }
 
   /**
-	 * truncateStr
-	 */
+   * truncateStr
+   */
   public truncateStr(str = '', charCount = 20) {
     if (str != null) {
       return (str.length > charCount) ? (str.slice(0, charCount) + '..') : (str);
@@ -131,8 +131,8 @@ export class SiteService {
   /**
    * getSingleProgrammeDetails
    */
-  public getSingleProgrammeDetails(programe_id = 0) {
-    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_programme_details/' + programe_id).pipe(map(retData => {
+  public getSingleProgrammeDetails(pro_title_url = '') {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_programme_details/' + pro_title_url).pipe(map(retData => {
       return retData;
     }));
   }
@@ -140,8 +140,8 @@ export class SiteService {
   /**
    * getSingleFunctionalUnitDetails
    */
-  public getSingleFunctionalUnitDetails(fu_id = 0) {
-    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_fu_details/' + fu_id).pipe(map(retData => {
+  public getSingleFunctionalUnitDetails(fu_title_url = '') {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/home/get_fu_details/' + fu_title_url).pipe(map(retData => {
       return retData;
     }));
   }

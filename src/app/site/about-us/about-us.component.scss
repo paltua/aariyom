@@ -101,3 +101,17 @@
     overflow: hidden;
     margin-top: $pix15;
 }
+
+/* @media querries */
+
+@media only screen and (max-width: 1266px) {
+	.section2 {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	.container {
+		padding: $pix0 $pix30 70px;
+    }
+}

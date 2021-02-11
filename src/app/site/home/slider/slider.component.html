@@ -1,4 +1,4 @@
-<section class="slider-section float-left w-100 mt-3 mb-3">
+<section *ngIf="list && list.length > 0" class="slider-section float-left w-100 mt-3 mb-3">
   <div class="container">
     <app-page-loader *ngIf="loader"></app-page-loader>
     <div class="w-100 float-left slider-inner">
@@ -12,7 +12,7 @@
         <div class="carousel-inner">
           <ng-container *ngFor="let sl of list;let i=index;">
             <div class="carousel-item position-relative " [ngClass]="{'active':i==0}">
-              <a routerLink="/events/details/{{sl.event_id}}">
+              <a routerLink="/events/details/{{sl.event_title_url}}">
                 <div class="col-12 col-md-12 col-lg-12 float-left p-0 slider-left-wrap position-relative">
                   <img class="d-block w-100 lazyload" data-src="{{sl.image_path}}" alt="{{sl.event_title}}">
                 </div>

@@ -8,8 +8,8 @@ import 'lazysizes';
   styleUrls: ['./upcoming-events.component.scss']
 })
 export class UpcomingEventsComponent implements OnInit {
-  list: any;
-  listArr: any;
+  list: any = [];
+  listArr: any = [];
   loader: Boolean = true;
   constructor(
     public siteSer: SiteService

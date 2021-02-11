@@ -1,4 +1,4 @@
-<section class="about-us-section float-left w-100">
+<section *ngIf="list && list.length > 0" class="about-us-section float-left w-100">
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12 float-left about-us fuc-umit">
@@ -7,7 +7,7 @@
                     <app-page-loader *ngIf="loader"></app-page-loader>
                     <div class="owl-carousel owl-theme">
                         <ng-container *ngFor="let lt of list">
-                            <a routerLink="/functional-unit/details/{{lt.fu_id}}">
+                            <a routerLink="/functional-unit/details/{{lt.fu_title_url}}">
                                 <div class="item">
                                     <div class="inner-sl-funit w-100 float-left">
                                         <div class="w-100 float-left img-sl-funit">

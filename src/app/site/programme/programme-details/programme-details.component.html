@@ -9,7 +9,7 @@
         <app-in-page-loader *ngIf="loader"></app-in-page-loader>
         <div [ngClass]="{'d-none':loader}" class="w-100 float-left wraper-inside-container mt-3 mb-5">
             <div class="col-lg-9 col-md-12 col-12 float-left events-left">
-                <div class="w-100 float-left slider-inner">
+                <div *ngIf="imageList && imageList.length > 0" class="w-100 float-left slider-inner">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <ng-container *ngFor="let sl of imageList;let i=index;">
