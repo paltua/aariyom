@@ -1,4 +1,4 @@
-<div class="w-100 float-left events-lists-home">
+<div *ngIf="list && list.length > 0" class="w-100 float-left events-lists-home">
 	<div class="inner-ev w-100 float-left">
 		<h2 class="widget-title w-100">Our <span>Missions</span></h2>
 		<app-page-loader *ngIf="loader"></app-page-loader>
@@ -14,7 +14,7 @@
 				</div>
 			</a>
 		</ng-container>
-		<a *ngIf="listArr.length > 4" routerLink="/programme" class="btn-2 float-left mt-0">More Missions</a>
+		<a *ngIf="listArr.length > 4" routerLink="/missions" class="btn-2 float-left mt-0">More Missions</a>
 
 	</div>
 </div>

@@ -41,7 +41,7 @@ export class ProAddEditComponent implements OnInit {
 		private route: ActivatedRoute,
 		private commonSer: CommonService,
 	) {
-		this.pageTitle = 'Programme';
+		this.pageTitle = 'Mission';
 		this.status = '';
 		this.msg = '';
 		this.addEditForm = this.fb.group({

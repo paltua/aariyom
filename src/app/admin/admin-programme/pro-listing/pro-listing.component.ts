@@ -46,7 +46,7 @@ export class ProListingComponent implements OnInit, AfterViewInit, OnDestroy {
 		private router: Router,
 		private route: ActivatedRoute,
 	) {
-		this.pageTitle = 'Programme';
+		this.pageTitle = 'Mission';
 		this.status = '';
 		this.msg = '';
 	}

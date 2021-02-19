@@ -77,7 +77,9 @@
                         </span>
                         <span *ngIf="event_start_date_time != ''" class="float-left"><i class="fa fa-calendar"
                                 aria-hidden="true"></i>
-                            {{event_start_date_time | date:'MMM dd, yyyy, hh:mmaaa'}}
+                            {{event_start_date_time | date:'MMM dd, yyyy, hh:mmaaa'}} <ng-container
+                                *ngIf="event_end_date_time != ''">-
+                                {{event_end_date_time | date:'MMM dd, yyyy, hh:mmaaa'}}</ng-container>
                         </span>
                     </div>
                     <div *ngIf="event_long_desc != ''" class="w-100 float-left our-mission">

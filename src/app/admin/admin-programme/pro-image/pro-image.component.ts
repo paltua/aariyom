@@ -29,7 +29,7 @@ export class ProImageComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
   ) {
-    this.pageTitle = 'Programs';
+    this.pageTitle = 'Mission';
     this.status = '';
     this.msg = '';
     this.list = [];
@@ -93,9 +93,9 @@ export class ProImageComponent implements OnInit {
     }
   }
 
-	/**
-	 * changeDefault
-	 */
+  /**
+   * changeDefault
+   */
   public changeDefault(prog_img_id = 0) {
     // console.log(this.id, prog_img_id);
     this.programmeSer.updateDefaultImage(this.id, prog_img_id).subscribe(retData => {
@@ -106,9 +106,9 @@ export class ProImageComponent implements OnInit {
     })
   }
 
-	/**
-	 * delete
-	 */
+  /**
+   * delete
+   */
   public delete(prog_img_id = 0, is_default = '0') {
     let confirmStatus: boolean = false;
     if (is_default === '0') {
