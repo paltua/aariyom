@@ -11,40 +11,19 @@
         </div>
         <hr>
     </ng-container>
-    <form [formGroup]="settingsForm" (submit)="formSave()">
+    <form [formGroup]="settingsForm" (ngSubmit)="formSave()">
+        <h4 class="text-muted">Details</h4>
+        <hr>
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <h4 class="text-muted">Details</h4>
-                <hr>
-                <div class="col-md-12 mb-3">
-                    <label for="validationCustom01">Who We Are:</label>
-                    <ckeditor [editor]="editor" formControlName="who_we_are">
-                    </ckeditor>
-                </div>
-                <div class="col-md-12 mb-3">
-                    <label for="validationCustom02">Our Mission:</label>
-                    <ckeditor [editor]="editor" formControlName="our_mission">
-                    </ckeditor>
-                </div>
-                <div class="col-md-12 mb-3">
-                    <div class="form-group">
-                        <input formControlName="image" type="file" (change)="fileProgress($event)"
-                            [ngClass]="{ 'is-invalid': submitted && f.image.errors }" />
-                        <div *ngIf="submitted && f.image.errors " class="invalid-feedback">
-                            <div *ngIf="f.image.errors.required">{{pageTitle}} Image is required</div>
-                        </div>
-                    </div>
-                    <div *ngIf="fileUploadProgress">
-                        Upload progress: {{ fileUploadProgress }}
-                    </div>
-                    <div class=" image-preview mb-3" *ngIf="previewUrl">
-                        <img class="w-25" [src]="previewUrl" />
-                    </div>
-
-                    <div class="mb-3" *ngIf="uploadedFilePath">
-                        {{uploadedFilePath}}
-                    </div>
-                </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Who We Are:</label>
+                <ckeditor [editor]="editor" formControlName="who_we_are">
+                </ckeditor>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom02">Our Mission:</label>
+                <ckeditor [editor]="editor" formControlName="our_mission">
+                </ckeditor>
             </div>
         </div>
         <hr>
@@ -55,4 +34,109 @@
             </div>
         </div>
     </form>
+    <hr>
+    <hr>
+    <form [formGroup]="settingsFormMedia" (submit)="formSaveMedia()">
+        <h4 class="text-muted">Images/Youtube Add</h4>
+        <hr>
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom01">Type:</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" (click)="showHide('image')" formControlName="type"
+                        class="custom-control-input" value="image">
+                    <label class="custom-control-label" for="customRadioInline1">Image</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" (click)="showHide('youtube')" formControlName="type"
+                        class="custom-control-input" value="youtube">
+                    <label class="custom-control-label" for="customRadioInline2">Youtube Link</label>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3" *ngIf="image_youtube == 'image'">
+                <label for="validationCustom01">Image:</label>
+                <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                        <input name="path" type="file" (change)="fileProgress($event)" />
+                    </div>
+                    <div class=" image-preview mb-3" *ngIf="previewUrl">
+                        <img class="w-25" [src]="previewUrl" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3" *ngIf="image_youtube == 'youtube'">
+                <label for="validationCustom01">Youtube Link:</label>
+                <div class="form-group">
+                    <input formControlName="youtube" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-save"></i> Save</button> &nbsp;
+            </div>
+        </div>
+        <hr>
+    </form>
+    <h4 class="text-muted">Images/Youtube Listing</h4>
+    <div class="row">
+        <div class="card-body table-responsive">
+
+            <table class="table table-striped  dt-responsive nowrap" style="width:100%">
+                <thead>
+                    <tr class="table-primary">
+                        <th>#</th>
+                        <th>Image/Youtube</th>
+                        <th>Set main (Who we are) </th>
+                        <th>Set main (Our Mission main)</th>
+                        <th>Created Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let lst of listTables;let i= index;">
+                        <th scope="row">{{i + 1}}</th>
+                        <td class="w-15">
+                            <img *ngIf="lst.type=='image'" src="{{lst.image_path}}" class="img-fluid " alt="">
+                            <iframe *ngIf="lst.type=='youtube'" class="w-100 img-fluid"
+                                src="https://www.youtube.com/embed/fvRyT4j1qr8" frameborder="0"
+                                allowfullscreen></iframe>
+                        </td>
+                        <td>
+                            <!-- <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline1" (click)="setMain('who_we_are', lst.id)"
+                                        formControlName="wwa" class="custom-control-input" value="1">Ok</div> -->
+                            <div class="form-check">
+                                <input *ngIf=" lst.is_for!='who_we_are'" class="form-check-input" type="radio"
+                                    id="exampleRadios1" value="{{lst.id}}" (click)="setMain('who_we_are', lst.id)"
+                                    name="wwa">
+                                <input *ngIf=" lst.is_for=='who_we_are'" class="form-check-input" type="radio"
+                                    id="exampleRadios1" value="{{lst.id}}" (click)="setMain('who_we_are', lst.id)"
+                                    name="wwa" checked>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input *ngIf="lst.is_for!='our_mission'" class="form-check-input" type="radio"
+                                    id="exampleRadios1" value="{{lst.id}}" (click)="setMain('our_mission', lst.id)"
+                                    name="om">
+                                <input *ngIf=" lst.is_for=='our_mission'" class="form-check-input" type="radio"
+                                    id="exampleRadios1" value="{{lst.id}}" (click)="setMain('our_mission', lst.id)"
+                                    name="om" checked>
+                            </div>
+                        </td>
+                        <td>{{lst.created_date}}</td>
+                        <td>
+                            <a href="javascript:void(0)" (click)="delete(lst.id, lst.is_for)" class="btn btn-danger"><i
+                                    class="fa fa-trash fa-lg"></i>Delete</a></td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="listCount == 0">
+                    <tr>
+                        <td colspan="5" class="no-data-available table-secondary text-danger">
+                            <span class="float-left"><i class="fa fa-database fa-lg"></i> No
+                                records found!</span></td>
+                    </tr>
+                <tbody>
+            </table>
+        </div>
+    </div>
 </div>

@@ -75,6 +75,34 @@ export class CommonService {
 		return this.http.post<ApiResponses>(this.apiUrl + 'api/common/settings_update/', data);
 	}
 
+	/**
+	 * addAboutUsImageYouTube
+	 */
+	public addAboutUsImageYouTube(data) {
+		return this.http.post<ApiResponses>(this.apiUrl + 'api/common/add_settings_about_us_data/', data);
+	}
+
+	/**
+	 * getAboutUsImageYouTube
+	 */
+	public getAboutUsImageYouTube(data) {
+		return this.http.post<ApiResponses>(this.apiUrl + 'api/common/get_settings_about_us_data/', data);
+	}
+
+	/**
+	 * getAboutUsImageYouTubeHome
+	 */
+	public getAboutUsImageYouTubeHome($page = 'about_us') {
+		return this.http.get<ApiResponses>(this.apiUrl + 'api/common/get_settings_about_us_data_home/' + $page);
+	}
+
+	/**
+	 * updateAboutUsImgYoutubeSettings
+	 */
+	public updateAboutUsImgYoutubeSettings(data = {}) {
+		return this.http.post<ApiResponses>(this.apiUrl + 'api/common/update_about_us_img_youtube_settings/', data);
+	}
+
 
 
 }

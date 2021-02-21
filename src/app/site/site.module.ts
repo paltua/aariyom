@@ -15,7 +15,17 @@ import { PageLoaderComponent } from './page-loader/page-loader.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, AboutUsComponent, ContactUsComponent, SliderComponent, AboutFunctionalComponent, UpcomingEventsComponent, ActivitiesHomeComponent, BannerComponent, PageLoaderComponent],
+  declarations: [
+    HomeComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    SliderComponent,
+    AboutFunctionalComponent,
+    UpcomingEventsComponent,
+    ActivitiesHomeComponent,
+    BannerComponent,
+    PageLoaderComponent,
+  ],
   imports: [
     CommonModule,
     SiteRoutingModule, FormsModule, ReactiveFormsModule

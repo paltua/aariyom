@@ -13,6 +13,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './_helper';
+import { SafePipe } from './safe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './_helper
     SiteTemplateHeaderComponent,
     SiteTemplateFooterComponent,
     PageNotFoundComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,

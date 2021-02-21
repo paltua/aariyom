@@ -6,6 +6,8 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingHomeComponent } from './setting-home/setting-home.component';
 import { SettingAboutUsComponent } from './setting-about-us/setting-about-us.component';
 import { SettingContactUsComponent } from './setting-contact-us/setting-contact-us.component';
+import { DataTablesModule } from 'angular-datatables';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -13,8 +15,10 @@ import { SettingContactUsComponent } from './setting-contact-us/setting-contact-
   imports: [
     CommonModule,
     SettingsRoutingModule,
+    NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    DataTablesModule,
     CKEditorModule,
   ]
 })

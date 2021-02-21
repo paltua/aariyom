@@ -1,9 +1,9 @@
 <div *ngIf="list && list.length > 0" class="w-100 float-left events-lists-home">
 	<div class="inner-ev w-100 float-left">
-		<h2 class="widget-title w-100">Our <span>Missions</span></h2>
+		<h2 class="widget-title w-100">Our <span>Programmes</span></h2>
 		<app-page-loader *ngIf="loader"></app-page-loader>
 		<ng-container *ngFor="let lt of list">
-			<a routerLink="/missions/details/{{lt.pro_title_url}}">
+			<a routerLink="/programme/details/{{lt.pro_title_url}}">
 				<div class="w-100 float-left ev-lists-indivisual mb-3">
 					<div class="img-i-ev float-left"><img class="lazyload" data-src="{{lt.image_path_thumb}}"
 							alt="{{lt.program_title}}"></div>
@@ -14,7 +14,7 @@
 				</div>
 			</a>
 		</ng-container>
-		<a *ngIf="listArr.length > 4" routerLink="/missions" class="btn-2 float-left mt-0">More Missions</a>
+		<a *ngIf="listArr.length > 4" routerLink="/programme" class="btn-2 float-left mt-0">More Missions</a>
 
 	</div>
 </div>

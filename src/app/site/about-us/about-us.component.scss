@@ -101,7 +101,50 @@
     overflow: hidden;
     margin-top: $pix15;
 }
-
+.right-wrap-abt {
+    img {
+        width: 100%;
+        border-radius: 10px;
+    }
+    .y-video {
+        height: 350px;
+    }
+}
+.abt-wrap-main {
+    h3 {
+        color: $black;
+    }
+}
+.slider-bottom-abt {
+    .item {
+        height: 200px;
+        img {
+            height: 200px;
+            border-radius: 10px;
+        }
+        iframe {
+            height: 200px;
+            border-radius: 10px;
+        }
+    }
+    ::ng-deep .owl-prev, ::ng-deep .owl-next {
+        position: absolute;
+        top: 90px;
+        width: 11px;
+        font-size: 0 !important;
+        height: 22px;
+        background-size: 12px !important;
+    }
+    ::ng-deep .owl-prev {
+        left: -20px;
+        background: url(./../../../assets/images/ar01.png) no-repeat top center !important;
+    }
+    ::ng-deep .owl-next {
+        right: -20px;
+        background: url(./../../../assets/images/ar02.png) no-repeat top center !important;
+    }
+    
+}
 /* @media querries */
 
 @media only screen and (max-width: 1266px) {
