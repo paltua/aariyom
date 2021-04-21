@@ -8,10 +8,12 @@ import { FunctionalUnitRoutingModule } from './functional-unit-routing.module';
 import { AddEditComponent } from './add-edit/add-edit.component';
 import { ListingComponent } from './listing/listing.component';
 import { DeleteComponent } from './delete/delete.component';
+import { ImageComponent } from './image/image.component';
+import { ACommonModule } from '../a-common/a-common.module';
 
 
 @NgModule({
-  declarations: [AddEditComponent, ListingComponent, DeleteComponent],
+  declarations: [AddEditComponent, ListingComponent, DeleteComponent, ImageComponent],
   imports: [
     CommonModule,
     FunctionalUnitRoutingModule,
@@ -20,6 +22,7 @@ import { DeleteComponent } from './delete/delete.component';
     ReactiveFormsModule,
     DataTablesModule,
     CKEditorModule,
+    ACommonModule
   ]
 })
 export class FunctionalUnitModule { }

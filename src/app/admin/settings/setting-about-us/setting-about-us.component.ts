@@ -20,6 +20,8 @@ export class SettingAboutUsComponent implements OnInit, OnDestroy {
   settingsForm: any;
   settingsFormMedia: any;
   settingsFormMediaWwaOr: any;
+  settingsFormLoader: Boolean;
+  settingsFormMediaLoader: Boolean;
   submitted = false;
   submittedMedia = false;
   public editor = ClassicEditor;
@@ -92,14 +94,17 @@ export class SettingAboutUsComponent implements OnInit, OnDestroy {
    * formSave
    */
   public formSave() {
+    this.settingsFormLoader = true;
     if (this.settingsForm.valid) {
       this.setFormData();
       this.submitted = true;
       this.commonService.updateSettings(this.formData).subscribe(retData => {
+        this.settingsFormLoader = false;
         this.status = 'success';
         this.msg = 'You have successfully updated the ' + this.pageTitle;
       });
     } else if (this.settingsForm.invalid) {
+      this.settingsFormLoader = false;
       this.submitted = true;
       this.status = 'danger';
       this.msg = 'Please find the error(s) as below.';
@@ -149,16 +154,19 @@ export class SettingAboutUsComponent implements OnInit, OnDestroy {
    * formSaveMedia
    */
   public formSaveMedia() {
+    this.settingsFormMediaLoader = true;
     this.submittedMedia = true;
     if (this.settingsFormMedia.valid) {
       if (this.settingsFormMedia.value.type == 'youtube') {
         this.commonService.addAboutUsImageYouTube(this.settingsFormMedia.value).subscribe(resData => {
+          this.settingsFormMediaLoader = false;
           this.status = 'success';
           this.msg = 'You have successfully updated the ' + this.pageTitle;
           window.scroll(0, 0);
         });
       } else {
-        console.log(this.settingsFormMedia.value);
+        this.settingsFormMediaLoader = false;
+        // console.log(this.settingsFormMedia.value);
         const formDataImage = new FormData();
         formDataImage.append('page', this.settingsFormMedia.value.page);
         formDataImage.append('type', this.settingsFormMedia.value.type);
@@ -167,6 +175,7 @@ export class SettingAboutUsComponent implements OnInit, OnDestroy {
       }
 
     } else if (this.settingsForm.invalid) {
+      this.settingsFormMediaLoader = false;
       this.status = 'danger';
       this.msg = 'Please find the error(s) as below.';
     }
@@ -253,6 +262,9 @@ export class SettingAboutUsComponent implements OnInit, OnDestroy {
         this.listing();
         window.scroll(0, 0);
       })
+      return true;
+    } else {
+      return false;
     }
 
   }

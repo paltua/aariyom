@@ -34,6 +34,7 @@ export class AddEditComponent implements OnInit {
   uploadedFilePath: string = null;
   formData: any;
   public editor = ClassicEditor;
+  loader: Boolean;
   constructor(
     private fb: FormBuilder,
     private commonSer: CommonService,
@@ -129,18 +130,18 @@ export class AddEditComponent implements OnInit {
 
   public formSave() {
     this.submitted = true;
-
-    if (!this.addEditForm.invalid) {
+    this.loader = true;
+    if (this.addEditForm.valid) {
       this.setFormData();
-      // console.log(this.addEditForm);
-      // return true;
       if (this.dataId > 0) {
         this.fuSer.update(this.formData).subscribe(retData => {
           if (retData.status === 'success') {
+            this.loader = false;
             localStorage.setItem('status', retData.status);
             localStorage.setItem('msg', retData.message);
             this.router.navigate(['/admin/functional-units']);
           } else {
+            this.loader = false;
             this.status = retData.status;
             this.msg = retData.message;
             // console.log(retData.data);
@@ -149,15 +150,21 @@ export class AddEditComponent implements OnInit {
       } else {
         this.fuSer.add(this.formData).subscribe(retData => {
           if (retData.status === 'success') {
+            this.loader = false;
             localStorage.setItem('status', retData.status);
             localStorage.setItem('msg', retData.message);
             this.router.navigate(['/admin/functional-units']);
           } else {
+            this.loader = false;
             this.status = retData.status;
             this.msg = retData.message;
           }
         })
       }
+    } else {
+      this.loader = false;
+      this.status = 'danger';
+      this.msg = 'Please fix the error below.';
     }
   }
 

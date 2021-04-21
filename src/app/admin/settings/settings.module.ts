@@ -8,6 +8,7 @@ import { SettingAboutUsComponent } from './setting-about-us/setting-about-us.com
 import { SettingContactUsComponent } from './setting-contact-us/setting-contact-us.component';
 import { DataTablesModule } from 'angular-datatables';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ACommonModule } from '../a-common/a-common.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     DataTablesModule,
     CKEditorModule,
+    ACommonModule
   ]
 })
 export class SettingsModule { }

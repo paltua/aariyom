@@ -2,6 +2,7 @@
     <h2 class="text-muted"><small>
         </small>{{pageTitle}} </h2>
     <hr>
+
     <ng-container *ngIf="status != '' && msg != ''">
         <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
             <div [innerHTML]="msg"></div>
@@ -11,6 +12,7 @@
         </div>
         <hr>
     </ng-container>
+    <app-ac-loader *ngIf="settingsFormLoader"></app-ac-loader>
     <form [formGroup]="settingsForm" (ngSubmit)="formSave()">
         <h4 class="text-muted">Details</h4>
         <hr>
@@ -36,6 +38,7 @@
     </form>
     <hr>
     <hr>
+    <app-ac-loader *ngIf="settingsFormMediaLoader"></app-ac-loader>
     <form [formGroup]="settingsFormMedia" (submit)="formSaveMedia()">
         <h4 class="text-muted">Images/Youtube Add</h4>
         <hr>

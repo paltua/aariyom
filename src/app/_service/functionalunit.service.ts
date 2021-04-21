@@ -29,8 +29,8 @@ export class FunctionalunitService {
   }
 
   /**
-	 * GetSingle
-	 */
+   * GetSingle
+   */
   public list(postData = {}) {
     // console.log('service', postData);
     return this.http.post<any>(this.apiUrl + 'api/admin/fu/list', postData).pipe(map(retData => {
@@ -38,9 +38,9 @@ export class FunctionalunitService {
     }));
   }
 
-	/**
-	 * GetSingle
-	 */
+  /**
+   * GetSingle
+   */
   public getSingle(fu_id = 0) {
     // console.log('service', postData);
     return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/fu/single/' + fu_id).pipe(map(retData => {
@@ -48,20 +48,56 @@ export class FunctionalunitService {
     }));
   }
 
-	/**
-	 * update
-	 */
+  /**
+   * update
+   */
   public update(eventData = {}) {
     return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/fu/update', eventData).pipe(map(retData => {
       return retData;
     }));
   }
 
-	/**
-	 * delete
-	 */
+  /**
+   * delete
+   */
   public delete(fu_id = '0') {
     return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/fu/delete/' + fu_id).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * upload
+   */
+  public upload(postData = {}) {
+    return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/fu/image_upload/', postData).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * image_list
+   */
+  public image_list(fu_id = '0') {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/fu/image_list/' + fu_id).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * updateDefaultImage
+   */
+  public updateDefaultImage(fu_id = 0, fu_img_id = 0) {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/fu/image_list_default/' + fu_id + '/' + fu_img_id).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * deleteImage
+   */
+  public deleteImage(fu_id = 0, fu_img_id = 0) {
+    return this.http.get<ApiResponses>(this.apiUrl + 'api/admin/fu/delete_image/' + fu_id + '/' + fu_img_id).pipe(map(retData => {
       return retData;
     }));
   }
