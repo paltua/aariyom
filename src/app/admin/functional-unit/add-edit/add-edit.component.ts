@@ -135,13 +135,12 @@ export class AddEditComponent implements OnInit {
       this.setFormData();
       if (this.dataId > 0) {
         this.fuSer.update(this.formData).subscribe(retData => {
+          this.loader = false;
           if (retData.status === 'success') {
-            this.loader = false;
             localStorage.setItem('status', retData.status);
             localStorage.setItem('msg', retData.message);
             this.router.navigate(['/admin/functional-units']);
           } else {
-            this.loader = false;
             this.status = retData.status;
             this.msg = retData.message;
             // console.log(retData.data);
@@ -149,13 +148,12 @@ export class AddEditComponent implements OnInit {
         })
       } else {
         this.fuSer.add(this.formData).subscribe(retData => {
+          this.loader = false;
           if (retData.status === 'success') {
-            this.loader = false;
             localStorage.setItem('status', retData.status);
             localStorage.setItem('msg', retData.message);
             this.router.navigate(['/admin/functional-units']);
           } else {
-            this.loader = false;
             this.status = retData.status;
             this.msg = retData.message;
           }
@@ -177,11 +175,11 @@ export class AddEditComponent implements OnInit {
     this.formData.append('fu_about', this.addEditForm.value.fu_about);
     this.formData.append('fu_objectives', this.addEditForm.value.fu_objectives);
     this.formData.append('fu_desc', this.addEditForm.value.fu_desc);
-    this.formData.append('fu_image_name', this.fileData);
+    // this.formData.append('fu_image_name', this.fileData);
     this.formData.append('fu_status', this.addEditForm.value.fu_status);
     this.formData.append('fu_managed_by', this.addEditForm.value.fu_managed_by);
     this.formData.append('fu_operating_location', this.addEditForm.value.fu_operating_location);
-    this.formData.append('old_image_name', this.addEditForm.value.old_image_name);
+    // this.formData.append('old_image_name', this.addEditForm.value.old_image_name);
     this.formData.append('fu_created_by', this.addEditForm.value.fu_created_by);
     this.formData.append('fu_id', this.addEditForm.value.fu_id);
   }

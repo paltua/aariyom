@@ -28,25 +28,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 mb-3">
-                    <div class="form-group">
-                        <input formControlName="fu_image_name" type="file" (change)="fileProgress($event)"
-                            [ngClass]="{ 'is-invalid': submitted && f.fu_image_name.errors }" />
-                        <div *ngIf="submitted && f.fu_image_name.errors " class="invalid-feedback">
-                            <div *ngIf="f.fu_image_name.errors.required">{{pageTitle}} Image is required</div>
-                        </div>
-                    </div>
-                    <div *ngIf="fileUploadProgress">
-                        Upload progress: {{ fileUploadProgress }}
-                    </div>
-                    <div class=" image-preview mb-3" *ngIf="previewUrl">
-                        <img class="w-25" [src]="previewUrl" />
-                    </div>
 
-                    <div class="mb-3" *ngIf="uploadedFilePath">
-                        {{uploadedFilePath}}
-                    </div>
-                </div>
                 <div class="col-md-12 mb-3">
                     <label for="validationCustom01">Managed By</label>
                     <input type="text" formControlName="fu_managed_by" class="form-control" id="validationCustom01"

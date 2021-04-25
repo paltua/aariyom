@@ -39,6 +39,7 @@ export class AddEditComponent implements OnInit {
 	status: any;
 	msg: any;
 	eventId: any;
+	loader: Boolean;
 
 	constructor(
 		private fb: FormBuilder,
@@ -180,11 +181,13 @@ export class AddEditComponent implements OnInit {
 	}
 
 	public formSave() {
+		this.loader = true;
 		this.submitted = true;
 		// console.log(this.addEditForm.value);
 		if (this.addEditForm.valid) {
 			if (this.eventId > 0) {
 				this.eventSer.update(this.addEditForm.value).subscribe(retData => {
+					this.loader = false;
 					if (retData.status === 'success') {
 						localStorage.setItem('status', retData.status);
 						localStorage.setItem('msg', retData.message);
@@ -197,6 +200,7 @@ export class AddEditComponent implements OnInit {
 				})
 			} else {
 				this.eventSer.add(this.addEditForm.value).subscribe(retData => {
+					this.loader = false;
 					if (retData.status === 'success') {
 						localStorage.setItem('status', retData.status);
 						localStorage.setItem('msg', retData.message);
@@ -209,6 +213,7 @@ export class AddEditComponent implements OnInit {
 				})
 			}
 		} else {
+			this.loader = false;
 			this.status = 'danger';
 			this.msg = 'Please fill the mandatory fields as below.';
 		}

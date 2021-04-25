@@ -99,9 +99,10 @@
                         <th scope="row">{{i + 1}}</th>
                         <td class="w-15">
                             <img *ngIf="lst.type=='image'" src="{{lst.image_path}}" class="img-fluid " alt="">
-                            <iframe *ngIf="lst.type=='youtube'" class="w-100 img-fluid"
-                                src="https://www.youtube.com/embed/fvRyT4j1qr8" frameborder="0"
-                                allowfullscreen></iframe>
+                            <ng-container *ngIf="lst.type=='youtube'">
+                                <iframe class="w-100 img-fluid" [src]="setSafeData(lst.path)" frameborder="0"
+                                    allowfullscreen></iframe>
+                            </ng-container>
                         </td>
                         <td>
                             <!-- <div class="custom-control custom-radio custom-control-inline">

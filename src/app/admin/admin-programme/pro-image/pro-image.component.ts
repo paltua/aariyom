@@ -23,6 +23,7 @@ export class ProImageComponent implements OnInit {
   uploadedFilePath: string = null;
   isDefaultForm: FormGroup;
   is_completed: string = "0";
+  loader: Boolean;
   constructor(
     private programmeSer: ProgrammeService,
     private router: Router,
@@ -76,16 +77,19 @@ export class ProImageComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loader = true;
     const formData = new FormData();
     formData.append('program_image', this.fileData);
     formData.append('program_id', this.id);
     formData.append('created_by', '1');
     formData.append('is_completed', this.is_completed);
     if (this.fileData === null) {
+      this.loader = false;
       this.status = 'danger';
       this.msg = 'Please select a image.';
     } else {
       this.programmeSer.upload(formData).subscribe(retData => {
+        this.loader = false;
         this.status = retData.status;
         this.msg = retData.message;
         this.ngOnInit();

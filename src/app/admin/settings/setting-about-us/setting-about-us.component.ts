@@ -155,24 +155,28 @@ export class SettingAboutUsComponent implements OnInit, OnDestroy {
    */
   public formSaveMedia() {
     this.settingsFormMediaLoader = true;
+    const formDataImage = new FormData();
     this.submittedMedia = true;
     if (this.settingsFormMedia.valid) {
       if (this.settingsFormMedia.value.type == 'youtube') {
-        this.commonService.addAboutUsImageYouTube(this.settingsFormMedia.value).subscribe(resData => {
-          this.settingsFormMediaLoader = false;
-          this.status = 'success';
-          this.msg = 'You have successfully updated the ' + this.pageTitle;
-          window.scroll(0, 0);
-        });
-      } else {
-        this.settingsFormMediaLoader = false;
-        // console.log(this.settingsFormMedia.value);
-        const formDataImage = new FormData();
         formDataImage.append('page', this.settingsFormMedia.value.page);
         formDataImage.append('type', this.settingsFormMedia.value.type);
-        formDataImage.append('path', this.settingsFormMedia.value.path);
-        console.log(formDataImage);
+        formDataImage.append('path', '');
+        formDataImage.append('youtube', this.settingsFormMedia.value.youtube);
+      } else {
+        formDataImage.append('page', this.settingsFormMedia.value.page);
+        formDataImage.append('type', this.settingsFormMedia.value.type);
+        formDataImage.append('path', this.fileData);
+        formDataImage.append('youtube', '');
       }
+      this.commonService.addAboutUsImageYouTube(formDataImage).subscribe(resData => {
+        this.settingsFormMediaLoader = false;
+
+        this.listing();
+        this.status = 'success';
+        this.msg = 'You have successfully updated the ' + this.pageTitle;
+        window.scroll(0, 0);
+      });
 
     } else if (this.settingsForm.invalid) {
       this.settingsFormMediaLoader = false;
@@ -267,6 +271,10 @@ export class SettingAboutUsComponent implements OnInit, OnDestroy {
       return false;
     }
 
+  }
+
+  setSafeData(data) {
+    return data;
   }
 
 

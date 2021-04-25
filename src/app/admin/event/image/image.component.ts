@@ -23,6 +23,7 @@ export class ImageComponent implements OnInit {
 	fileUploadProgress: string = null;
 	uploadedFilePath: string = null;
 	isDefaultForm: any;
+	loader: Boolean;
 	constructor(
 		private eventSer: EventService,
 		private router: Router,
@@ -67,15 +68,18 @@ export class ImageComponent implements OnInit {
 	}
 
 	onSubmit() {
+		this.loader = true;
 		const formData = new FormData();
 		formData.append('event_image', this.fileData);
 		formData.append('event_id', this.eventId);
 		formData.append('created_by', '1');
 		if (this.fileData === null) {
+			this.loader = false;
 			this.status = 'danger';
 			this.msg = 'Please select a image.';
 		} else {
 			this.eventSer.upload(formData).subscribe(retData => {
+				this.loader = false;
 				this.uploadedFilePath = '';
 				this.status = retData.status;
 				this.msg = retData.message;
@@ -88,8 +92,9 @@ export class ImageComponent implements OnInit {
 	 * changeDefault
 	 */
 	public changeDefault(ei_id = 0) {
-		// console.log(this.eventId, ei_id);
+		this.loader = true;
 		this.eventSer.updateDefaultImage(this.eventId, ei_id).subscribe(retData => {
+			this.loader = false;
 			this.status = retData.status;
 			this.msg = retData.message;
 			this.previewUrl = '';

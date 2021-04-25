@@ -33,6 +33,7 @@ export class ProAddEditComponent implements OnInit {
 
 	public editor = ClassicEditor;
 	othersOthersDiv: boolean = false;
+	loader: Boolean;
 
 	constructor(
 		private fb: FormBuilder,
@@ -110,8 +111,9 @@ export class ProAddEditComponent implements OnInit {
 	 */
 	public formSave() {
 		// console.log(this.addEditForm.value);
+		this.loader = true;
 		this.submitted = true;
-		if (!this.addEditForm.invalid) {
+		if (this.addEditForm.valid) {
 			this.setFormData();
 			// console.log(this.formData);
 			if (this.editId > 0) {
@@ -147,6 +149,7 @@ export class ProAddEditComponent implements OnInit {
 		this.programmeSer.add(this.formData).subscribe(retData => {
 			this.status = retData.status;
 			this.msg = retData.message;
+			this.loader = false;
 			if (this.status === 'success') {
 				localStorage.setItem('status', this.status);
 				localStorage.setItem('msg', this.msg);
@@ -164,6 +167,7 @@ export class ProAddEditComponent implements OnInit {
 		this.programmeSer.update(this.formData, this.editId).subscribe(retData => {
 			this.status = retData.status;
 			this.msg = retData.message;
+			this.loader = false;
 			if (this.status === 'success') {
 				localStorage.setItem('status', this.status);
 				localStorage.setItem('msg', this.msg);

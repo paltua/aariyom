@@ -12,6 +12,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { DataTablesModule } from 'angular-datatables';
 import { DeleteComponent } from './delete/delete.component';
 import { ImageComponent } from './image/image.component';
+import { ACommonModule } from '../a-common/a-common.module';
 
 
 
@@ -24,6 +25,7 @@ import { ImageComponent } from './image/image.component';
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
+    ACommonModule
   ],
   declarations: [
     ListingComponent,

@@ -11,6 +11,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { ProDeleteComponent } from './pro-delete/pro-delete.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProImageComponent } from './pro-image/pro-image.component';
+import { ACommonModule } from '../a-common/a-common.module';
 
 
 
@@ -26,6 +27,7 @@ import { ProImageComponent } from './pro-image/pro-image.component';
     ReactiveFormsModule,
     DataTablesModule,
     CKEditorModule,
+    ACommonModule
   ],
 })
 export class AdminProgrammeModule { }

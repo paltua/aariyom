@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { routerTransition } from 'src/app/router.animations';
 import { FunctionalunitService } from 'src/app/_service/functionalunit.service';
 
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
-  styleUrls: ['./image.component.scss']
+  styleUrls: ['./image.component.scss'],
+  animations: [routerTransition()]
 })
 export class ImageComponent implements OnInit {
   pageTitle: string;
@@ -15,12 +17,13 @@ export class ImageComponent implements OnInit {
   id: any;
   list: any;
   listCount: number;
-  fileData: File = null;
+  fileData: File;
   previewUrl: any = null;
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
   isDefaultForm: FormGroup;
   is_completed: string = "0";
+  loader: Boolean;
   constructor(
     private fuSer: FunctionalunitService,
     private router: Router,
@@ -74,18 +77,22 @@ export class ImageComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData = new FormData();
-    formData.append('program_image', this.fileData);
-    formData.append('fu_id', this.id);
-    formData.append('created_by', '1');
-    formData.append('is_completed', this.is_completed);
+    this.loader = true;
+    const formDatas = new FormData();
     if (this.fileData === null) {
+      this.loader = false;
       this.status = 'danger';
-      this.msg = 'Please select a image.';
+      this.msg = 'Please select an image.';
     } else {
-      this.fuSer.upload(formData).subscribe(retData => {
+      formDatas.append('fu_img_name', this.fileData);
+      formDatas.append('fu_id', this.id);
+      formDatas.append('created_by', '1');
+      formDatas.append('is_completed', this.is_completed);
+      this.fuSer.upload(formDatas).subscribe(retData => {
+        this.loader = false;
         this.status = retData.status;
         this.msg = retData.message;
+        this.previewUrl = '';
         this.ngOnInit();
       })
     }
@@ -94,9 +101,11 @@ export class ImageComponent implements OnInit {
   /**
    * changeDefault
    */
-  public changeDefault(prog_img_id = 0) {
-    // console.log(this.id, prog_img_id);
-    this.fuSer.updateDefaultImage(this.id, prog_img_id).subscribe(retData => {
+  public changeDefault(fu_img_id = 0) {
+    // console.log(this.id, fu_img_id);
+    this.loader = true;
+    this.fuSer.updateDefaultImage(this.id, fu_img_id).subscribe(retData => {
+      this.loader = false;
       this.status = retData.status;
       this.msg = retData.message;
       this.previewUrl = '';
@@ -107,7 +116,7 @@ export class ImageComponent implements OnInit {
   /**
    * delete
    */
-  public delete(prog_img_id = 0, is_default = '0') {
+  public delete(fu_img_id = 0, is_default = '0') {
     let confirmStatus: boolean = false;
     if (is_default === '0') {
       confirmStatus = confirm('Are you sure to delete this Image?');
@@ -115,7 +124,7 @@ export class ImageComponent implements OnInit {
       confirmStatus = confirm('This is the default image. So please change your default image then delete this image.');
     }
     if (confirmStatus === true) {
-      this.fuSer.deleteImage(this.id, prog_img_id).subscribe(retData => {
+      this.fuSer.deleteImage(this.id, fu_img_id).subscribe(retData => {
         this.status = retData.status;
         this.msg = retData.message;
         this.ngOnInit();

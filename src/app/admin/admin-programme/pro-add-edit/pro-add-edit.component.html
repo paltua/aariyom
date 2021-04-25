@@ -11,7 +11,7 @@
         </div>
         <hr>
     </ng-container>
-
+    <app-ac-loader *ngIf="loader"></app-ac-loader>
     <form [formGroup]="addEditForm" (submit)="formSave()">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-6">

@@ -17,11 +17,11 @@ import { ACommonModule } from '../a-common/a-common.module';
   imports: [
     CommonModule,
     FunctionalUnitRoutingModule,
+    CKEditorModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
-    CKEditorModule,
     ACommonModule
   ]
 })
