@@ -100,15 +100,11 @@
                         <td class="w-15">
                             <img *ngIf="lst.type=='image'" src="{{lst.image_path_thumb}}" class="img-fluid " alt="">
                             <ng-container *ngIf="lst.type=='youtube'">
-                                <div [innerHTML]="lst.path"></div>
-                                <!-- <iframe class="w-100 img-fluid" [src]="setSafeData(lst.path)" frameborder="0"
-                                    allowfullscreen></iframe> -->
+                                <iframe class="w-100 img-fluid" [src]="lst.path" frameborder="0"
+                                    allowfullscreen></iframe>
                             </ng-container>
                         </td>
                         <td>
-                            <!-- <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline1" (click)="setMain('who_we_are', lst.id)"
-                                        formControlName="wwa" class="custom-control-input" value="1">Ok</div> -->
                             <div class="form-check">
                                 <input *ngIf=" lst.is_for!='who_we_are'" class="form-check-input" type="radio"
                                     id="exampleRadios1" value="{{lst.id}}" (click)="setMain('who_we_are', lst.id)"
@@ -136,7 +132,7 @@
                 </tbody>
                 <tbody *ngIf="listCount == 0">
                     <tr>
-                        <td colspan="5" class="no-data-available table-secondary text-danger">
+                        <td colspan="6" class="no-data-available table-secondary text-danger">
                             <span class="float-left"><i class="fa fa-database fa-lg"></i> No
                                 records found!</span></td>
                     </tr>

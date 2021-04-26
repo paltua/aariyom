@@ -4,7 +4,7 @@ import { routerTransition } from 'src/app/router.animations';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CommonService } from 'src/app/_service';
 import { ProgrammeService } from 'src/app/_service/programme.service';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-setting-about-us',
@@ -205,8 +205,23 @@ export class SettingAboutUsComponent implements OnInit, OnDestroy {
     let dataTablesParameters = [];
     this.commonService.getAboutUsImageYouTube(dataTablesParameters).subscribe(resp => {
       const newData: any = resp.data;
-      this.listTables = newData.list;
       this.listCount = newData.recordsFiltered;
+      this.listTables = [];
+      if (this.listCount > 0) {
+        for (let j = 0; j < newData.list.length; j++) {
+          const element = newData.list[j];
+          const obj = {
+            i: j,
+            id: element.id,
+            is_for: element.is_for,
+            type: element.type,
+            path: this.urlSanitize(element.path),
+            image_path: element.image_path,
+            image_path_thumb: element.image_path_thumb
+          }
+          this.listTables.push(obj);
+        }
+      }
     });
 
   }
@@ -245,8 +260,9 @@ export class SettingAboutUsComponent implements OnInit, OnDestroy {
   /**
    * urlSanitize
    */
-  public urlSanitize(url) {
-    return this.dom.bypassSecurityTrustResourceUrl(url)
+  public urlSanitize(url): SafeResourceUrl {
+    let newUrl: SafeResourceUrl = this.dom.bypassSecurityTrustResourceUrl(url);
+    return newUrl;
   }
 
   /**

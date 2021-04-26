@@ -18,14 +18,25 @@
                                 <div [innerHtml]="who_we_are"></div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left right-wrap-abt">
-                                <img height="350px" width="350px"
-                                    src="../../../assets/images/about-us/aariyom-foundation-logo.jpg" alt="">
+                                <ng-container *ngIf="who_we_are_media">
+                                    <img *ngIf="who_we_are_media_type == 'image'" height="350px" width="350px"
+                                        src="{{who_we_are_media}}" alt="">
+                                    <iframe *ngIf="who_we_are_media_type == 'youtube'" class="w-100 float-left y-video"
+                                        [src]="who_we_are_media" frameborder="0" allowfullscreen></iframe>
+                                </ng-container>
+
                             </div>
                         </div>
                         <div class="w-100 float-left our-mission abt-wrap-main border-0 mb-0 pb-4">
                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left right-wrap-abt">
-                                <iframe class="w-100 float-left y-video" src="https://www.youtube.com/embed/BE6NVBQyIoo"
-                                    frameborder="0" allowfullscreen></iframe>
+                                <ng-container *ngIf="our_mission_media">
+                                    <img *ngIf="our_mission_media_type == 'image'" height="350px" width="350px"
+                                        src="{{our_mission_media}}" alt="">
+                                    <ng-container *ngIf="our_mission_media_type == 'youtube'">
+                                        <iframe class="w-100 float-left y-video" [src]="our_mission_media"
+                                            frameborder="0" allowfullscreen></iframe>
+                                    </ng-container>
+                                </ng-container>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left left-wrap-abt">
                                 <h3 class="w-100 float-left">Our Mission</h3>
@@ -37,62 +48,25 @@
                             <div class="col-12 float-left slider-bottom-abt">
                                 <div class="slider-funit w-100 float-left">
                                     <div class="owl-carousel owl-theme">
-                                        <!-- <ng-container *ngFor="let gl of gallery;">
+                                        <ng-container *ngFor="let gl of gallery">
                                             <div *ngIf="gl.type=='image'" class="item">
                                                 <div class="inner-sl-funit w-100 float-left">
                                                     <div class="w-100 float-left img-sl-funit">
-                                                        <img src="https://wallpapercave.com/wp/LtttNC6.jpg" alt="">
+                                                        <img src="{{gl.image_path_thumb}}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div *ngIf="gl.type=='youtube' && gl.path != ''" class="item">
                                                 <div class="inner-sl-funit w-100 float-left">
                                                     <div class="w-100 float-left img-sl-funit">
-                                                        <iframe class="w-100 float-left y-video"
-                                                            [src]="urlSanitize(gl.path)" frameborder="0"
-                                                            allowfullscreen></iframe>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ng-container> -->
-                                        <ng-container>
-                                            <div class="item">
-                                                <div class="inner-sl-funit w-100 float-left">
-                                                    <div class="w-100 float-left img-sl-funit">
-                                                        <img src="../../../assets/images/about-us/IMG_20200227_111930.jpg"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="inner-sl-funit w-100 float-left">
-                                                    <div class="w-100 float-left img-sl-funit">
-                                                        <iframe class="w-100 float-left y-video"
-                                                            src="https://www.youtube.com/embed/R6iCXZHpog0"
+                                                        <iframe class="w-100 float-left y-video" [src]="gl.path"
                                                             frameborder="0" allowfullscreen></iframe>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="inner-sl-funit w-100 float-left">
-                                                    <div class="w-100 float-left img-sl-funit">
-                                                        <img src="../../../assets/images/about-us/IMG_20200227_111934.jpg"
-                                                            alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="inner-sl-funit w-100 float-left">
-                                                    <div class="w-100 float-left img-sl-funit">
-                                                        <img src="../../../assets/images/about-us/IMG_20210205_152626.jpg"
-                                                            alt="">
 
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </ng-container>
+
                                     </div>
                                 </div>
                             </div>

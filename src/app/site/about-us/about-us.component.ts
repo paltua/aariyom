@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/_service';
 import 'lazysizes';
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 declare let $: any;
 
 @Component({
@@ -16,6 +16,10 @@ export class AboutUsComponent implements OnInit {
   image: any;
   gallery: any = [];
   galleryCount: Number;
+  who_we_are_media: String;
+  our_mission_media: String;
+  who_we_are_media_type: String;
+  our_mission_media_type: String;
   constructor(
     public commonSer: CommonService,
     private dom: DomSanitizer
@@ -43,9 +47,37 @@ export class AboutUsComponent implements OnInit {
    */
   public getGallery() {
     this.commonSer.getAboutUsImageYouTubeHome('about_us').subscribe(retData => {
-      console.log(retData);
-      this.gallery = retData.data;
-      this.galleryCount = this.gallery.length;
+      const newData: any = retData.data;
+      this.galleryCount = newData.length;
+      this.gallery = [];
+      if (this.galleryCount > 0) {
+        for (let j = 0; j < newData.length; j++) {
+          const element = newData[j];
+          const obj = {
+            i: j,
+            id: element.id,
+            is_for: element.is_for,
+            type: element.type,
+            path: element.type == 'youtube' ? this.urlSanitize(element.path) : element.path,
+            image_path: element.image_path,
+            image_path_thumb: element.image_path_thumb
+          }
+          this.gallery.push(obj);
+        }
+        const result_who_we_are_media = this.gallery.find(({ is_for }) => is_for === 'who_we_are');
+        const result_our_mission_media = this.gallery.find(({ is_for }) => is_for === 'our_mission');
+        if (result_who_we_are_media) {
+          this.who_we_are_media = result_who_we_are_media.type == 'youtube' ? result_who_we_are_media.path : result_who_we_are_media.image_path;
+          this.who_we_are_media_type = result_who_we_are_media.type;
+        }
+        if (result_our_mission_media) {
+          this.our_mission_media = result_our_mission_media.type == 'youtube' ? result_our_mission_media.path : result_our_mission_media.image_path;
+          this.our_mission_media_type = result_our_mission_media.type;
+        }
+      }
+
+
+
       setTimeout(() => {
         this.setCarousel();
       }, 1000);
@@ -78,13 +110,21 @@ export class AboutUsComponent implements OnInit {
     })
   }
 
+
   /**
    * urlSanitize
    */
-  public urlSanitize(urls) {
-    // return this.safePip.transform(urls, 'resourceUrl');
-    // return this.dom.bypassSecurityTrustResourceUrl(urls);
-    return urls;
+  public urlSanitize(url): SafeResourceUrl {
+    let newUrl: SafeResourceUrl = this.dom.bypassSecurityTrustResourceUrl(url);
+    return newUrl;
+  }
+
+  /**
+   * htmlSanitize
+   */
+  public htmlSanitize(text) {
+    let newHtml: SafeHtml = this.dom.bypassSecurityTrustHtml(text);
+    return newHtml;
   }
 
 
