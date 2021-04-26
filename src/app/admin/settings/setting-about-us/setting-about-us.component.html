@@ -98,10 +98,11 @@
                     <tr *ngFor="let lst of listTables;let i= index;">
                         <th scope="row">{{i + 1}}</th>
                         <td class="w-15">
-                            <img *ngIf="lst.type=='image'" src="{{lst.image_path}}" class="img-fluid " alt="">
+                            <img *ngIf="lst.type=='image'" src="{{lst.image_path_thumb}}" class="img-fluid " alt="">
                             <ng-container *ngIf="lst.type=='youtube'">
-                                <iframe class="w-100 img-fluid" [src]="setSafeData(lst.path)" frameborder="0"
-                                    allowfullscreen></iframe>
+                                <div [innerHTML]="lst.path"></div>
+                                <!-- <iframe class="w-100 img-fluid" [src]="setSafeData(lst.path)" frameborder="0"
+                                    allowfullscreen></iframe> -->
                             </ng-container>
                         </td>
                         <td>

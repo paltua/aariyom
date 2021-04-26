@@ -4,7 +4,7 @@ import { routerTransition } from 'src/app/router.animations';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CommonService } from 'src/app/_service';
 import { ProgrammeService } from 'src/app/_service/programme.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-setting-about-us',
@@ -247,6 +247,14 @@ export class SettingAboutUsComponent implements OnInit, OnDestroy {
    */
   public urlSanitize(url) {
     return this.dom.bypassSecurityTrustResourceUrl(url)
+  }
+
+  /**
+   * htmlSanitize
+   */
+  public htmlSanitize(text) {
+    let newHtml: SafeHtml = this.dom.bypassSecurityTrustHtml(text);
+    return newHtml;
   }
 
   /**
