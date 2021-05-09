@@ -164,6 +164,16 @@
     .wrap-list-events .events-list-content p {
         margin: 0;
     }
+    .progg-list {
+        flex-direction: column;
+        padding: 5px;
+        .event-img-list {
+            padding: 0;
+        }
+        .events-list-content {
+            padding: 25px 10px;
+        }
+    }
 }
 @media (max-width:480px) {
     .wrap-list-events .event-img-list{
@@ -190,6 +200,16 @@
     .wrap-list-events .events-list-content p {
         margin: 0;
     }
+    .progg-list {
+        flex-direction: column;
+        padding: 5px;
+        .event-img-list {
+            padding: 0;
+        }
+        .events-list-content {
+            padding: 25px 10px;
+        }
+    }
 }
 @media (max-width:380px) {
     .wrap-list-events .event-img-list{
@@ -202,7 +222,7 @@
     }
     .wrap-list-events .events-list-content {
         width: 100%;
-        padding: 25px;
+        
     }
     .wrap-list-events .event-held .info-held {
         padding: 15px;
@@ -228,7 +248,7 @@
     }
     .wrap-list-events .events-list-content {
         width: 100%;
-        padding: 25px;
+        
     }
     .wrap-list-events .event-held .info-held {
         padding: 15px;

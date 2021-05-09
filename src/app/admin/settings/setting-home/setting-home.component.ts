@@ -16,6 +16,7 @@ export class SettingHomeComponent implements OnInit {
   msg: String = '';
   settingsForm: any;
   submitted = false;
+  loader: Boolean;
   constructor(
     private fb: FormBuilder,
     private commonService: CommonService
@@ -27,7 +28,9 @@ export class SettingHomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loader = true;
     this.commonService.getSettings(this.page).subscribe(retData => {
+      this.loader = false;
       let data: any = retData.data;
       this.settingsForm = this.fb.group({
         page: [this.page],
@@ -45,13 +48,16 @@ export class SettingHomeComponent implements OnInit {
    * formSave
    */
   public formSave() {
+    this.loader = true;
     if (this.settingsForm.valid) {
       this.submitted = true;
       this.commonService.updateSettings(this.settingsForm.value).subscribe(retData => {
+        this.loader = false;
         this.status = 'success';
         this.msg = 'You have successfully updated the ' + this.pageTitle;
       });
     } else if (this.settingsForm.invalid) {
+      this.loader = false;
       this.submitted = true;
       this.status = 'danger';
       this.msg = 'Please find the error(s) as below.';

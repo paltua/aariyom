@@ -179,7 +179,7 @@
     }
     .wrap-list-events .events-list-content {
         width: 100%;
-        padding: 25px;
+        padding: 25px 0;
     }
     .wrap-list-events .event-held .info-held {
         padding: 15px;
@@ -192,6 +192,9 @@
     }
     .wrap-list-events .events-list-content p {
         margin: 0;
+    }
+    .list-of-events {
+        flex-direction: column;
     }
 }
 @media (max-width:480px) {
@@ -205,7 +208,7 @@
     }
     .wrap-list-events .events-list-content {
         width: 100%;
-        padding: 25px;
+        padding: 25px 0;
     }
     .wrap-list-events .event-held .info-held {
         padding: 15px;
@@ -218,6 +221,9 @@
     }
     .wrap-list-events .events-list-content p {
         margin: 0;
+    }
+    .list-of-events {
+        flex-direction: column;
     }
 }
 @media (max-width:380px) {
@@ -257,7 +263,7 @@
     }
     .wrap-list-events .events-list-content {
         width: 100%;
-        padding: 25px;
+        padding: 25px 0;
     }
     .wrap-list-events .event-held .info-held {
         padding: 15px;

@@ -82,8 +82,9 @@ export class AddEditComponent implements OnInit {
    * editForm
    */
   public editForm() {
+    this.loader = true;
     this.fuSer.getSingle(this.dataId).subscribe(retData => {
-      // console.log(retData);
+      this.loader = false;
       if (retData.status === 'success') {
         const data: any = retData.data;
         this.previewUrl = data[0].image_path_thumb;
@@ -97,7 +98,7 @@ export class AddEditComponent implements OnInit {
           fu_status: [data[0].fu_status],
           fu_managed_by: [data[0].fu_managed_by],
           fu_operating_location: [data[0].fu_operating_location],
-          old_image_name: [data[0].fu_image],
+          old_image_name: [],
           fu_created_by: [1],
           fu_id: data[0].fu_id,
         });
