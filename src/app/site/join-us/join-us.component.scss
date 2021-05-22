@@ -1,0 +1,164 @@
+@import './../../../variables.scss';
+
+input:focus, textarea:focus, keygen:focus, select:focus {
+	outline: none;
+}
+::-moz-placeholder {
+	color: $gray;
+	font-weight: $weight300;
+	opacity: 1;
+}
+
+::-webkit-input-placeholder {
+	color: $gray;
+	font-weight:  $weight700;
+}
+.textcenter {
+	text-align: center;
+}
+
+.section2 .col2 {
+	width: 48.71%;
+}
+.section2 .col2.first {
+	float: left;
+}
+.section2 .col2.last {
+	float: right;
+}
+.section2 .col2.column2 {
+	padding: $pix0 $pix30;
+}
+.section2 span.collig {
+	color: $orange;
+	margin-right: $pix10;
+	display: inline-block;
+}
+.section2 .sec2addr {
+	display: block;
+	line-height: 26px;
+}
+.section2 .sec2addr p:first-child {
+	margin-bottom: $pix10;
+}
+.section2 .sec2contactform input[type="text"], 
+.section2 .sec2contactform input[type="email"],
+.section2 .sec2contactform textarea {
+    padding: $pix12;
+    border: $pix0;
+    background: #ededed;
+    margin: $pix7 $pix0;
+    border-radius: $pix7;
+    font-size: $pix14;
+    font-weight: 700;
+}
+.section2 .sec2contactform textarea {
+	width: 100%;
+	display: block;
+	color: $gray;
+  resize:none;
+}
+.section2 .sec2contactform h3 {
+	font-weight: $weight700;
+    margin: $pix0;
+    margin-top: $pix30;
+    border-bottom: $pix0;
+    padding-bottom: $pix10;
+    color: $black;
+    font-size:$pix18;
+}
+.section2 p {
+    font-size: $pix15;
+    font-weight: $weight700;
+}
+.button-submit {
+    color: $white;
+    font-weight: $weight700;
+    letter-spacing: $pix2;
+    font-size: $pix13;
+    padding: $pix15 $pix25;
+    text-transform: uppercase;
+    border-radius: $pix4;
+    border: $pix0;
+    background-image: linear-gradient(to right bottom, #dd261d, #e33f18, #e85313, #ed640d, #f17507);
+    &:hover {
+        background-image: linear-gradient(to left top, #dd261d, #e33f18, #e85313, #ed640d, #f17507);
+        color: $white;
+    }
+}
+.frame-map {
+    height: 480px;
+}
+.title-area-all {
+	top: 0;
+	right: 0;
+	height: 100%;
+	background: #ffeeb0;
+}
+.img-page-banner {
+	height: 65px;
+	overflow: hidden;
+}
+.title-area-all {
+    padding: $pix20 $pix0;
+    h1 {
+        font-size: $pix30;
+        font-weight: $weight900;
+        letter-spacing: $pix2;
+        margin: $pix3 0 0 0;
+        color: $black;
+    }
+}
+.sec2addr p i {
+	width: 25px;
+	font-size: 18px;
+	color: $orange;
+}
+/* @media querries */
+
+@media only screen and (max-width: 1266px) {
+	.section2 {
+		width: 100%;
+	}
+}
+@media only screen and (max-width: 960px) {
+	.container {
+		padding: $pix0 $pix30 70px;
+	}
+	.section2 .col2 {
+		width: 100%;
+		display: block;
+	}
+	.section2 .col2.first {
+		margin-bottom: $pix10;
+	}
+	.section2 .col2.column2 {
+		padding: $pix0;
+	}
+	body .sec2map {
+		height: 250px !important;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.section2 .sec2addr {
+		font-size: $pix14;
+	}
+	
+	.section2 .sec2contactform h3 {
+		font-size: $pix16;
+		
+	}
+	.section2 .sec2contactform input[type="text"], .section2 .sec2contactform input[type="email"], .section2 .sec2contactform textarea {
+		padding: $pix10;
+		margin:$pix3 $pix0;
+	}
+	.section2 .sec2contactform input[type="submit"] {
+		padding: $pix10 $pix30;
+		font-size: $pix14;
+	}
+}
+@media only screen and (max-width: 420px) {
+	.section1 h1 {
+		font-size: 28px;
+	}	
+}

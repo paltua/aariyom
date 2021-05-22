@@ -12,6 +12,7 @@ import { UpcomingEventsComponent } from './home/upcoming-events/upcoming-events.
 import { ActivitiesHomeComponent } from './home/activities-home/activities-home.component';
 import { BannerComponent } from './home/banner/banner.component';
 import { PageLoaderComponent } from './page-loader/page-loader.component';
+import { JoinUsComponent } from './join-us/join-us.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { PageLoaderComponent } from './page-loader/page-loader.component';
     ActivitiesHomeComponent,
     BannerComponent,
     PageLoaderComponent,
+    JoinUsComponent,
   ],
   imports: [
     CommonModule,
