@@ -103,6 +103,20 @@ export class CommonService {
 		return this.http.post<ApiResponses>(this.apiUrl + 'api/common/update_about_us_img_youtube_settings/', data);
 	}
 
+	/**
+	 * getGender
+	 */
+	public getGender(data = {}) {
+		return ['male', 'female', 'eunuch', 'others'];
+	}
+
+	/**
+	 * getKnowFrom
+	 */
+	public getKnowFrom(data = {}) {
+		return ['website', 'social-media', 'sebaks', 'publications', 'others'];
+	}
+
 
 
 }

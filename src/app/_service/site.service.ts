@@ -177,4 +177,22 @@ export class SiteService {
     }
   }
 
+  /**
+ * addJoinUs
+ */
+  public addJoinUs(data) {
+    return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/joinus/add', data).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
+  /**
+   * checkJoinUsEmail
+   */
+  public checkJoinUsEmail(data) {
+    return this.http.post<ApiResponses>(this.apiUrl + 'api/admin/joinus/check_email', data).pipe(map(retData => {
+      return retData;
+    }));
+  }
+
 }

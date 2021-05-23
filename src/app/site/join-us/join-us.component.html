@@ -24,54 +24,105 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form [formGroup]="contactForm" (submit)="formSave()">
+                    <form [formGroup]="formObj" (submit)="formSave()">
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
-                                <input formControlName="firstName" type="text" class="form-control"
-                                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
-                                    id="validationServer03" placeholder="Firstname" required>
-                                <div *ngIf="submitted && f.firstName.errors " class="invalid-feedback">
-                                    Please provide First Name.
+                                <mat-label>Name <span>*</span></mat-label>
+                                <input formControlName="jum_name" type="text" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.jum_name.errors }" id="validationServer03"
+                                    placeholder="Name" required>
+                                <div *ngIf="submitted && f.jum_name.errors " class="invalid-feedback">
+                                    Please provide Name.
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <input formControlName="lastName" type="text" class="form-control"
-                                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" id="validationServer03"
-                                    placeholder="Lastname" required>
-                                <div *ngIf="submitted && f.lastName.errors " class="invalid-feedback">
-                                    Please provide Last Name.
+                                <mat-label>Email <span>*</span></mat-label>
+                                <input formControlName="jum_email" type="text" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.jum_email.errors }"
+                                    id="validationServer03" placeholder="Email" required>
+                                <div *ngIf="submitted && f.jum_email.errors " class="invalid-feedback">
+                                    Please provide a valid Email.
                                 </div>
                             </div>
+
                         </div>
-                        <div class="form-row">
+                        <div class="row">
                             <div class="col-md-6 mb-3">
-                                <input formControlName="email" type="text" class="form-control"
-                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" id="validationServer03"
-                                    placeholder="Email" required>
-                                <div *ngIf="submitted && f.email.errors " class="invalid-feedback">
-                                    Please provide a valid email.
+                                <mat-label>Date of birth <span>*</span></mat-label>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <input matInput class="form-control" [matDatepicker]="picker"
+                                        formControlName="jum_dob" id="validationServer03" required>
+                                    <mat-datepicker-toggle matSuffix [for]="picker">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                                <div *ngIf="submitted && f.jum_dob.errors " class="invalid-feedback">
+                                    Please provide Date of birth.
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <input formControlName="mobile" type="text" class="form-control"
-                                    [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" id="validationServer03"
-                                    placeholder="Mobile" required>
-                                <div *ngIf="submitted && f.mobile.errors " class="invalid-feedback">
+                                <mat-label>Mobile <span>*</span></mat-label>
+                                <input formControlName="jum_phone" type="text" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.jum_phone.errors }"
+                                    id="validationServer03" placeholder="Mobile" required>
+                                <div *ngIf="submitted && f.jum_phone.errors " class="invalid-feedback">
                                     Please provide a valid mobile.
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="col-md-12 mb-3">
-                                <textarea formControlName="desccription" name="textarea"
-                                    [ngClass]="{ 'is-invalid': submitted && f.desccription.errors }"
-                                    class="form-control" id="" cols="30" rows="5" placeholder="Your message here..."
-                                    required></textarea>
-                                <div *ngIf="submitted && f.desccription.errors " class="invalid-feedback">
-                                    Please provide your message.
+                            <div class="col-md-6 mb-3">
+                                <mat-label>Gender <span>*</span></mat-label>
+                                <mat-radio-group formControlName="jum_gender" aria-label="Select an Gender" required>
+                                    <mat-radio-button *ngFor="let gf of genderArr;" value="{{gf}}">{{gf}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                                <div *ngIf="submitted && f.jum_gender.errors " class="invalid-feedback">
+                                    Please select gender.
                                 </div>
-                            </div>
 
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <mat-label>Occupation </mat-label>
+                                <input formControlName="jum_occupation" type="text" class="form-control"
+                                    id="validationServer03" placeholder="Occupation">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <mat-label>Permanent address </mat-label>
+                                <textarea formControlName="jum_permanent_address" name="textarea"
+                                    [ngClass]="{ 'is-invalid': submitted && f.jum_permanent_address.errors }"
+                                    class="form-control" id="" cols="30" rows="5"
+                                    placeholder="Permanent address"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <mat-label>Present address </mat-label>
+                                <textarea formControlName="jum_present_address" name="textarea"
+                                    [ngClass]="{ 'is-invalid': submitted && f.jum_present_address.errors }"
+                                    class="form-control" id="" cols="30" rows="5"
+                                    placeholder="Present address"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <mat-label>How you came to know about the Aariyom Foundation </mat-label>
+                                <mat-radio-group formControlName="jum_know_from" aria-label="Select an option">
+                                    <mat-radio-button *ngFor="let kfa of knowFromArr;" value="{{kfa}}">{{kfa}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <mat-label>Any special note </mat-label>
+                                <textarea formControlName="jum_any_special_note" name="textarea"
+                                    [ngClass]="{ 'is-invalid': submitted && f.jum_any_special_note.errors }"
+                                    class="form-control" id="" cols="30" rows="5"
+                                    placeholder="Any special notes"></textarea>
+                            </div>
                         </div>
 
                         <div class="clearfix"><input type="submit" class="button-submit" value="Send"></div>
