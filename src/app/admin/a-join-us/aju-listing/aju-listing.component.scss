@@ -1,0 +1,22 @@
+/*
+   server-side-angular-way.component.css
+*/
+.no-data-available {
+    text-align: center;
+  }
+  
+  
+  .img-thumbnail{
+    width: 150px;
+    height: 120px;
+ }
+  /*
+     src/styles.css (i.e. your global style)
+  */
+  ::ng-deep .dataTables_empty  {
+    display: none;
+  }
+
+  .w-15 {
+   width: 15%!important;
+ }

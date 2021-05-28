@@ -1,0 +1,75 @@
+<div [@routerTransition]>
+    <div class="row">
+        <div class="col col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
+            <h2 class="text-muted">{{pageTitle}} <small>Listing</small> <span class="float-right"><a
+                        class="btn btn-success btn-lg " routerLink="/admin/events/add"><i class="fa fa-plus-square"></i>
+                        Add
+                        New
+                        {{pageTitle}}</a></span>
+            </h2>
+            <hr>
+            <ng-container *ngIf="status != '' && msg != ''">
+                <div class="alert alert-{{status}} alert-dismissible fade show" role="alert">
+                    <div [innerHTML]="msg"></div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <hr>
+            </ng-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-body table-responsive">
+                    <table datatable [dtOptions]="dtOptions" class="table table-striped  dt-responsive nowrap"
+                        style="width:100%">
+                        <thead>
+                            <tr class="table-primary">
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Gender</th>
+                                <!-- <th>Present Address</th> -->
+                                <!-- <th>Created By</th> -->
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let lst of listTables;let i= index;">
+                                <th scope="row">{{i + 1}}</th>
+                                <td class="w-15">s</td>
+                                <td>{{lst.event_title}}</td>
+                                <td>
+                                    s
+                                </td>
+                                <td>s</td>
+                                <!-- <td>
+                                    <p>Country:{{lst.c_name}}</p>
+                                    <p>State:{{lst.r_name}}</p>
+                                    <p *ngIf="lst.city_name">City:{{lst.city_name}}</p>
+                                    <p *ngIf="lst.pin">Pin:{{lst.pin}}</p>
+                                </td> -->
+                                <!-- <td>{{lst.user_name}}</td> -->
+                                <td>
+                                    <!-- *ngIf=" hideEditButton(lst.event_end_date_time)" -->
+                                    <a routerLink="/admin/events/edit/{{lst.event_id}}" class="btn btn-primary"
+                                        title="Reply"><i class="fa fa-reply fa-lg"></i> </a></td>
+                            </tr>
+
+                        </tbody>
+                        <tbody *ngIf="listCount == 0">
+                            <tr>
+                                <td colspan="7" class="no-data-available table-secondary text-danger">
+                                    <span class="float-left"><i class="fa fa-database fa-lg"></i> No
+                                        records found!</span></td>
+                            </tr>
+                        <tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
