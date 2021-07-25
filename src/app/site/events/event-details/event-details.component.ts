@@ -58,21 +58,25 @@ export class EventDetailsComponent implements OnInit {
 
 
 	ngOnInit() {
+		$('.carousel').carousel({
+			interval: 3000,
+		})
 		this.route.params.subscribe(routeParams => {
 			this.dataId = routeParams.event_id;
 			this.siteSer.getSingleEvent(this.dataId).subscribe(retData => {
 				this.data = retData.data;
-				console.log(this.data);
+				this.loader = false;
+				// console.log(this.data);
 				if (this.data.details.length > 0) {
 					this.imageList = this.data.images;
 					this.setVariableValue();
 				}
 			})
 		});
-		setTimeout(() => {
-			this.loader = false;
-			this.setCarousel();
-		}, 2000);
+		// setTimeout(() => {
+		// 	this.loader = false;
+		// 	this.setCarousel();
+		// }, 2000);
 
 	}
 
@@ -103,6 +107,7 @@ export class EventDetailsComponent implements OnInit {
 	   * setCarousel
 	   */
 	public setCarousel() {
+
 		// $('.owl-carousel').owlCarousel({
 		// 	items: this.imageList.length,
 		// 	margin: 10,

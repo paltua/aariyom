@@ -1,5 +1,8 @@
-<app-banner class="w-100 float-left"></app-banner>
-<app-slider class="w-100 float-left"></app-slider>
+<div *ngIf="loader" class="full-loader">
+    <div class="spinner-border" role="status"></div>
+</div>
+<app-banner (bannerLoader)="changeBannerLoaderStatus($event)" class="w-100 float-left"></app-banner>
+<app-slider (sliderLoader)="changeSliderLoaderStatus($event)" class="w-100 float-left"></app-slider>
 <app-about-functional class="w-100 float-left"></app-about-functional>
 <section class="uc-events float-left w-100 functional-activities-wrap">
     <div class="container">

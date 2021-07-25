@@ -5,6 +5,8 @@
 .header-site {
     background: $white;
     box-shadow: $pix0 $pix4 $pix7 rgba(0,0,0,0.12);
+    position: relative;
+    z-index: 9999;
 }
 .nav-custom li a {
     font-weight: $weight700;

@@ -51,7 +51,6 @@ export class JoinUsComponent implements OnInit {
   public formSave() {
     this.loader = true;
     this.submitted = true;
-    console.log(this.formObj);
     if (this.formObj.valid) {
       this.siteSer.checkJoinUsEmail(this.formObj.value).subscribe(emailData => {
         console.log(emailData);
@@ -70,10 +69,7 @@ export class JoinUsComponent implements OnInit {
           this.msg = emailData.message;
           this.loader = false;
         }
-
       })
-
-
     } else {
       this.status = 'danger';
       this.msg = 'Please find the error(s) as below.';

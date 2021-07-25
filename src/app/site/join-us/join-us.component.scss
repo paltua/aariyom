@@ -122,7 +122,11 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 	margin: 0 8px 16px 0;
 }
 /* @media querries */
-
+.internal-form {
+	background: $white;
+	padding: 20px;
+	border-radius:10px;
+}
 @media only screen and (max-width: 1266px) {
 	.section2 {
 		width: 100%;

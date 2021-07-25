@@ -1,3 +1,6 @@
+<div *ngIf="loader" class="full-loader">
+    <div class="spinner-border" role="status"></div>
+</div>
 <div class="w-100 float-left img-page-banner position-relative">
     <div
         class="col-12 col-md-12 col-lg-12 col-xl-12 float-left d-flex justify-content-center align-items-center title-area-all position-absolute">
@@ -13,7 +16,7 @@
                     <img src="{{image_path}}" alt="{{event_title}}" class="img-fluid w-100 img-height" alt="">
 
                 </div> -->
-                <div *ngIf="imageList && imageList.length > 0" class="w-100 float-left slider-inner">
+                <div [ngClass]="{'d-none':imageList && imageList.length == 0}" class="w-100 float-left slider-inner">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <!-- <ol class="carousel-indicators">
                             <li *ngFor="let sl of list;let i=index;" data-target="#carouselExampleIndicators" data-slide-to="i"

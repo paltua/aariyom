@@ -29,7 +29,7 @@ export class AboutFunctionalComponent implements OnInit, AfterViewInit {
 			items: this.listCount,
 			margin: 10,
 			loop: true,
-			autoplay: false,
+			autoplay: true,
 			nav: true,
 			dots: true,
 			responsive: {

@@ -1,11 +1,13 @@
 <div [@routerTransition]>
     <div class="row">
         <div class="col col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
-            <h2 class="text-muted">{{pageTitle}} <small>Listing</small> <span class="float-right"><a
+            <h2 class="text-muted">{{pageTitle}} <small>Listing</small>
+                <!-- <span class="float-right">
+                <a
                         class="btn btn-success btn-lg " routerLink="/admin/events/add"><i class="fa fa-plus-square"></i>
                         Add
                         New
-                        {{pageTitle}}</a></span>
+                        {{pageTitle}}</a></span> -->
             </h2>
             <hr>
             <ng-container *ngIf="status != '' && msg != ''">
@@ -31,21 +33,21 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
+                                <th>DOB</th>
                                 <th>Gender</th>
-                                <!-- <th>Present Address</th> -->
-                                <!-- <th>Created By</th> -->
+                                <th>Occupation</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let lst of listTables;let i= index;">
                                 <th scope="row">{{i + 1}}</th>
-                                <td class="w-15">s</td>
-                                <td>{{lst.event_title}}</td>
-                                <td>
-                                    s
-                                </td>
-                                <td>s</td>
+                                <td class="w-15">{{lst.jum_name}}</td>
+                                <td>{{lst.jum_email}}</td>
+                                <td>{{lst.jum_phone}}</td>
+                                <td>{{lst.jum_dob}}</td>
+                                <td>{{lst.jum_gender}}</td>
+                                <td>{{lst.jum_occupation}}</td>
                                 <!-- <td>
                                     <p>Country:{{lst.c_name}}</p>
                                     <p>State:{{lst.r_name}}</p>
@@ -55,16 +57,19 @@
                                 <!-- <td>{{lst.user_name}}</td> -->
                                 <td>
                                     <!-- *ngIf=" hideEditButton(lst.event_end_date_time)" -->
-                                    <a routerLink="/admin/events/edit/{{lst.event_id}}" class="btn btn-primary"
-                                        title="Reply"><i class="fa fa-reply fa-lg"></i> </a></td>
+                                    <button (click)="openReplyDialog()" type="button" class="btn btn-primary"
+                                        title="Reply"><i class="fa fa-reply fa-lg"></i>
+                                    </button>
+                                </td>
                             </tr>
 
                         </tbody>
                         <tbody *ngIf="listCount == 0">
                             <tr>
-                                <td colspan="7" class="no-data-available table-secondary text-danger">
+                                <td colspan="6" class="no-data-available table-secondary text-danger">
                                     <span class="float-left"><i class="fa fa-database fa-lg"></i> No
-                                        records found!</span></td>
+                                        records found!</span>
+                                </td>
                             </tr>
                         <tbody>
                     </table>

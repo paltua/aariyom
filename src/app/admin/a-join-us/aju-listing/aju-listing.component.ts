@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { EventService } from './../../../_service/event.service';
+import { JoinUsService } from 'src/app/_service/join-us.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AjuReplyComponent } from '../aju-reply/aju-reply.component';
 
 class ListTable {
   program_id: any[];
@@ -31,7 +33,8 @@ export class AjuListingComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private eventSer: EventService,
+    private joinUsSer: JoinUsService,
+    public dialog: MatDialog
   ) {
     this.pageTitle = 'Join us Member';
     this.status = '';
@@ -78,7 +81,7 @@ export class AjuListingComponent implements OnInit {
       processing: true,
       ajax: (dataTablesParameters: any, callback) => {
         // console.log(dataTablesParameters);
-        that.eventSer.list(dataTablesParameters).subscribe(resp => {
+        that.joinUsSer.list(dataTablesParameters).subscribe(resp => {
           that.listTables = resp.data.list;
           this.listCount = resp.data.recordsFiltered;
           callback({
@@ -89,42 +92,34 @@ export class AjuListingComponent implements OnInit {
         });
       },
       columns: [
-        { data: 'EM.event_id', searchable: false, orderable: true },
-        { data: 'EM.event_title', searchable: true, orderable: true },
-        { data: 'EM.event_start_date_time', searchable: true, orderable: true },
-        { data: 'PRO.program_title', searchable: true, orderable: false },
-        // { data: 'EM.event_end_date_time', searchable: true, orderable: true },
-        { data: 'location', searchable: false, orderable: false },
+        { data: 'jum_id', searchable: false, orderable: true },
+        { data: 'jum_name', searchable: true, orderable: true },
+        { data: 'jum_email', searchable: true, orderable: true },
+        { data: 'jum_phone', searchable: true, orderable: true },
+        { data: 'jum_dob', searchable: true, orderable: true },
+        { data: 'jum_gender', searchable: true, orderable: false },
+        { data: 'jum_occupation', searchable: false, orderable: false },
+        { data: 'jum_id', searchable: false, orderable: false },
       ]
     };
   }
 
-  /**
-   * delete
-   */
-  public delete(event_id = 0) {
-    let confirmStatus: boolean = false;
-    if (event_id > 0) {
-      confirmStatus = confirm('Are you sure to delete this Event?');
-    }
-    if (confirmStatus === true) {
-      this.router.navigate(['/admin/events/delete/' + event_id]);
-    }
-  }
-
 
 
   /**
-   * hideEditButton
+   * openReplyDialog
    */
-  public hideEditButton(date_time = new Date()) {
-    let nowDateTime = new Date();
-    let eventEndDate = new Date(date_time);
-    if (eventEndDate > nowDateTime) {
-      return true;
-    } else {
-      return false;
-    }
+  public openReplyDialog() {
+    const dialogRef = this.dialog.open(AjuReplyComponent, {
+      height: "200px",
+      data: {
+        animal: 'panda'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

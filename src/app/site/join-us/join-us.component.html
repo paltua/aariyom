@@ -1,3 +1,6 @@
+<div *ngIf="loader" class="full-loader">
+    <div class="spinner-border" role="status"></div>
+</div>
 <div class="w-100 float-left img-page-banner position-relative">
     <div
         class="col-12 col-md-12 col-lg-12 col-xl-12 float-right d-flex justify-content-center align-items-center title-area-all position-absolute">
@@ -8,7 +11,7 @@
 <section class="w-100 float-left mt-2" [ngClass]="{'d-none':loader}">
     <div class="section2 clearfix mb-5">
         <div class="container">
-            <div class="col-12 column2 ">
+            <div class="col-12 column2 internal-form">
                 <div class="sec2innercont">
                     <div class="sec2addr">
                         <!-- <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{address}}</p>
@@ -25,9 +28,9 @@
                         </button>
                     </div>
                     <form [formGroup]="formObj" (submit)="formSave()">
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <mat-label>Name <span>*</span></mat-label>
+                        <div class="w-100 float-left">
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left mb-2">
+                                <mat-label class="w-100 float-left">Name <span>*</span></mat-label>
                                 <input formControlName="jum_name" type="text" class="form-control"
                                     [ngClass]="{ 'is-invalid': submitted && f.jum_name.errors }" id="validationServer03"
                                     placeholder="Name" required>
@@ -35,8 +38,8 @@
                                     Please provide Name.
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <mat-label>Email <span>*</span></mat-label>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left mb-2">
+                                <mat-label class="w-100 float-left">Email <span>*</span></mat-label>
                                 <input formControlName="jum_email" type="text" class="form-control"
                                     [ngClass]="{ 'is-invalid': submitted && f.jum_email.errors }"
                                     id="validationServer03" placeholder="Email" required>
@@ -46,10 +49,10 @@
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <mat-label>Date of birth <span>*</span></mat-label>
-                                <mat-form-field class="example-full-width" appearance="fill">
+                        <div class="w-100 float-left">
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left mb-2">
+                                <mat-label class="w-100 float-left">Date of birth <span>*</span></mat-label>
+                                <mat-form-field class="w-100" appearance="fill">
                                     <input matInput class="form-control" [matDatepicker]="picker"
                                         formControlName="jum_dob" id="validationServer03" required>
                                     <mat-datepicker-toggle matSuffix [for]="picker">
@@ -60,8 +63,8 @@
                                     Please provide Date of birth.
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <mat-label>Mobile <span>*</span></mat-label>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left mb-2">
+                                <mat-label class="w-100 float-left">Mobile <span>*</span></mat-label>
                                 <input formControlName="jum_phone" type="text" class="form-control"
                                     [ngClass]="{ 'is-invalid': submitted && f.jum_phone.errors }"
                                     id="validationServer03" placeholder="Mobile" required>
@@ -70,9 +73,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <mat-label>Gender <span>*</span></mat-label>
+                        <div class="w-100 float-left">
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left mb-2">
+                                <mat-label class="w-100 float-left">Gender <span>*</span></mat-label>
                                 <mat-radio-group formControlName="jum_gender" aria-label="Select an Gender" required>
                                     <mat-radio-button *ngFor="let gf of genderArr;" value="{{gf}}">{{gf}}
                                     </mat-radio-button>
@@ -82,49 +85,45 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <mat-label>Occupation </mat-label>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left mb-2">
+                                <mat-label class="w-100 float-left">Occupation </mat-label>
                                 <input formControlName="jum_occupation" type="text" class="form-control"
                                     id="validationServer03" placeholder="Occupation">
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="col-md-12 mb-3">
-                                <mat-label>Permanent address </mat-label>
+                        <div class="w-100 float-left">
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left mb-2">
+                                <mat-label class="w-100 float-left">Permanent address </mat-label>
                                 <textarea formControlName="jum_permanent_address" name="textarea"
                                     [ngClass]="{ 'is-invalid': submitted && f.jum_permanent_address.errors }"
                                     class="form-control" id="" cols="30" rows="5"
                                     placeholder="Permanent address"></textarea>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-12 mb-3">
-                                <mat-label>Present address </mat-label>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left mb-2">
+                                <mat-label class="w-100 float-left">Present address </mat-label>
                                 <textarea formControlName="jum_present_address" name="textarea"
                                     [ngClass]="{ 'is-invalid': submitted && f.jum_present_address.errors }"
                                     class="form-control" id="" cols="30" rows="5"
                                     placeholder="Present address"></textarea>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="col-md-12 mb-3">
-                                <mat-label>How you came to know about the Aariyom Foundation </mat-label>
+                        <div class="w-100 float-left">
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left mb-2">
+                                <mat-label class="w-100 float-left">How you came to know about the Aariyom Foundation
+                                </mat-label>
                                 <mat-radio-group formControlName="jum_know_from" aria-label="Select an option">
                                     <mat-radio-button *ngFor="let kfa of knowFromArr;" value="{{kfa}}">{{kfa}}
                                     </mat-radio-button>
                                 </mat-radio-group>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-12 mb-3">
-                                <mat-label>Any special note </mat-label>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 float-left mb-2">
+                                <mat-label class="w-100 float-left">Any special note </mat-label>
                                 <textarea formControlName="jum_any_special_note" name="textarea"
                                     [ngClass]="{ 'is-invalid': submitted && f.jum_any_special_note.errors }"
                                     class="form-control" id="" cols="30" rows="5"
                                     placeholder="Any special notes"></textarea>
                             </div>
                         </div>
-
                         <div class="clearfix"><input type="submit" class="button-submit" value="Send"></div>
                     </form>
                 </div>

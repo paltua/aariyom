@@ -6,17 +6,21 @@ import { AjuListingComponent } from './aju-listing/aju-listing.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { ACommonModule } from '../a-common/a-common.module';
+import { MatDialogModule } from '@angular/material';
+import { AjuReplyComponent } from './aju-reply/aju-reply.component';
 
 
 @NgModule({
-  declarations: [AjuListingComponent],
+  declarations: [AjuListingComponent, AjuReplyComponent],
   imports: [
     CommonModule,
     AJoinUsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
-    ACommonModule
-  ]
+    ACommonModule,
+    MatDialogModule
+  ],
+  entryComponents: [AjuReplyComponent]
 })
 export class AJoinUsModule { }

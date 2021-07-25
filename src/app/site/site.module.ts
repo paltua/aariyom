@@ -14,6 +14,7 @@ import { BannerComponent } from './home/banner/banner.component';
 import { PageLoaderComponent } from './page-loader/page-loader.component';
 import { JoinUsComponent } from './join-us/join-us.component';
 import { MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatRadioButton, MatRadioModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material';
+import { SWallMagazineComponent } from './s-wall-magazine/s-wall-magazine.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule,
     BannerComponent,
     PageLoaderComponent,
     JoinUsComponent,
+    SWallMagazineComponent,
   ],
   imports: [
     CommonModule,

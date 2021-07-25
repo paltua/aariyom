@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonService } from 'src/app/_service';
 
 @Component({
@@ -9,13 +10,15 @@ import { CommonService } from 'src/app/_service';
 export class BannerComponent implements OnInit {
   loader: Boolean = true;
   main_text: any;
-  constructor(public commonSer: CommonService, ) { }
+  @Output() bannerLoader = new EventEmitter<Boolean>();
+  constructor(public commonSer: CommonService,) { }
 
   ngOnInit() {
     this.commonSer.getSettings('home').subscribe(retData => {
       let data: any = retData.data;
       this.main_text = data.main_text;
       this.loader = false;
+      this.bannerLoader.emit(false);
     })
   }
 
